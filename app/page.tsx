@@ -60,7 +60,6 @@ export default function Home() {
           <Title order={2} ta="center">
             Skill Set
           </Title>
-          <ComponentGrid />
         </Stack>
       </Center>
 
