@@ -40,8 +40,8 @@ const eslintConfig = [
     },
     rules: {
       "@typescript-eslint/no-explicit-any": "error",
-      "simple-import-sort/imports": "error",
-      "simple-import-sort/exports": "error",
+      "simple-import-sort/imports": "warn",
+      "simple-import-sort/exports": "warn",
       "unused-imports/no-unused-imports": "error",
       "@typescript-eslint/no-unused-vars": [
         "warn",
@@ -61,7 +61,7 @@ const eslintConfig = [
     "next/core-web-vitals",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
   ),
   // 追加ルールの上書き
   {

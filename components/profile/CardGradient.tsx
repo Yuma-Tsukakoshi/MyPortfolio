@@ -1,3 +1,5 @@
+"use client";
+
 import { Paper, Text, ThemeIcon } from "@mantine/core";
 import { IconColorSwatch } from "@tabler/icons-react";
 
