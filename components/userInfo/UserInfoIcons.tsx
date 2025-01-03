@@ -9,7 +9,7 @@ export function UserInfoIcons() {
       <Group wrap="nowrap">
         <Avatar
           src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png"
-          size={300}
+          size={500}
           radius="md"
         />
         <div>
