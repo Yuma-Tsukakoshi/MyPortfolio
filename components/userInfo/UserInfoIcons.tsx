@@ -1,5 +1,6 @@
-import { IconAt, IconPhoneCall } from "@tabler/icons-react";
 import { Avatar, Group, Text } from "@mantine/core";
+import { IconAt, IconPhoneCall } from "@tabler/icons-react";
+
 import classes from "./UserInfoIcons.module.css";
 
 export function UserInfoIcons() {
@@ -8,7 +9,7 @@ export function UserInfoIcons() {
       <Group wrap="nowrap">
         <Avatar
           src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png"
-          size={94}
+          size={300}
           radius="md"
         />
         <div>
