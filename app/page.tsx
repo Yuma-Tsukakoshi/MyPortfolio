@@ -1,6 +1,7 @@
+import { Center } from "@mantine/core";
+
 import { HeroContentLeft } from "@/components/hero/HeroContentLeft";
 import { UserInfoIcons } from "@/components/userInfo/UserInfoIcons";
-import { Box, Center } from "@mantine/core";
 
 export default function Home() {
   return (
