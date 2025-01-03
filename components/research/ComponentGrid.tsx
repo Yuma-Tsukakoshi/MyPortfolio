@@ -1,8 +1,6 @@
-"use client";
-
 import { Grid, Title } from "@mantine/core";
 
-import { ResearchGridCard } from "@/components/research/ResearchGridCard";
+import { ResearchGridCard } from "./ResearchGridCard";
 
 export function ComponentGrid() {
   return (
