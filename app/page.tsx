@@ -1,6 +1,6 @@
 import { Box, Center, Stack, Title } from "@mantine/core";
 
-import { GetInTouchSimple } from "@/components/contact/GetInTouchSimple";
+import { ContactUs } from "@/components/contact/ContactUs";
 import { HeroContentLeft } from "@/components/hero/HeroContentLeft";
 import { UserTimeline } from "@/components/profile/UserTimeline";
 import { ComponentGrid } from "@/components/research/ComponentGrid";
@@ -69,7 +69,7 @@ export default function Home() {
           <Title order={2} ta="center">
             Contact
           </Title>
-          <GetInTouchSimple />
+          <ContactUs />
         </Stack>
       </Center>
     </>
