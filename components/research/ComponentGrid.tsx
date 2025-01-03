@@ -1,3 +1,5 @@
+"use client";
+
 import { Grid, Title } from "@mantine/core";
 
 import { ResearchGridCard } from "./ResearchGridCard";
