@@ -4,13 +4,7 @@ import { Carousel } from "@mantine/carousel";
 
 import { BadgeCard } from "./BadgeCard";
 
-const images = [
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-1.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-2.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-3.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-4.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-5.png",
-];
+const images = ["1.png", "2.png", "3.png", "4.png", "5.png"];
 
 export function CarouselForWorks() {
   const slides = images.map((url) => (
