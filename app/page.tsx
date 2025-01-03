@@ -1,11 +1,12 @@
 import { Box, Center, Stack, Title } from "@mantine/core";
 
+import { GetInTouchSimple } from "@/components/contact/GetInTouchSimple";
 import { HeroContentLeft } from "@/components/hero/HeroContentLeft";
+import { UserTimeline } from "@/components/profile/UserTimeline";
+import { ComponentGrid } from "@/components/research/ComponentGrid";
 import { TableReviews } from "@/components/research/TableReviews";
 import { UserInfoIcons } from "@/components/userInfo/UserInfoIcons";
 import { CarouselForWorks } from "@/components/works/CarouselForWorks";
-
-import { ComponentGrid } from "../components/research/ComponentGrid";
 
 export default function Home() {
   return (
@@ -49,6 +50,26 @@ export default function Home() {
           </Title>
           <TableReviews />
           <ComponentGrid />
+        </Stack>
+      </Center>
+
+      {/* Profile セクション */}
+      <Center mt={40} h={"100vh"}>
+        <Stack>
+          <Title order={2} ta="center">
+            Profile
+          </Title>
+          <UserTimeline />
+        </Stack>
+      </Center>
+
+      {/* Contact セクション */}
+      <Center mt={40} h={"100vh"}>
+        <Stack>
+          <Title order={2} ta="center">
+            Contact
+          </Title>
+          <GetInTouchSimple />
         </Stack>
       </Center>
     </>
