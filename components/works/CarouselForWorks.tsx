@@ -1,7 +1,8 @@
 "use client";
 
 import { Carousel } from "@mantine/carousel";
-import { Image } from "@mantine/core";
+
+import { BadgeCard } from "./BadgeCard";
 
 const images = [
   "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-1.png",
@@ -11,12 +12,22 @@ const images = [
   "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-5.png",
 ];
 
-export function Demo() {
+export function CarouselForWorks() {
   const slides = images.map((url) => (
     <Carousel.Slide key={url}>
-      <Image src={url} />
+      <BadgeCard />
     </Carousel.Slide>
   ));
 
-  return <Carousel withIndicators>{slides}</Carousel>;
+  return (
+    <Carousel
+      height={400}
+      slideSize="33.3333%"
+      slideGap={"lg"}
+      controlSize={40}
+      align="start"
+    >
+      {slides}
+    </Carousel>
+  );
 }
