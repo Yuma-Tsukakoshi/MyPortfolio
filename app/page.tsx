@@ -4,6 +4,8 @@ import { ContactUs } from "@/components/contact/ContactUs";
 import { HeroContentLeft } from "@/components/hero/HeroContentLeft";
 import { ComponentGridForProfile } from "@/components/profile/ComponentGrid";
 import { UserTimeline } from "@/components/profile/UserTimeline";
+import { ComponentGrid } from "@/components/research/ComponentGrid";
+import { TableReviews } from "@/components/research/TableReviews";
 import { UserInfoIcons } from "@/components/userInfo/UserInfoIcons";
 import { CarouselForWorks } from "@/components/works/CarouselForWorks";
 
@@ -42,7 +44,7 @@ export default function Home() {
       </Center>
 
       {/* Research セクション */}
-      {/* <Center mt={160} mx={320} h={"100vh"}>
+      <Center mt={160} mx={320} h={"100vh"}>
         <Stack>
           <Title order={2} ta="center">
             Research
@@ -50,7 +52,7 @@ export default function Home() {
           <TableReviews />
           <ComponentGrid />
         </Stack>
-      </Center> */}
+      </Center>
 
       {/* Skill Set セクション */}
       <Center mt={160} mx={320} h={"100vh"}>
