@@ -1,5 +1,9 @@
-import { Demo } from "@/components/Demo";
+import { HeroContentLeft } from "@/components/hero/HeroContentLeft";
 
 export default function Home() {
-  return <Demo />;
+  return (
+    <>
+      <HeroContentLeft />
+    </>
+  );
 }
