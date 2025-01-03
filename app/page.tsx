@@ -1,7 +1,8 @@
 import { Box, Center, Stack, Title } from "@mantine/core";
 
-import { GetInTouchSimple } from "@/components/contact/GetInTouchSimple";
+import { ContactUs } from "@/components/contact/ContactUs";
 import { HeroContentLeft } from "@/components/hero/HeroContentLeft";
+import { ComponentGridForProfile } from "@/components/profile/ComponentGrid";
 import { UserTimeline } from "@/components/profile/UserTimeline";
 import { ComponentGrid } from "@/components/research/ComponentGrid";
 import { TableReviews } from "@/components/research/TableReviews";
@@ -15,7 +16,7 @@ export default function Home() {
       <HeroContentLeft />
 
       {/* About me セクション*/}
-      <Center my={40} h={"100vh"}>
+      <Center my={160} h={"100vh"}>
         <Stack>
           <Title order={2} ta="center">
             About Me
@@ -25,7 +26,7 @@ export default function Home() {
       </Center>
 
       {/* Works セクション */}
-      <Center mt={40} mx={240} h={"100vh"}>
+      <Center mt={160} mx={320} h={"100vh"}>
         <Stack>
           <Title order={2} ta="center">
             Works
@@ -43,7 +44,7 @@ export default function Home() {
       </Center>
 
       {/* Research セクション */}
-      <Center mt={40} h={"100vh"}>
+      <Center mt={160} mx={320} h={"100vh"}>
         <Stack>
           <Title order={2} ta="center">
             Research
@@ -53,23 +54,36 @@ export default function Home() {
         </Stack>
       </Center>
 
+      {/* Skill Set セクション */}
+      <Center mt={160} mx={320} h={"100vh"}>
+        <Stack>
+          <Title order={2} ta="center">
+            Skill Set
+          </Title>
+          <ComponentGrid />
+        </Stack>
+      </Center>
+
       {/* Profile セクション */}
-      <Center mt={40} h={"100vh"}>
+      <Center mt={160} mx={320} h={"100vh"}>
         <Stack>
           <Title order={2} ta="center">
             Profile
           </Title>
           <UserTimeline />
+          <Box mt={80}>
+            <ComponentGridForProfile />
+          </Box>
         </Stack>
       </Center>
 
       {/* Contact セクション */}
-      <Center mt={40} h={"100vh"}>
+      <Center mt={160} h={"100vh"}>
         <Stack>
           <Title order={2} ta="center">
             Contact
           </Title>
-          <GetInTouchSimple />
+          <ContactUs />
         </Stack>
       </Center>
     </>
