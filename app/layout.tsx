@@ -1,12 +1,10 @@
-// Import styles of packages that you've installed.
-// All packages except `@mantine/hooks` require styles imports
 import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
 
 import {
   ColorSchemeScript,
-  MantineProvider,
   mantineHtmlProps,
+  MantineProvider,
 } from "@mantine/core";
 
 export const metadata = {
