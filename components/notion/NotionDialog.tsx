@@ -1,8 +1,18 @@
 "use client";
 
 import { Loader, Modal, Text } from "@mantine/core";
-import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import {
+  BlockObjectResponse,
+  PageObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
 import { useEffect, useState } from "react";
+
+import NotionRender from "@/components/notion/NotionRender";
+
+type NotionResponse = {
+  page: PageObjectResponse;
+  blocks: BlockObjectResponse[];
+};
 
 export default function NotionDialog({
   pageId,
@@ -11,7 +21,7 @@ export default function NotionDialog({
   pageId: string | null;
   onClose: () => void;
 }) {
-  const [pageData, setPageData] = useState<PageObjectResponse | null>(null);
+  const [pageData, setPageData] = useState<NotionResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -24,7 +34,7 @@ export default function NotionDialog({
           if (!res.ok) throw new Error("Failed to fetch data");
           return res.json();
         })
-        .then((data) => setPageData(data))
+        .then((data: NotionResponse) => setPageData(data))
         .catch((err) => setError(err.message))
         .finally(() => setLoading(false));
     }
@@ -32,8 +42,9 @@ export default function NotionDialog({
 
   const getTitle = () => {
     if (!pageData) return "No Data";
-    if ("properties" in pageData) {
-      for (const prp of Object.values(pageData.properties)) {
+    const page = pageData.page;
+    if ("properties" in page) {
+      for (const prp of Object.values(page.properties)) {
         if (prp.type === "title" && prp.title.length > 0) {
           return prp.title[0].plain_text;
         }
@@ -47,7 +58,7 @@ export default function NotionDialog({
       opened={!!pageId}
       onClose={onClose}
       size="xl"
-      title="Notion Page"
+      title={getTitle()}
       centered
       overlayProps={{ opacity: 0.3, blur: 3 }}
     >
@@ -56,8 +67,8 @@ export default function NotionDialog({
       ) : error ? (
         <Text>{error}</Text>
       ) : pageData ? (
-        <div className="w-full h-[70vh]">
-          <h1>{getTitle()}</h1>
+        <div className="w-full h-[70vh] overflow-y-auto">
+          <NotionRender blocks={pageData.blocks} />
         </div>
       ) : (
         <Text>データが取得できませんでした。</Text>

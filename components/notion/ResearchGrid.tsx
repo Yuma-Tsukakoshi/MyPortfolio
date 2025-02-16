@@ -4,7 +4,7 @@ import NotionCard from "@/components/notion/NotionCard";
 
 const projects = [
   {
-    id: "19c7add2-a039-8118-a951-ef8d2719e731",
+    id: "19c7add2a039804fba92cb02bc611e51",
     title: "Project Alpha",
     description: "This is an AI-driven research project.",
     image: "https://placehold.jp/300x200.png",
