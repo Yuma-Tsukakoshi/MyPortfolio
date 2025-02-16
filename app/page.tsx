@@ -28,7 +28,7 @@ export default function Home() {
       <HeroContentLeft />
 
       {/* About Me */}
-      <Center my={160} h={"100vh"}>
+      <Center mt={160} h={"100vh"}>
         <Stack>
           <Title order={2} ta="center" ref={aboutMeRef}>
             About Me
@@ -38,7 +38,7 @@ export default function Home() {
       </Center>
 
       {/* Works */}
-      <Center mt={160} h={"100vh"}>
+      <Center mt={160} mx={320} h={"100vh"}>
         <Stack>
           <Title order={2} ta="center" ref={worksRef}>
             Works
