@@ -7,6 +7,7 @@ import { ComponentGridForProfile } from "@/components/profile/ComponentGrid";
 import { UserTimeline } from "@/components/profile/UserTimeline";
 import { ComponentGrid } from "@/components/research/ComponentGrid";
 import { TableReviews } from "@/components/research/TableReviews";
+import { GridSkillsSection } from "@/components/skills/UserSkills";
 import { UserInfoIcons } from "@/components/userInfo/UserInfoIcons";
 import { CarouselForWorks } from "@/components/works/CarouselForWorks";
 import { useScrollContext } from "@/context/ScrollContext";
@@ -27,7 +28,7 @@ export default function Home() {
       <HeroContentLeft />
 
       {/* About Me */}
-      <Center my={160} h={"100vh"}>
+      <Center mt={160} h={"100vh"}>
         <Stack>
           <Title order={2} ta="center" ref={aboutMeRef}>
             About Me
@@ -37,7 +38,7 @@ export default function Home() {
       </Center>
 
       {/* Works */}
-      <Center mt={160} h={"100vh"}>
+      <Center mt={160} mx={320} h={"100vh"}>
         <Stack>
           <Title order={2} ta="center" ref={worksRef}>
             Works
@@ -71,6 +72,7 @@ export default function Home() {
           <Title order={2} ta="center" ref={skillSetRef}>
             Skill Set
           </Title>
+          <GridSkillsSection />
         </Stack>
       </Center>
 
