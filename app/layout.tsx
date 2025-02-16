@@ -7,6 +7,7 @@ import {
   MantineProvider,
 } from "@mantine/core";
 
+import { FooterLinks } from "@/components/common/footer/FooterLinks";
 import { Header } from "@/components/common/header";
 import { ScrollProvider } from "@/context/ScrollContext";
 
@@ -30,6 +31,7 @@ export default function RootLayout({
           <ScrollProvider>
             <Header />
             {children}
+            <FooterLinks />
           </ScrollProvider>
         </MantineProvider>
       </body>
