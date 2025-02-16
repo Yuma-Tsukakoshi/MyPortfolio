@@ -27,3 +27,6 @@ export const HeaderItems: React.FC<Props> = ({ items }) => {
     </>
   );
 };
+
+// https://www.notion.so/19c7add2a039801aa760cbbdc789a962?v=19c7add2a03980338991000c5061e8f8&pvs=4
+// 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
