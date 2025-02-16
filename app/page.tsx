@@ -1,3 +1,4 @@
+"use client";
 import { Box, Center, Stack, Title } from "@mantine/core";
 
 import { ContactUs } from "@/components/contact/ContactUs";
@@ -8,27 +9,37 @@ import { ComponentGrid } from "@/components/research/ComponentGrid";
 import { TableReviews } from "@/components/research/TableReviews";
 import { UserInfoIcons } from "@/components/userInfo/UserInfoIcons";
 import { CarouselForWorks } from "@/components/works/CarouselForWorks";
+import { useScrollContext } from "@/context/ScrollContext";
 
 export default function Home() {
+  const {
+    aboutMeRef,
+    worksRef,
+    researchRef,
+    skillSetRef,
+    profileRef,
+    contactRef,
+  } = useScrollContext();
+
   return (
     <>
       {/* Hero セクション*/}
       <HeroContentLeft />
 
-      {/* About me セクション*/}
+      {/* About Me */}
       <Center my={160} h={"100vh"}>
         <Stack>
-          <Title order={2} ta="center">
+          <Title order={2} ta="center" ref={aboutMeRef}>
             About Me
           </Title>
           <UserInfoIcons />
         </Stack>
       </Center>
 
-      {/* Works セクション */}
-      <Center mt={160} mx={320} h={"100vh"}>
+      {/* Works */}
+      <Center mt={160} h={"100vh"}>
         <Stack>
-          <Title order={2} ta="center">
+          <Title order={2} ta="center" ref={worksRef}>
             Works
           </Title>
           <Box>
@@ -46,7 +57,7 @@ export default function Home() {
       {/* Research セクション */}
       <Center mt={160} mx={320} h={"100vh"}>
         <Stack>
-          <Title order={2} ta="center">
+          <Title order={2} ta="center" ref={researchRef}>
             Research
           </Title>
           <TableReviews />
@@ -57,7 +68,7 @@ export default function Home() {
       {/* Skill Set セクション */}
       <Center mt={160} mx={320} h={"100vh"}>
         <Stack>
-          <Title order={2} ta="center">
+          <Title order={2} ta="center" ref={skillSetRef}>
             Skill Set
           </Title>
         </Stack>
@@ -66,7 +77,7 @@ export default function Home() {
       {/* Profile セクション */}
       <Center mt={160} mx={320} h={"100vh"}>
         <Stack>
-          <Title order={2} ta="center">
+          <Title order={2} ta="center" ref={profileRef}>
             Profile
           </Title>
           <UserTimeline />
@@ -75,11 +86,10 @@ export default function Home() {
           </Box>
         </Stack>
       </Center>
-
-      {/* Contact セクション */}
+      {/* Contact */}
       <Center mt={160} h={"100vh"}>
         <Stack>
-          <Title order={2} ta="center">
+          <Title order={2} ta="center" ref={contactRef}>
             Contact
           </Title>
           <ContactUs />
