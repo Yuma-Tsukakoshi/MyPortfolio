@@ -88,6 +88,7 @@ export default function Home() {
           </Box>
         </Stack>
       </Center>
+
       {/* Contact */}
       <Center mt={160} h={"100vh"}>
         <Stack>

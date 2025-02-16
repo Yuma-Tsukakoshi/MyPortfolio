@@ -2,7 +2,7 @@
 
 import { Grid, Title } from "@mantine/core";
 
-import { ResearchGridCard } from "./ResearchGridCard";
+import ResearchGrid from "@/components/notion/ResearchGrid";
 
 export function ComponentGrid() {
   return (
@@ -10,11 +10,11 @@ export function ComponentGrid() {
     <Grid>
       <Grid.Col span={6}>
         <Title order={4}>SoilSense</Title>
-        <ResearchGridCard />
+        <ResearchGrid />
       </Grid.Col>
       <Grid.Col span={6}>
         <Title order={4}>SoilTiles</Title>
-        <ResearchGridCard />
+        <ResearchGrid />
       </Grid.Col>
     </Grid>
   );
