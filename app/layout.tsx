@@ -7,9 +7,13 @@ import {
   MantineProvider,
 } from "@mantine/core";
 
+import { FooterLinks } from "@/components/common/footer/FooterLinks";
+import { Header } from "@/components/common/header";
+import { ScrollProvider } from "@/context/ScrollContext";
+
 export const metadata = {
-  title: "My Mantine app",
-  description: "I have followed setup instructions carefully",
+  title: "My Portfolio",
+  description: "My Portfolio",
 };
 
 export default function RootLayout({
@@ -23,7 +27,13 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider>
+          <ScrollProvider>
+            <Header />
+            {children}
+            <FooterLinks />
+          </ScrollProvider>
+        </MantineProvider>
       </body>
     </html>
   );
