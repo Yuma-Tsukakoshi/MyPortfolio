@@ -61,18 +61,13 @@ export function GridSkillsSection() {
               </Title>
               <SimpleGrid cols={{ base: 2, sm: 3, md: 4, lg: 8 }} spacing="lg">
                 {(skillList as Skill[]).map((skill, index) => (
-                  <div
-                    className="flex justify-center transform transition duration-300 hover:-translate-y-2 cursor-pointer"
+                  <Image
                     key={index}
-                  >
-                    <Image
-                      src={skill.image}
-                      alt={skill.label}
-                      width={100}
-                      height={100}
-                      className="object-cover"
-                    />
-                  </div>
+                    src={skill.image}
+                    alt={skill.label}
+                    width={100}
+                    height={100}
+                  />
                 ))}
               </SimpleGrid>
             </Card>
