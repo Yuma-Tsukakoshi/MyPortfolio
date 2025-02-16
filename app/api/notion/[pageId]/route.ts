@@ -18,7 +18,12 @@ export async function GET(request: Request) {
 
     const page = await notion.pages.retrieve({ page_id: pageId });
 
-    return NextResponse.json(page);
+    const blocks = await notion.blocks.children.list({ block_id: pageId });
+
+    return NextResponse.json({
+      page: page,
+      blocks: blocks.results,
+    });
   } catch (error) {
     return NextResponse.json(
       {
