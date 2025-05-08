@@ -1,9 +1,5 @@
 import { MantineTheme, MantineThemeOverride } from "@mantine/core";
 
-type StylesParams = {
-  theme: MantineTheme;
-};
-
 export const theme: MantineThemeOverride = {
   primaryColor: "blue",
   defaultRadius: "md",
@@ -14,7 +10,7 @@ export const theme: MantineThemeOverride = {
         shadow: "sm",
         withBorder: true,
       },
-      styles: ({ theme }: StylesParams) => ({
+      styles: (theme: MantineTheme) => ({
         root: {
           backgroundColor: theme.white,
           backgroundImage: "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)",
@@ -25,7 +21,7 @@ export const theme: MantineThemeOverride = {
       defaultProps: {
         radius: "md",
       },
-      styles: ({ theme }: StylesParams) => ({
+      styles: (theme: MantineTheme) => ({
         root: {
           "&:hover": {
             backgroundColor: theme.colors?.blue?.[1],
@@ -38,7 +34,7 @@ export const theme: MantineThemeOverride = {
         shadow: "sm",
         withBorder: true,
       },
-      styles: ({ theme }: StylesParams) => ({
+      styles: (theme: MantineTheme) => ({
         root: {
           backgroundColor: theme.white,
           backgroundImage: "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)",
@@ -46,7 +42,7 @@ export const theme: MantineThemeOverride = {
       }),
     },
     Title: {
-      styles: (theme) => ({
+      styles: (theme: MantineTheme) => ({
         root: {
           color: theme.colors.cyan[8],
           fontWeight: 700,
@@ -57,7 +53,7 @@ export const theme: MantineThemeOverride = {
       }),
     },
     Text: {
-      styles: (theme) => ({
+      styles: (theme: MantineTheme) => ({
         root: {
           color: theme.colors.gray[7],
         },
