@@ -1,4 +1,5 @@
 import {
+  Anchor,
   Badge,
   Card,
   Container,
@@ -9,36 +10,33 @@ import {
   Title,
 } from "@mantine/core";
 import {
-  IconAward,
   IconBrandGithub,
   IconBrandLinkedin,
-  IconBrandQiita,
-  IconCode,
   IconHeart,
+  IconSchool,
   IconUser,
 } from "@tabler/icons-react";
-import { motion } from "framer-motion";
 
 import styles from "./AboutMe.module.css";
 
 const socialLinks = [
   {
-    icon: <IconBrandGithub size={24} />,
+    icon: IconBrandGithub,
     label: "GitHub",
     url: "https://github.com/tsukakoshiyuma",
-    color: "#333",
+    color: "gray",
   },
   {
-    icon: <IconBrandLinkedin size={24} />,
+    icon: IconBrandLinkedin,
     label: "LinkedIn",
-    url: "https://linkedin.com/in/tsukakoshiyuma",
-    color: "#0077B5",
+    url: "https://www.linkedin.com/in/tsukakoshiyuma/",
+    color: "blue",
   },
   {
-    icon: <IconBrandQiita size={24} />,
+    icon: IconBrandGithub,
     label: "Qiita",
-    url: "https://qiita.com/tsukakoshiyuma",
-    color: "#55C500",
+    url: "https://qiita.com/yukkun",
+    color: "green",
   },
 ];
 
@@ -57,27 +55,19 @@ export function AboutMe() {
             <Title order={3}>基本情報</Title>
           </Group>
           <Stack mt="md">
-            <Text>名前: 塚越 優馬</Text>
-            <Text>所属: 東京工業大学 情報理工学院</Text>
-            <Text>専攻: 情報工学系</Text>
-            <Text>学年: 学部4年</Text>
+            <Text>👨‍💻 筑波大学 情報学群 情報メディア創成学類</Text>
+            <Text>🎓 2025年卒業予定</Text>
+            <Text>📍 茨城県つくば市</Text>
           </Stack>
         </Card>
 
         {/* 資格 */}
         <Card className={styles.card}>
           <Group>
-            <IconAward size={24} className={styles.icon} />
+            <IconSchool size={24} className={styles.icon} />
             <Title order={3}>資格</Title>
           </Group>
           <Stack mt="md">
-            <Badge
-              size="lg"
-              variant="gradient"
-              gradient={{ from: "blue", to: "cyan" }}
-            >
-              応用情報技術者
-            </Badge>
             <Badge
               size="lg"
               variant="gradient"
@@ -104,31 +94,30 @@ export function AboutMe() {
           <Stack mt="md">
             <Text>🏀 バスケットボール</Text>
             <Text>🎮 ゲーム開発</Text>
-            <Text>📚 技術書読書</Text>
-            <Text>🎵 音楽鑑賞</Text>
           </Stack>
         </Card>
 
         {/* SNSリンク */}
         <Card className={styles.card}>
           <Group>
-            <IconCode size={24} className={styles.icon} />
+            <IconUser size={24} className={styles.icon} />
             <Title order={3}>SNS</Title>
           </Group>
           <Stack mt="md">
             {socialLinks.map((link) => (
-              <motion.a
+              <Anchor
                 key={link.label}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
-                {link.icon}
-                <Text size="sm">{link.label}</Text>
-              </motion.a>
+                <link.icon
+                  size={24}
+                  color={`var(--mantine-color-${link.color}-6)`}
+                />
+                <Text ml="md">{link.label}</Text>
+              </Anchor>
             ))}
           </Stack>
         </Card>

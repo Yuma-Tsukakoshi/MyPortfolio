@@ -1,12 +1,12 @@
 "use client";
 import { Box, Center, Stack, Title } from "@mantine/core";
 
-import { ComponentGridForProfile } from "@/components/profile/ComponentGrid";
-import { UserTimeline } from "@/components/profile/UserTimeline";
+import { AboutMe } from "@/components/about/AboutMe";
+import { CatchPhrase } from "@/components/hero/CatchPhrase";
+import { Profile } from "@/components/profile/Profile";
 import { ComponentGrid } from "@/components/research/ComponentGrid";
 import { TableReviews } from "@/components/research/TableReviews";
 import { GridSkillsSection } from "@/components/skills/UserSkills";
-import { UserInfoIcons } from "@/components/userInfo/UserInfoIcons";
 import { CarouselForWorks } from "@/components/works/CarouselForWorks";
 import { useScrollContext } from "@/context/ScrollContext";
 
@@ -17,6 +17,7 @@ export default function Home() {
   return (
     <>
       {/* Hero セクション*/}
+      <CatchPhrase />
 
       {/* About Me */}
       <Center mt={160} h={"100vh"}>
@@ -24,7 +25,7 @@ export default function Home() {
           <Title order={2} ta="center" ref={aboutMeRef}>
             About Me
           </Title>
-          <UserInfoIcons />
+          <AboutMe />
         </Stack>
       </Center>
 
@@ -73,10 +74,7 @@ export default function Home() {
           <Title order={2} ta="center" ref={profileRef}>
             Profile
           </Title>
-          <UserTimeline />
-          <Box mt={80}>
-            <ComponentGridForProfile />
-          </Box>
+          <Profile />
         </Stack>
       </Center>
     </>
