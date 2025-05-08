@@ -14,7 +14,6 @@ export const Header = () => {
     researchRef,
     skillSetRef,
     profileRef,
-    contactRef,
     scrollToSection,
   } = useScrollContext();
 
@@ -34,7 +33,6 @@ export const Header = () => {
     { name: "Research", onClick: () => scrollToSection(researchRef) },
     { name: "Skill Set", onClick: () => scrollToSection(skillSetRef) },
     { name: "Profile", onClick: () => scrollToSection(profileRef) },
-    { name: "Contact", onClick: () => scrollToSection(contactRef) },
   ];
 
   return (

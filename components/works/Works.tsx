@@ -96,7 +96,7 @@ export function Works() {
               />
             </Card.Section>
 
-            <Stack mt="md" spacing="xs">
+            <Stack mt="md">
               <Title order={3} className={styles.workTitle}>
                 {work.title}
               </Title>
