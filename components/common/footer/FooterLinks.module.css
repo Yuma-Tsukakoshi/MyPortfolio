@@ -2,8 +2,8 @@
   margin-top: 120px;
   padding-top: calc(var(--mantine-spacing-xl) * 2);
   padding-bottom: calc(var(--mantine-spacing-xl) * 2);
-  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
-  border-top: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+  background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+  border-top: 1px solid #bae6fd;
   position: relative;
   bottom: 0;
   width: 100%;
@@ -15,6 +15,7 @@
 
 .description {
   margin-top: 5px;
+  color: #e0f2fe;
 }
 
 .inner {
@@ -33,14 +34,16 @@
 
 .link {
   display: block;
-  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-1));
+  color: #2563eb;
   font-size: var(--mantine-font-size-sm);
   padding-top: 3px;
   padding-bottom: 3px;
+  transition: color 0.2s;
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+.link:hover {
+  text-decoration: underline;
+  color: #38bdf8;
 }
 
 .title {
@@ -50,7 +53,7 @@
     Greycliff CF,
     var(--mantine-font-family);
   margin-bottom: calc(var(--mantine-spacing-xs) / 2);
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  color: #fff;
 }
 
 .afterFooter {
@@ -60,5 +63,6 @@
   margin-top: var(--mantine-spacing-xl);
   padding-top: var(--mantine-spacing-xl);
   padding-bottom: var(--mantine-spacing-xl);
-  border-top: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
+  border-top: 1px solid #bae6fd;
+  color: #e0f2fe;
 }

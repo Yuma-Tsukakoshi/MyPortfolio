@@ -11,6 +11,9 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "#2563eb", // 青
+        accent: "#38bdf8", // 水色
+        card: "#ffffffcc", // 半透明白
       },
     },
   },
