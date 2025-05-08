@@ -88,7 +88,7 @@ export function AboutMe() {
                 border: "1px solid rgba(232,234,237,0.5)",
               }}
             >
-              <Stack spacing="lg">
+              <Stack>
                 {/* 基本情報 */}
                 <div>
                   <Title order={3} className={styles.sectionTitle}>
