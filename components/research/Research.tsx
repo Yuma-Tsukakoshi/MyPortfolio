@@ -12,8 +12,8 @@ import {
 } from "@mantine/core";
 import {
   IconAward,
-  IconBrandSlideshare,
   IconFileText,
+  IconPresentation,
   IconVideo,
 } from "@tabler/icons-react";
 import Image from "next/image";
@@ -130,7 +130,7 @@ export function Research() {
                       <Button
                         variant="light"
                         size="xs"
-                        leftSection={<IconBrandSlideshare size={14} />}
+                        leftSection={<IconPresentation size={14} />}
                         component="a"
                         href={conference.slideshareUrl}
                         target="_blank"
@@ -165,13 +165,14 @@ export function Research() {
             <Card.Section>
               <Image
                 src={project.image}
+                width={400}
                 height={200}
                 alt={project.title}
                 className={styles.image}
               />
             </Card.Section>
 
-            <Stack mt="md" spacing="xs">
+            <Stack mt="md" gap="xs">
               <Title order={3} className={styles.projectTitle}>
                 {project.title}
               </Title>
@@ -202,7 +203,7 @@ export function Research() {
                 {project.slideshareUrl && (
                   <Button
                     variant="light"
-                    leftSection={<IconBrandSlideshare size={16} />}
+                    leftSection={<IconPresentation size={16} />}
                     component="a"
                     href={project.slideshareUrl}
                     target="_blank"

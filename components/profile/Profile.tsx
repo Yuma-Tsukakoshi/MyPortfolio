@@ -10,7 +10,6 @@ import {
   Title,
 } from "@mantine/core";
 import {
-  IconBasketball,
   IconBriefcase,
   IconMicroscope,
   IconSchool,
@@ -33,7 +32,7 @@ interface TimelineEvent {
 const timelineEvents: TimelineEvent[] = [
   {
     id: 1,
-    icon: <IconBasketball size={24} />,
+    icon: <IconSchool size={24} />,
     title: "バスケットボール",
     period: "小学生〜現在",
     description:
@@ -139,7 +138,7 @@ export function Profile() {
 
       {/* 強み・弱み・展望 */}
       <Card className={styles.summaryCard}>
-        <Stack spacing="xl">
+        <Stack>
           <div>
             <Title order={3} className={styles.summaryTitle}>
               <IconTarget size={24} className={styles.summaryIcon} />
