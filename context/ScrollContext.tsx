@@ -7,7 +7,6 @@ type ScrollContextType = {
   researchRef: React.RefObject<HTMLDivElement>;
   skillSetRef: React.RefObject<HTMLDivElement>;
   profileRef: React.RefObject<HTMLDivElement>;
-  contactRef: React.RefObject<HTMLDivElement>;
   scrollToSection: (ref: React.RefObject<HTMLDivElement>) => void;
 };
 
@@ -19,7 +18,6 @@ export const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
   const researchRef = useRef<HTMLDivElement>(null!);
   const skillSetRef = useRef<HTMLDivElement>(null!);
   const profileRef = useRef<HTMLDivElement>(null!);
-  const contactRef = useRef<HTMLDivElement>(null!);
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
     if (ref.current) {
@@ -38,7 +36,6 @@ export const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
         researchRef,
         skillSetRef,
         profileRef,
-        contactRef,
         scrollToSection,
       }}
     >

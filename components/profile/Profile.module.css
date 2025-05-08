@@ -1,0 +1,102 @@
+.container {
+  padding: var(--mantine-spacing-xl) 0;
+  position: relative;
+}
+
+.title {
+  text-align: center;
+  font-weight: 900;
+  font-size: rem(34);
+  margin-bottom: var(--mantine-spacing-xl);
+  background: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* タイムライン */
+.timeline {
+  margin: var(--mantine-spacing-xl) 0;
+}
+
+.eventCard {
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(224, 242, 254, 0.5);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  margin: var(--mantine-spacing-md) 0;
+}
+
+.eventCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 32px rgba(56, 189, 248, 0.2);
+}
+
+.eventImage {
+  transition: transform 0.3s ease;
+}
+
+.eventCard:hover .eventImage {
+  transform: scale(1.05);
+}
+
+.tags {
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--mantine-spacing-sm);
+}
+
+/* 強み・弱み・展望 */
+.summaryCard {
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(224, 242, 254, 0.5);
+  backdrop-filter: blur(10px);
+  margin-top: var(--mantine-spacing-xl);
+  padding: var(--mantine-spacing-xl);
+}
+
+.summaryTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--mantine-spacing-sm);
+  color: var(--mantine-color-blue-7);
+  margin-bottom: var(--mantine-spacing-md);
+}
+
+.summaryIcon {
+  color: var(--mantine-color-blue-6);
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  animation: fadeIn 1s ease-out;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 0;
+  }
+
+  .eventCard {
+    margin-left: 0;
+  }
+
+  .summaryCard {
+    padding: var(--mantine-spacing-lg);
+  }
+}

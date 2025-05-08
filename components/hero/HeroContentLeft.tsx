@@ -50,8 +50,6 @@ export function HeroContentLeft() {
             size="xl"
             radius="xl"
             className={classes.control}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             始める
           </Button>
