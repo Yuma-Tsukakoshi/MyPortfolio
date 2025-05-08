@@ -1,103 +1,90 @@
 "use client";
 import { Box, Center, Stack, Title } from "@mantine/core";
 
-import { ContactUs } from "@/components/contact/ContactUs";
-import { HeroContentLeft } from "@/components/hero/HeroContentLeft";
-import { ComponentGridForProfile } from "@/components/profile/ComponentGrid";
-import { UserTimeline } from "@/components/profile/UserTimeline";
-import { ComponentGrid } from "@/components/research/ComponentGrid";
-import { TableReviews } from "@/components/research/TableReviews";
+import { AboutMe } from "@/components/about/AboutMe";
+import { CatchPhrase } from "@/components/hero/CatchPhrase";
+import { Profile } from "@/components/profile/Profile";
+import { Research } from "@/components/research/Research";
 import { GridSkillsSection } from "@/components/skills/UserSkills";
-import { UserInfoIcons } from "@/components/userInfo/UserInfoIcons";
 import { CarouselForWorks } from "@/components/works/CarouselForWorks";
 import { useScrollContext } from "@/context/ScrollContext";
 
 export default function Home() {
-  const {
-    aboutMeRef,
-    worksRef,
-    researchRef,
-    skillSetRef,
-    profileRef,
-    contactRef,
-  } = useScrollContext();
+  const { aboutMeRef, worksRef, researchRef, skillSetRef, profileRef } =
+    useScrollContext();
 
   return (
     <>
       {/* Hero セクション*/}
-      <HeroContentLeft />
+      <CatchPhrase />
 
       {/* About Me */}
-      <Center mt={160} h={"100vh"}>
-        <Stack>
-          <Title order={2} ta="center" ref={aboutMeRef}>
-            About Me
-          </Title>
-          <UserInfoIcons />
-        </Stack>
-      </Center>
+      <Box mt={160} mb={160} h={"100vh"}>
+        <Center h="100%">
+          <Stack>
+            <Title order={2} ta="center" ref={aboutMeRef}>
+              About Me
+            </Title>
+            <AboutMe />
+          </Stack>
+        </Center>
+      </Box>
 
       {/* Works */}
-      <Center mt={160} mx={320} h={"100vh"}>
-        <Stack>
-          <Title order={2} ta="center" ref={worksRef}>
-            Works
-          </Title>
-          <Box>
-            <Title order={3}>インターン</Title>
-            <CarouselForWorks />
-          </Box>
+      <Box mt={160} mb={160} mx={320} h={"100vh"}>
+        <Center h="100%">
+          <Stack>
+            <Title order={2} ta="center" ref={worksRef}>
+              Works
+            </Title>
+            <Box>
+              <Title order={3}>インターン</Title>
+              <CarouselForWorks />
+            </Box>
 
-          <Box mt={20}>
-            <Title order={3}>個人・チーム開発</Title>
-            <CarouselForWorks />
-          </Box>
-        </Stack>
-      </Center>
+            <Box mt={20}>
+              <Title order={3}>個人・チーム開発</Title>
+              <CarouselForWorks />
+            </Box>
+          </Stack>
+        </Center>
+      </Box>
 
       {/* Research セクション */}
-      <Center mt={160} mx={320} h={"100vh"}>
-        <Stack>
-          <Title order={2} ta="center" ref={researchRef}>
-            Research
-          </Title>
-          <TableReviews />
-          <ComponentGrid />
-        </Stack>
-      </Center>
+      <Box mt={160} mb={160} mx={320} style={{ minHeight: "100vh" }}>
+        <Center h="100%">
+          <Stack>
+            <Title order={2} ta="center" ref={researchRef}>
+              Research
+            </Title>
+            <Research />
+          </Stack>
+        </Center>
+      </Box>
 
       {/* Skill Set セクション */}
-      <Center mt={160} mx={320} h={"100vh"}>
-        <Stack>
-          <Title order={2} ta="center" ref={skillSetRef}>
-            Skill Set
-          </Title>
-          <GridSkillsSection />
-        </Stack>
-      </Center>
+      <Box mt={160} mb={160} mx={320} style={{ minHeight: "100vh" }}>
+        <Center h="100%">
+          <Stack>
+            <Title order={2} ta="center" ref={skillSetRef}>
+              Skill Set
+            </Title>
+            <GridSkillsSection />
+          </Stack>
+        </Center>
+      </Box>
 
       {/* Profile セクション */}
-      <Center mt={160} mx={320} h={"100vh"}>
-        <Stack>
-          <Title order={2} ta="center" ref={profileRef}>
-            Profile
-          </Title>
-          <UserTimeline />
-          <Box mt={80}>
-            <ComponentGridForProfile />
-          </Box>
-        </Stack>
-      </Center>
-
-      {/* Contact */}
-      <Center mt={160} h={"100vh"}>
-        <Stack>
-          <Title order={2} ta="center" ref={contactRef}>
-            Contact
-          </Title>
-          <ContactUs />
-        </Stack>
-      </Center>
+      <Box mt={160} mb={160} mx={320} style={{ minHeight: "100vh" }}>
+        <Center h="100%">
+          <Stack>
+            <Title order={2} ta="center" ref={profileRef}>
+              Profile
+            </Title>
+            <Profile />
+          </Stack>
+        </Center>
+      </Box>
     </>
   );
 }
