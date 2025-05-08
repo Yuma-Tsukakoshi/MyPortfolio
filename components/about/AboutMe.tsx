@@ -1,16 +1,44 @@
 "use client";
 
-import { Container, Paper, Text, Title } from "@mantine/core";
 import {
-  IconBrandGit,
+  Avatar,
+  Container,
+  Group,
+  Paper,
+  Stack,
+  Text,
+  Title,
+} from "@mantine/core";
+import {
   IconBrandGithub,
   IconBrandLinkedin,
+  IconExternalLink,
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 
+import styles from "./AboutMe.module.css";
+
 export function AboutMe() {
+  const socialLinks = [
+    {
+      name: "GitHub",
+      url: "https://github.com/Yuma-Tsukakoshi",
+      icon: <IconBrandGithub size={24} />,
+    },
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/yuma-tsukakoshi-741646314/",
+      icon: <IconBrandLinkedin size={24} />,
+    },
+    {
+      name: "Qiita",
+      url: "https://qiita.com/yukkun",
+      icon: <IconExternalLink size={24} />,
+    },
+  ];
+
   return (
-    <Container size="lg" className="py-16">
+    <Container size="lg" className={styles.container}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -24,110 +52,102 @@ export function AboutMe() {
           About Me
         </Title>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Paper
-            p="xl"
-            radius="xl"
-            className="hover:shadow-xl transition-all duration-300"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(240,249,255,0.95) 100%)",
-              border: "1px solid rgba(232,234,237,0.5)",
-            }}
+        <div className={styles.content}>
+          {/* 左側：写真 */}
+          <motion.div
+            className={styles.imageContainer}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
           >
-            <Title
-              order={3}
-              className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-800 to-cyan-500 bg-clip-text text-transparent"
-            >
-              Social Links
-            </Title>
-            <div className="flex flex-col space-y-6">
-              <a
-                href="https://github.com/Yuma-Tsukakoshi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-4 p-4 rounded-lg hover:bg-blue-50 transition-colors duration-300"
-              >
-                <IconBrandGithub size={48} className="text-blue-800" />
-                <div>
-                  <Text size="xl" className="font-semibold text-blue-800">
-                    GitHub
-                  </Text>
-                  <Text size="sm" className="text-gray-600">
-                    Check out my projects and contributions
-                  </Text>
-                </div>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/yuma-tsukakoshi-741646314/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-4 p-4 rounded-lg hover:bg-blue-50 transition-colors duration-300"
-              >
-                <IconBrandLinkedin size={48} className="text-blue-800" />
-                <div>
-                  <Text size="xl" className="font-semibold text-blue-800">
-                    LinkedIn
-                  </Text>
-                  <Text size="sm" className="text-gray-600">
-                    Connect with me professionally
-                  </Text>
-                </div>
-              </a>
-              <a
-                href="https://qiita.com/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-4 p-4 rounded-lg hover:bg-blue-50 transition-colors duration-300"
-              >
-                <IconBrandGit size={48} className="text-blue-800" />
-                <div>
-                  <Text size="xl" className="font-semibold text-blue-800">
-                    Qiita
-                  </Text>
-                  <Text size="sm" className="text-gray-600">
-                    Read my technical articles
-                  </Text>
-                </div>
-              </a>
-            </div>
-          </Paper>
+            <Avatar
+              size={300}
+              radius="md"
+              src="/profile.jpg"
+              alt="Profile"
+              className={styles.avatar}
+            />
+          </motion.div>
 
-          <Paper
-            p="xl"
-            radius="xl"
-            className="hover:shadow-xl transition-all duration-300"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(240,249,255,0.95) 100%)",
-              border: "1px solid rgba(232,234,237,0.5)",
-            }}
+          {/* 右側：情報 */}
+          <motion.div
+            className={styles.infoContainer}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
           >
-            <Title
-              order={3}
-              className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-800 to-cyan-500 bg-clip-text text-transparent"
+            <Paper
+              p="xl"
+              radius="lg"
+              className={styles.infoCard}
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(240,249,255,0.98) 100%)",
+                border: "1px solid rgba(232,234,237,0.5)",
+              }}
             >
-              Certifications
-            </Title>
-            <div className="space-y-6">
-              <div className="p-4 rounded-lg bg-gradient-to-r from-blue-50 to-cyan-50">
-                <Text size="xl" className="font-bold text-blue-800 mb-2">
-                  基本情報技術者
-                </Text>
-                <Text size="lg" className="text-gray-700">
-                  取得時期: 2023年
-                </Text>
-              </div>
-              <div className="p-4 rounded-lg bg-gradient-to-r from-blue-50 to-cyan-50">
-                <Text size="xl" className="font-bold text-blue-800 mb-2">
-                  応用情報技術者
-                </Text>
-                <Text size="lg" className="text-gray-700">
-                  取得時期: 2024年
-                </Text>
-              </div>
-            </div>
-          </Paper>
+              <Stack spacing="lg">
+                {/* 基本情報 */}
+                <div>
+                  <Title order={3} className={styles.sectionTitle}>
+                    基本情報
+                  </Title>
+                  <Text size="lg" className={styles.infoText}>
+                    慶應義塾大学 理工学研究科 開放環境科学専攻 修士1年
+                  </Text>
+                  <Text size="lg" className={styles.infoText}>
+                    2027年卒業予定
+                  </Text>
+                </div>
+
+                {/* 資格 */}
+                <div>
+                  <Title order={3} className={styles.sectionTitle}>
+                    資格
+                  </Title>
+                  <Text size="lg" className={styles.infoText}>
+                    • 基本情報技術者
+                  </Text>
+                  <Text size="lg" className={styles.infoText}>
+                    • 応用情報技術者
+                  </Text>
+                </div>
+
+                {/* 趣味 */}
+                <div>
+                  <Title order={3} className={styles.sectionTitle}>
+                    趣味
+                  </Title>
+                  <Text size="lg" className={styles.infoText}>
+                    バスケットボール、スノボ、旅行
+                  </Text>
+                </div>
+
+                {/* SNSリンク */}
+                <div>
+                  <Title order={3} className={styles.sectionTitle}>
+                    Social Links
+                  </Title>
+                  <Group className={styles.socialLinks}>
+                    {socialLinks.map((link) => (
+                      <a
+                        key={link.name}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.socialLink}
+                      >
+                        {link.icon}
+                        <Text size="sm">{link.name}</Text>
+                      </a>
+                    ))}
+                  </Group>
+                </div>
+              </Stack>
+            </Paper>
+          </motion.div>
         </div>
       </motion.div>
     </Container>

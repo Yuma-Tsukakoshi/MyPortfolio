@@ -1,21 +1,33 @@
-.container {
-  min-height: 100vh;
+.fullscreenContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .content {
   text-align: center;
+  position: relative;
   z-index: 1;
 }
 
 /* ローディングアニメーション */
 .loadingContainer {
   display: flex;
-  gap: 12px;
+  gap: 0.5rem;
   margin-bottom: 2rem;
 }
 
@@ -23,8 +35,8 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
-  animation: bounce 1.4s infinite ease-in-out;
+  background: #2563eb;
+  animation: bounce 1.4s infinite ease-in-out both;
 }
 
 .loadingCircle:nth-child(1) {
@@ -48,57 +60,41 @@
 
 /* タイトル */
 .title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 900;
+  font-size: 4rem;
+  font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1rem;
-  background: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .highlight {
-  position: relative;
-  display: inline-block;
-}
-
-.highlight::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 8px;
-  background: rgba(56, 189, 248, 0.2);
-  z-index: -1;
-  border-radius: 4px;
+  color: #2563eb;
+  -webkit-text-fill-color: #2563eb;
 }
 
 /* サブタイトル */
 .subtitle {
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
-  color: var(--mantine-color-gray-7);
+  font-size: 1.5rem;
+  color: #4b5563;
   margin-bottom: 2rem;
 }
 
 /* 下矢印ボタン */
 .arrowContainer {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 2rem;
 }
 
 .arrowButton {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(224, 242, 254, 0.5);
+  background: rgba(37, 99, 235, 0.1);
+  border: none;
   transition: all 0.3s ease;
 }
 
 .arrowButton:hover {
-  transform: translateY(5px);
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(37, 99, 235, 0.2);
+  transform: translateY(4px);
 }
 
 .arrowIcon {

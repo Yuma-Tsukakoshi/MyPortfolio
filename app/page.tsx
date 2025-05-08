@@ -1,17 +1,18 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-import { Hero } from "@/components/hero/Hero";
+import { AboutMe } from "@/components/about/AboutMe";
+import { CatchPhrase } from "@/components/hero/CatchPhrase";
 import { Profile } from "@/components/profile/Profile";
 import { Research } from "@/components/research/Research";
 import SkillSet from "@/components/skills/SkillSet";
-import { UserInfo } from "@/components/userInfo/UserInfo";
 import Works from "@/components/works/Works";
 import { useScrollContext } from "@/context/ScrollContext";
 
 export default function Home() {
   const { setActiveSection } = useScrollContext();
+  const [showMainContent, setShowMainContent] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,25 +38,27 @@ export default function Home() {
   }, [setActiveSection]);
 
   return (
-    <main>
-      <section id="hero">
-        <Hero />
-      </section>
-      <section id="user-info">
-        <UserInfo />
-      </section>
-      <section id="skills">
-        <SkillSet />
-      </section>
-      <section id="works">
-        <Works />
-      </section>
-      <section id="research">
-        <Research />
-      </section>
-      <section id="profile">
-        <Profile />
-      </section>
-    </main>
+    <>
+      <CatchPhrase onAnimationComplete={() => setShowMainContent(true)} />
+      {showMainContent && (
+        <main>
+          <section id="about">
+            <AboutMe />
+          </section>
+          <section id="profile">
+            <Profile />
+          </section>
+          <section id="works">
+            <Works />
+          </section>
+          <section id="research">
+            <Research />
+          </section>
+          <section id="skills">
+            <SkillSet />
+          </section>
+        </main>
+      )}
+    </>
   );
 }

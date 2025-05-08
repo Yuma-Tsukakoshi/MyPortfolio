@@ -1,93 +1,44 @@
 "use client";
 
-import {
-  Badge,
-  Card,
-  Container,
-  Group,
-  Image,
-  Stack,
-  Text,
-  Timeline,
-  Title,
-} from "@mantine/core";
-import {
-  IconBriefcase,
-  IconMicroscope,
-  IconSchool,
-  IconTarget,
-  IconUsers,
-} from "@tabler/icons-react";
+import { Card, Container, Paper, Stack, Text, Title } from "@mantine/core";
+import { IconTarget } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import React from "react";
 
 import styles from "./Profile.module.css";
 
-interface TimelineEvent {
-  id: number;
-  icon: React.ReactNode;
+interface ProfileEvent {
+  year: string;
   title: string;
-  period: string;
   description: string;
-  tags?: string[];
-  image?: string;
 }
 
-const timelineEvents: TimelineEvent[] = [
-  {
-    id: 1,
-    icon: <IconSchool size={24} />,
-    title: "バスケットボール",
-    period: "小学生〜現在",
-    description:
-      "小学生から続けているバスケットボール。チームプレーを通じて、コミュニケーション能力とリーダーシップを培いました。",
-    tags: ["スポーツ", "チームワーク", "リーダーシップ"],
-    image: "/profile/basketball.jpg",
-  },
-  {
-    id: 2,
-    icon: <IconSchool size={24} />,
-    title: "中学校時代",
-    period: "2015-2018",
-    description:
-      "バスケットボール部と駅伝部を兼部。3年間続けた経験から、時間管理と自己管理の重要性を学びました。",
-    tags: ["部活動", "時間管理", "自己管理"],
-    image: "/profile/school.jpg",
-  },
-  {
-    id: 3,
-    icon: <IconUsers size={24} />,
-    title: "POSSE",
-    period: "2020-2022",
-    description:
-      "テック局の運営とハッカソン運営を担当。インターン試験の失敗を機に、個人開発に取り組み、技術力を向上させました。",
-    tags: ["コミュニティ", "イベント運営", "個人開発"],
-    image: "/profile/posse.jpg",
-  },
-  {
-    id: 4,
-    icon: <IconBriefcase size={24} />,
-    title: "インターンシップ",
-    period: "2022-2023",
-    description:
-      "JOBer、PlusZero、ハイクリでのインターン経験。実務を通じて、チーム開発の進め方と技術スタックを学びました。",
-    tags: ["実務経験", "チーム開発", "技術スタック"],
-    image: "/profile/intern.jpg",
-  },
-  {
-    id: 5,
-    icon: <IconMicroscope size={24} />,
-    title: "研究活動",
-    period: "2022-現在",
-    description:
-      "土の研究と先輩方との出会いを通じて、研究の楽しさと重要性を学びました。",
-    tags: ["研究", "学術", "イノベーション"],
-    image: "/profile/research.jpg",
-  },
-];
-
 export function Profile() {
+  const events: ProfileEvent[] = [
+    {
+      year: "2024",
+      title: "大学院修士課程 入学",
+      description: "情報理工学系研究科 コンピュータ科学専攻",
+    },
+    {
+      year: "2023",
+      title: "大学 卒業",
+      description: "情報理工学系研究科 コンピュータ科学専攻",
+    },
+    {
+      year: "2022",
+      title: "研究室配属",
+      description: "情報理工学系研究科 コンピュータ科学専攻",
+    },
+    {
+      year: "2021",
+      title: "大学 入学",
+      description: "情報理工学系研究科 コンピュータ科学専攻",
+    },
+  ];
+
   return (
-    <Container size="lg" className="py-16">
+    <Container size="lg" className={styles.container}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -101,59 +52,58 @@ export function Profile() {
           Profile
         </Title>
 
-        {/* タイムライン */}
-        <Timeline
-          active={timelineEvents.length - 1}
-          lineWidth={2}
-          className={styles.timeline}
-        >
-          {timelineEvents.map((event) => (
-            <Timeline.Item
-              key={event.id}
-              bullet={event.icon}
-              title={
-                <Group>
-                  <Text fw={700}>{event.title}</Text>
-                  <Badge variant="light" color="blue">
-                    {event.period}
-                  </Badge>
-                </Group>
-              }
+        <div className={styles.timeline}>
+          {events.map((event, index) => (
+            <motion.div
+              key={event.year}
+              className={`${styles.timelineItem} ${
+                index % 2 === 0 ? styles.left : styles.right
+              }`}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true }}
             >
-              <Card className={styles.eventCard}>
-                {event.image && (
-                  <Card.Section>
-                    <Image
-                      src={event.image}
-                      height={200}
-                      alt={event.title}
-                      className={styles.eventImage}
-                    />
-                  </Card.Section>
-                )}
-                <Stack mt="md">
-                  <Text>{event.description}</Text>
-                  {event.tags && (
-                    <Group className={styles.tags}>
-                      {event.tags.map((tag) => (
-                        <Badge key={tag} size="sm" variant="light">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </Group>
-                  )}
-                </Stack>
-              </Card>
-            </Timeline.Item>
+              <div className={styles.timelineContent}>
+                <Paper
+                  p="xl"
+                  radius="lg"
+                  className={styles.card}
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(240,249,255,0.98) 100%)",
+                    border: "1px solid rgba(232,234,237,0.5)",
+                  }}
+                >
+                  <Text
+                    size="sm"
+                    className={styles.year}
+                    style={{
+                      color: "#2563eb",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {event.year}
+                  </Text>
+                  <Title order={3} className={styles.title}>
+                    {event.title}
+                  </Title>
+                  <Text size="md" className={styles.description}>
+                    {event.description}
+                  </Text>
+                </Paper>
+              </div>
+            </motion.div>
           ))}
-        </Timeline>
+          <div className={styles.timelineLine} />
+        </div>
 
         {/* 強み・弱み・展望 */}
         <Card className={styles.summaryCard}>
           <Stack>
             <div>
               <Title order={3} className={styles.summaryTitle}>
-                <IconTarget size={24} className={styles.summaryIcon} />
+                <IconTarget size={32} className={styles.summaryIcon} />
                 強み
               </Title>
               <Text>• フロントエンドとバックエンドの両方の開発経験</Text>
@@ -163,7 +113,7 @@ export function Profile() {
 
             <div>
               <Title order={3} className={styles.summaryTitle}>
-                <IconTarget size={24} className={styles.summaryIcon} />
+                <IconTarget size={32} className={styles.summaryIcon} />
                 弱み
               </Title>
               <Text>• 大規模システムの設計経験が不足</Text>
@@ -173,7 +123,7 @@ export function Profile() {
 
             <div>
               <Title order={3} className={styles.summaryTitle}>
-                <IconTarget size={24} className={styles.summaryIcon} />
+                <IconTarget size={32} className={styles.summaryIcon} />
                 今後の展望
               </Title>
               <Text>• フルスタックエンジニアとしての成長</Text>
