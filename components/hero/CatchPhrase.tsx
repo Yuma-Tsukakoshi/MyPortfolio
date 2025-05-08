@@ -14,7 +14,7 @@ export function CatchPhrase() {
 
   return (
     <Container size="lg" className={styles.container}>
-      <Stack spacing="xl" align="center" className={styles.content}>
+      <Stack align="center" className={styles.content}>
         {/* ローディングアニメーション */}
         <motion.div
           className={styles.loadingContainer}
