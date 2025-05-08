@@ -1,5 +1,5 @@
 .container {
-  padding: var(--mantine-spacing-xl) 0;
+  padding: 4rem 0;
   position: relative;
 }
 
@@ -15,7 +15,83 @@
 
 /* タイムライン */
 .timeline {
-  margin: var(--mantine-spacing-xl) 0;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  background: linear-gradient(to bottom, #2563eb, #38bdf8);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+  border-radius: 3px;
+}
+
+.timelineItem {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.timelineItem::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #2563eb;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  left: 50%;
+}
+
+.left::after {
+  right: -10px;
+}
+
+.right::after {
+  left: -10px;
+}
+
+.timelineContent {
+  padding: 20px;
+  position: relative;
+}
+
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.year {
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+  color: #1a365d;
+}
+
+.description {
+  color: #4b5563;
 }
 
 .eventCard {
@@ -87,9 +163,28 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 768px) {
-  .timeline {
-    padding-left: 0;
+@media screen and (max-width: 768px) {
+  .timeline::after {
+    left: 31px;
+  }
+
+  .timelineItem {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  .timelineItem::after {
+    left: 21px;
+  }
+
+  .left::after,
+  .right::after {
+    left: 21px;
+  }
+
+  .right {
+    left: 0;
   }
 
   .eventCard {
