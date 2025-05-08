@@ -67,15 +67,8 @@ export default function ResearchGrid() {
               height: 4,
               transition: "width 250ms ease",
               backgroundColor: "#1a73e8",
-              "&[data-active]": {
-                width: 40,
-              },
             },
             control: {
-              "&[data-inactive]": {
-                opacity: 0,
-                cursor: "default",
-              },
               backgroundColor: "#1a73e8",
               borderColor: "#1a73e8",
               "&:hover": {
