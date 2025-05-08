@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Grid, Paper, Text, Title } from "@mantine/core";
+import { Card, Container, Grid, Title } from "@mantine/core";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
@@ -33,7 +33,7 @@ export default function SkillSet() {
 
   if (!skills) return null;
 
-  // スキルを優先度順に並び替え
+  // 並び順を維持
   const getSkillByName = (name: string) => {
     const allSkills = [
       ...skills.frontend,
@@ -58,19 +58,19 @@ export default function SkillSet() {
     "github",
   ]
     .map(getSkillByName)
-    .filter(Boolean) as Skill[];
+    .filter((s) => s && s.is_acquire) as Skill[];
 
   const middleSkills = [
     "aws",
     "docker",
-    "postgresql",
     "mysql",
+    "postgresql",
     "mongodb",
     "react",
     "javascript",
   ]
     .map(getSkillByName)
-    .filter(Boolean) as Skill[];
+    .filter((s) => s && s.is_acquire) as Skill[];
 
   const otherSkills = [
     ...skills.frontend,
@@ -80,18 +80,19 @@ export default function SkillSet() {
     ...skills.tools,
   ].filter(
     (skill) =>
+      skill.is_acquire &&
       !topSkills.some((s) => s.label === skill.label) &&
       !middleSkills.some((s) => s.label === skill.label),
   );
 
-  const skillRows = [
-    { title: "主要スキル", skills: topSkills, iconSize: "w-24 h-24" },
-    { title: "中級スキル", skills: middleSkills, iconSize: "w-20 h-20" },
-    { title: "その他のスキル", skills: otherSkills, iconSize: "w-16 h-16" },
-  ];
+  // アイコンサイズ
+  const topIconSize = 80;
+  const middleIconSize = 64;
+  const otherIconSize = 32;
+  const iconClass = `rounded-xl bg-[#e3f0fb] flex items-center justify-center mx-auto`;
 
   return (
-    <Container size="lg" className="py-16">
+    <Container size="lg" className="py-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -100,68 +101,80 @@ export default function SkillSet() {
       >
         <Title
           order={2}
-          className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-blue-800 to-cyan-500 bg-clip-text text-transparent"
+          className="text-4xl font-bold mb-6 text-center bg-gradient-to-r from-blue-800 to-cyan-500 bg-clip-text text-transparent"
         >
           スキルセット
         </Title>
-
-        <div className="space-y-12">
-          {skillRows.map((row, index) => (
-            <motion.div
-              key={row.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Title
-                order={3}
-                className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-800 to-cyan-500 bg-clip-text text-transparent"
-              >
-                {row.title}
-              </Title>
-              <Grid>
-                {row.skills
-                  .filter((skill) => skill.is_acquire)
-                  .map((skill) => (
-                    <Grid.Col
-                      key={skill.label}
-                      span={{ base: 4, sm: 3, md: 2 }}
-                    >
-                      <Paper
-                        p="md"
-                        radius="lg"
-                        className={`flex flex-col items-center justify-center shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl ${
-                          index === 0 ? "h-48" : index === 1 ? "h-40" : "h-32"
-                        }`}
-                        style={{
-                          background:
-                            "linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(240,249,255,0.98) 100%)",
-                          border: "1px solid rgba(232,234,237,0.5)",
-                        }}
-                      >
-                        <div className={`relative ${row.iconSize} mb-3`}>
-                          <Image
-                            src={skill.image}
-                            alt={skill.label}
-                            fill
-                            className="object-contain"
-                            sizes="(max-width: 768px) 64px, (max-width: 1200px) 80px, 96px"
-                          />
-                        </div>
-                        <Text
-                          size="sm"
-                          className="text-center font-semibold text-blue-800"
-                        >
-                          {skill.label}
-                        </Text>
-                      </Paper>
-                    </Grid.Col>
-                  ))}
-              </Grid>
-            </motion.div>
-          ))}
-        </div>
+        <Card
+          shadow="xl"
+          radius="xl"
+          p="lg"
+          style={{
+            background: "linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%)",
+            border: "none",
+          }}
+        >
+          {/* 1段目 */}
+          <Grid gutter={0} justify="center" align="center" className="mb-2">
+            {topSkills.map((skill) => (
+              <Grid.Col key={skill.label} span={{ base: 3, sm: 2, md: 1 }}>
+                <div
+                  className={iconClass}
+                  style={{ width: topIconSize, height: topIconSize }}
+                >
+                  <Image
+                    src={skill.image}
+                    alt={skill.label}
+                    width={topIconSize - 20}
+                    height={topIconSize - 20}
+                    className="object-contain"
+                    unoptimized
+                  />
+                </div>
+              </Grid.Col>
+            ))}
+          </Grid>
+          {/* 2段目 */}
+          <Grid gutter={0} justify="center" align="center" className="mb-2">
+            {middleSkills.map((skill) => (
+              <Grid.Col key={skill.label} span={{ base: 3, sm: 2, md: 1 }}>
+                <div
+                  className={iconClass}
+                  style={{ width: middleIconSize, height: middleIconSize }}
+                >
+                  <Image
+                    src={skill.image}
+                    alt={skill.label}
+                    width={middleIconSize - 12}
+                    height={middleIconSize - 12}
+                    className="object-contain"
+                    unoptimized
+                  />
+                </div>
+              </Grid.Col>
+            ))}
+          </Grid>
+          {/* 3段目 */}
+          <Grid gutter={1} justify="center" align="center">
+            {otherSkills.map((skill) => (
+              <Grid.Col key={skill.label} span={{ base: 3, sm: 2, md: 1 }}>
+                <div
+                  className={iconClass}
+                  style={{ width: otherIconSize, height: otherIconSize }}
+                >
+                  <Image
+                    src={skill.image}
+                    alt={skill.label}
+                    width={otherIconSize - 8}
+                    height={otherIconSize - 8}
+                    className="object-contain"
+                    unoptimized
+                  />
+                </div>
+              </Grid.Col>
+            ))}
+          </Grid>
+        </Card>
       </motion.div>
     </Container>
   );
