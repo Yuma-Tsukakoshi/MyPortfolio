@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Badge,
   Card,
@@ -16,6 +18,7 @@ import {
   IconTarget,
   IconUsers,
 } from "@tabler/icons-react";
+import { motion } from "framer-motion";
 
 import styles from "./Profile.module.css";
 
@@ -84,92 +87,102 @@ const timelineEvents: TimelineEvent[] = [
 
 export function Profile() {
   return (
-    <Container size="lg" className={styles.container}>
-      <Title order={2} className={styles.title}>
-        Profile
-      </Title>
-
-      {/* タイムライン */}
-      <Timeline
-        active={timelineEvents.length - 1}
-        lineWidth={2}
-        className={styles.timeline}
+    <Container size="lg" className="py-16">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
       >
-        {timelineEvents.map((event) => (
-          <Timeline.Item
-            key={event.id}
-            bullet={event.icon}
-            title={
-              <Group>
-                <Text fw={700}>{event.title}</Text>
-                <Badge variant="light" color="blue">
-                  {event.period}
-                </Badge>
-              </Group>
-            }
-          >
-            <Card className={styles.eventCard}>
-              {event.image && (
-                <Card.Section>
-                  <Image
-                    src={event.image}
-                    height={200}
-                    alt={event.title}
-                    className={styles.eventImage}
-                  />
-                </Card.Section>
-              )}
-              <Stack mt="md">
-                <Text>{event.description}</Text>
-                {event.tags && (
-                  <Group className={styles.tags}>
-                    {event.tags.map((tag) => (
-                      <Badge key={tag} size="sm" variant="light">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </Group>
+        <Title
+          order={2}
+          className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-800 to-cyan-500 bg-clip-text text-transparent"
+        >
+          Profile
+        </Title>
+
+        {/* タイムライン */}
+        <Timeline
+          active={timelineEvents.length - 1}
+          lineWidth={2}
+          className={styles.timeline}
+        >
+          {timelineEvents.map((event) => (
+            <Timeline.Item
+              key={event.id}
+              bullet={event.icon}
+              title={
+                <Group>
+                  <Text fw={700}>{event.title}</Text>
+                  <Badge variant="light" color="blue">
+                    {event.period}
+                  </Badge>
+                </Group>
+              }
+            >
+              <Card className={styles.eventCard}>
+                {event.image && (
+                  <Card.Section>
+                    <Image
+                      src={event.image}
+                      height={200}
+                      alt={event.title}
+                      className={styles.eventImage}
+                    />
+                  </Card.Section>
                 )}
-              </Stack>
-            </Card>
-          </Timeline.Item>
-        ))}
-      </Timeline>
+                <Stack mt="md">
+                  <Text>{event.description}</Text>
+                  {event.tags && (
+                    <Group className={styles.tags}>
+                      {event.tags.map((tag) => (
+                        <Badge key={tag} size="sm" variant="light">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </Group>
+                  )}
+                </Stack>
+              </Card>
+            </Timeline.Item>
+          ))}
+        </Timeline>
 
-      {/* 強み・弱み・展望 */}
-      <Card className={styles.summaryCard}>
-        <Stack>
-          <div>
-            <Title order={3} className={styles.summaryTitle}>
-              <IconTarget size={24} className={styles.summaryIcon} />
-              強み
-            </Title>
-            <Text>• フロントエンドとバックエンドの両方の開発経験</Text>
-            <Text>• チーム開発でのコミュニケーション能力</Text>
-            <Text>• 研究と実務の両面からの問題解決アプローチ</Text>
-          </div>
+        {/* 強み・弱み・展望 */}
+        <Card className={styles.summaryCard}>
+          <Stack>
+            <div>
+              <Title order={3} className={styles.summaryTitle}>
+                <IconTarget size={24} className={styles.summaryIcon} />
+                強み
+              </Title>
+              <Text>• フロントエンドとバックエンドの両方の開発経験</Text>
+              <Text>• チーム開発でのコミュニケーション能力</Text>
+              <Text>• 研究と実務の両面からの問題解決アプローチ</Text>
+            </div>
 
-          <div>
-            <Title order={3} className={styles.summaryTitle}>
-              <IconTarget size={24} className={styles.summaryIcon} />
-              弱み
-            </Title>
-            <Text>• 大規模システムの設計経験が不足</Text>
-            <Text>• クラウドインフラの知識をさらに深める必要</Text>
-            <Text>• 英語でのコミュニケーション能力の向上</Text>
-          </div>
+            <div>
+              <Title order={3} className={styles.summaryTitle}>
+                <IconTarget size={24} className={styles.summaryIcon} />
+                弱み
+              </Title>
+              <Text>• 大規模システムの設計経験が不足</Text>
+              <Text>• クラウドインフラの知識をさらに深める必要</Text>
+              <Text>• 英語でのコミュニケーション能力の向上</Text>
+            </div>
 
-          <div>
-            <Title order={3} className={styles.summaryTitle}>
-              <IconTarget size={24} className={styles.summaryIcon} />
-              今後の展望
-            </Title>
-            <Text>• フルスタックエンジニアとしての成長</Text>
-            <Text>• 研究と実務を融合させた新しい価値の創造</Text>
-            <Text>• 技術を通じた社会課題の解決</Text>
-          </div>
-        </Stack>
-      </Card>
+            <div>
+              <Title order={3} className={styles.summaryTitle}>
+                <IconTarget size={24} className={styles.summaryIcon} />
+                今後の展望
+              </Title>
+              <Text>• フルスタックエンジニアとしての成長</Text>
+              <Text>• 研究と実務を融合させた新しい価値の創造</Text>
+              <Text>• 技術を通じた社会課題の解決</Text>
+            </div>
+          </Stack>
+        </Card>
+      </motion.div>
     </Container>
   );
 }
