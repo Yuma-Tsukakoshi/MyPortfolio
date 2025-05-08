@@ -3,19 +3,64 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: linear-gradient(135deg, #e0f2fe 0%, #60a5fa 50%, #3b82f6 100%);
+  --foreground: linear-gradient(90deg, #0a2540 0%, #1e40af 100%);
+  --primary: #2563eb;
+  --accent: #38bdf8;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --text-gradient: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: linear-gradient(
+      135deg,
+      #0f172a 0%,
+      #1e3a8a 50%,
+      #1e40af 100%
+    );
+    --foreground: linear-gradient(90deg, #e0f2fe 0%, #bae6fd 100%);
+    --card-bg: rgba(30, 41, 59, 0.9);
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Noto Sans JP", "Segoe UI", "Helvetica Neue", Arial, "sans-serif";
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
 }

@@ -7,19 +7,24 @@ import {
   IconGitPullRequest,
   IconMessageDots,
 } from "@tabler/icons-react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export function UserTimeline() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
+      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
       transition={{ duration: 0.5 }}
     >
       <Timeline active={1} bulletSize={24} lineWidth={4}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <Timeline.Item
@@ -41,7 +46,7 @@ export function UserTimeline() {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <Timeline.Item bullet={<IconGitCommit size={12} />} title="コミット">
@@ -59,7 +64,7 @@ export function UserTimeline() {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <Timeline.Item
@@ -81,7 +86,7 @@ export function UserTimeline() {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <Timeline.Item

@@ -1,8 +1,6 @@
 "use client";
 import { Box, Center, Stack, Title } from "@mantine/core";
 
-import { ContactUs } from "@/components/contact/ContactUs";
-import { HeroContentLeft } from "@/components/hero/HeroContentLeft";
 import { ComponentGridForProfile } from "@/components/profile/ComponentGrid";
 import { UserTimeline } from "@/components/profile/UserTimeline";
 import { ComponentGrid } from "@/components/research/ComponentGrid";
@@ -13,19 +11,12 @@ import { CarouselForWorks } from "@/components/works/CarouselForWorks";
 import { useScrollContext } from "@/context/ScrollContext";
 
 export default function Home() {
-  const {
-    aboutMeRef,
-    worksRef,
-    researchRef,
-    skillSetRef,
-    profileRef,
-    contactRef,
-  } = useScrollContext();
+  const { aboutMeRef, worksRef, researchRef, skillSetRef, profileRef } =
+    useScrollContext();
 
   return (
     <>
       {/* Hero セクション*/}
-      <HeroContentLeft />
 
       {/* About Me */}
       <Center mt={160} h={"100vh"}>
@@ -86,16 +77,6 @@ export default function Home() {
           <Box mt={80}>
             <ComponentGridForProfile />
           </Box>
-        </Stack>
-      </Center>
-
-      {/* Contact */}
-      <Center mt={160} h={"100vh"}>
-        <Stack>
-          <Title order={2} ta="center" ref={contactRef}>
-            Contact
-          </Title>
-          <ContactUs />
         </Stack>
       </Center>
     </>
