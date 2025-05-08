@@ -60,18 +60,46 @@ export default function NotionDialog({
       size="xl"
       title={getTitle()}
       centered
-      overlayProps={{ opacity: 0.3, blur: 3 }}
+      overlayProps={{
+        opacity: 0.3,
+        blur: 3,
+        color: "#1a73e8",
+      }}
+      styles={{
+        title: {
+          color: "#202124",
+          fontSize: "1.5rem",
+          fontWeight: 500,
+        },
+        header: {
+          borderBottom: "1px solid #e8eaed",
+          padding: "1rem 1.5rem",
+        },
+        body: {
+          padding: "1.5rem",
+        },
+      }}
     >
       {loading ? (
-        <Loader size="sm" />
+        <div className="flex justify-center items-center h-[70vh]">
+          <Loader size="md" color="#1a73e8" />
+        </div>
       ) : error ? (
-        <Text>{error}</Text>
+        <div className="flex justify-center items-center h-[70vh]">
+          <Text c="red" size="lg">
+            {error}
+          </Text>
+        </div>
       ) : pageData ? (
         <div className="w-full h-[70vh] overflow-y-auto">
           <NotionRender blocks={pageData.blocks} />
         </div>
       ) : (
-        <Text>データが取得できませんでした。</Text>
+        <div className="flex justify-center items-center h-[70vh]">
+          <Text c="#5f6368" size="lg">
+            データが取得できませんでした。
+          </Text>
+        </div>
       )}
     </Modal>
   );

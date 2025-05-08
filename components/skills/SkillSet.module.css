@@ -1,0 +1,50 @@
+.container {
+  padding: 2rem 0;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.categoryCard {
+  height: 100%;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  transition: transform 0.3s ease;
+}
+
+.categoryCard:hover {
+  transform: translateY(-5px);
+}
+
+.categoryTitle {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--mantine-color-gray-8);
+}
+
+.skillCard {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.skillCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.skillIcon {
+  color: var(--mantine-color-blue-6);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .categoryCard {
+    margin-bottom: 1rem;
+  }
+}

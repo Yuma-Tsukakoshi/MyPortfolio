@@ -1,90 +1,53 @@
 "use client";
-import { Box, Center, Stack, Title } from "@mantine/core";
 
-import { AboutMe } from "@/components/about/AboutMe";
-import { CatchPhrase } from "@/components/hero/CatchPhrase";
+import { useEffect } from "react";
+
 import { Profile } from "@/components/profile/Profile";
 import { Research } from "@/components/research/Research";
-import { GridSkillsSection } from "@/components/skills/UserSkills";
-import { CarouselForWorks } from "@/components/works/CarouselForWorks";
+import SkillSet from "@/components/skills/SkillSet";
+import Works from "@/components/works/Works";
 import { useScrollContext } from "@/context/ScrollContext";
 
 export default function Home() {
-  const { aboutMeRef, worksRef, researchRef, skillSetRef, profileRef } =
-    useScrollContext();
+  const { setActiveSection } = useScrollContext();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section");
+      const scrollPosition = window.scrollY + 100;
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute("id");
+
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          setActiveSection(sectionId || "");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [setActiveSection]);
 
   return (
-    <>
-      {/* Hero セクション*/}
-      <CatchPhrase />
-
-      {/* About Me */}
-      <Box mt={160} mb={160} h={"100vh"}>
-        <Center h="100%">
-          <Stack>
-            <Title order={2} ta="center" ref={aboutMeRef}>
-              About Me
-            </Title>
-            <AboutMe />
-          </Stack>
-        </Center>
-      </Box>
-
-      {/* Works */}
-      <Box mt={160} mb={160} mx={320} h={"100vh"}>
-        <Center h="100%">
-          <Stack>
-            <Title order={2} ta="center" ref={worksRef}>
-              Works
-            </Title>
-            <Box>
-              <Title order={3}>インターン</Title>
-              <CarouselForWorks />
-            </Box>
-
-            <Box mt={20}>
-              <Title order={3}>個人・チーム開発</Title>
-              <CarouselForWorks />
-            </Box>
-          </Stack>
-        </Center>
-      </Box>
-
-      {/* Research セクション */}
-      <Box mt={160} mb={160} mx={320} style={{ minHeight: "100vh" }}>
-        <Center h="100%">
-          <Stack>
-            <Title order={2} ta="center" ref={researchRef}>
-              Research
-            </Title>
-            <Research />
-          </Stack>
-        </Center>
-      </Box>
-
-      {/* Skill Set セクション */}
-      <Box mt={160} mb={160} mx={320} style={{ minHeight: "100vh" }}>
-        <Center h="100%">
-          <Stack>
-            <Title order={2} ta="center" ref={skillSetRef}>
-              Skill Set
-            </Title>
-            <GridSkillsSection />
-          </Stack>
-        </Center>
-      </Box>
-
-      {/* Profile セクション */}
-      <Box mt={160} mb={160} mx={320} style={{ minHeight: "100vh" }}>
-        <Center h="100%">
-          <Stack>
-            <Title order={2} ta="center" ref={profileRef}>
-              Profile
-            </Title>
-            <Profile />
-          </Stack>
-        </Center>
-      </Box>
-    </>
+    <main>
+      <section id="profile">
+        <Profile />
+      </section>
+      <section id="skills">
+        <SkillSet />
+      </section>
+      <section id="works">
+        <Works />
+      </section>
+      <section id="research">
+        <Research />
+      </section>
+    </main>
   );
 }
