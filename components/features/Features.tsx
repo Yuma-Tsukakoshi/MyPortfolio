@@ -1,9 +1,19 @@
 "use client";
 
-import { Accordion, Badge, Container, Grid, Paper, Text } from "@mantine/core";
+import {
+  Accordion,
+  Badge,
+  Card,
+  Container,
+  Grid,
+  Paper,
+  Text,
+} from "@mantine/core";
 import { motion } from "framer-motion";
 
 import { SectionTitle } from "@/components/common/SectionTitle";
+
+import styles from "./Features.module.css";
 
 interface PersonalityTrait {
   title: string;
@@ -244,7 +254,7 @@ export function Features() {
   const otherTraits = personalityTraits.filter((trait) => !trait.isPickUp);
 
   return (
-    <Container size="lg" className="py-20">
+    <Container size="lg" className={styles.container}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -253,83 +263,138 @@ export function Features() {
       >
         <SectionTitle title="Personality Features" subtitle="特性分析" />
 
-        {/* PICK UP Personality */}
-        <div className="mb-8">
-          <div className="flex items-center gap-4 mb-6">
-            <Badge size="lg" variant="filled" color="blue">
-              PICK UP Personality
-            </Badge>
-            <Text size="sm" c="dimmed">
-              ー 特に強く表れる特性 ー
-            </Text>
+        {/* 特性セクション（背景色付き） */}
+        <div className={styles.featuresContainer}>
+          {/* PICK UP Personality */}
+          <div className="mb-8">
+            <div className="flex items-center gap-4 mb-6">
+              <Badge size="lg" variant="filled" color="blue">
+                PICK UP Personality
+              </Badge>
+              <Text size="sm" c="dimmed">
+                ー 特に強く表れる特性 ー
+              </Text>
+            </div>
+            <Grid gutter="xl" justify="center">
+              {pickUpTraits.map((trait) => (
+                <Grid.Col key={trait.title} span={{ base: 12, md: 3 }}>
+                  <Paper
+                    radius="lg"
+                    p="xl"
+                    style={{
+                      background: "rgba(255, 255, 255, 0.9)",
+                      border: "1px solid rgba(14, 165, 233, 0.1)",
+                    }}
+                  >
+                    <RatingDisplay
+                      value={trait.value}
+                      title={trait.title}
+                      description={trait.description}
+                      highLabel={trait.highLabel}
+                      lowLabel={trait.lowLabel}
+                      category={trait.category}
+                    />
+                  </Paper>
+                </Grid.Col>
+              ))}
+            </Grid>
           </div>
-          <Grid gutter="xl" justify="center">
-            {pickUpTraits.map((trait) => (
-              <Grid.Col key={trait.title} span={{ base: 12, md: 3 }}>
-                <Paper
-                  radius="lg"
-                  p="xl"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.9)",
-                    border: "1px solid rgba(14, 165, 233, 0.1)",
-                  }}
-                >
-                  <RatingDisplay
-                    value={trait.value}
-                    title={trait.title}
-                    description={trait.description}
-                    highLabel={trait.highLabel}
-                    lowLabel={trait.lowLabel}
-                    category={trait.category}
-                  />
-                </Paper>
-              </Grid.Col>
-            ))}
-          </Grid>
+
+          {/* その他の特性（アコーディオン） */}
+          <Accordion>
+            <Accordion.Item value="other-traits">
+              <Accordion.Control>
+                <Text fw={500}>その他の特性</Text>
+              </Accordion.Control>
+              <Accordion.Panel>
+                {categories.map((category) => (
+                  <div key={category} className="mb-8">
+                    <Text
+                      fw={700}
+                      size="xl"
+                      mb="md"
+                      style={{ color: "#0ea5e9" }}
+                    >
+                      {category}
+                    </Text>
+                    <Grid gutter="xl">
+                      {otherTraits
+                        .filter((trait) => trait.category === category)
+                        .map((trait) => (
+                          <Grid.Col
+                            key={trait.title}
+                            span={{ base: 12, md: 3 }}
+                          >
+                            <Paper
+                              radius="lg"
+                              p="xl"
+                              style={{
+                                background: "rgba(255, 255, 255, 0.9)",
+                                border: "1px solid rgba(14, 165, 233, 0.1)",
+                              }}
+                            >
+                              <RatingDisplay
+                                value={trait.value}
+                                title={trait.title}
+                                description={trait.description}
+                                highLabel={trait.highLabel}
+                                lowLabel={trait.lowLabel}
+                                category={trait.category}
+                              />
+                            </Paper>
+                          </Grid.Col>
+                        ))}
+                    </Grid>
+                  </div>
+                ))}
+              </Accordion.Panel>
+            </Accordion.Item>
+          </Accordion>
         </div>
 
-        {/* その他の特性（アコーディオン） */}
-        <Accordion>
-          <Accordion.Item value="other-traits">
-            <Accordion.Control>
-              <Text fw={500}>その他の特性</Text>
-            </Accordion.Control>
-            <Accordion.Panel>
-              {categories.map((category) => (
-                <div key={category} className="mb-8">
-                  <Text fw={700} size="xl" mb="md" style={{ color: "#0ea5e9" }}>
-                    {category}
-                  </Text>
-                  <Grid gutter="xl">
-                    {otherTraits
-                      .filter((trait) => trait.category === category)
-                      .map((trait) => (
-                        <Grid.Col key={trait.title} span={{ base: 12, md: 3 }}>
-                          <Paper
-                            radius="lg"
-                            p="xl"
-                            style={{
-                              background: "rgba(255, 255, 255, 0.9)",
-                              border: "1px solid rgba(14, 165, 233, 0.1)",
-                            }}
-                          >
-                            <RatingDisplay
-                              value={trait.value}
-                              title={trait.title}
-                              description={trait.description}
-                              highLabel={trait.highLabel}
-                              lowLabel={trait.lowLabel}
-                              category={trait.category}
-                            />
-                          </Paper>
-                        </Grid.Col>
-                      ))}
-                  </Grid>
-                </div>
-              ))}
-            </Accordion.Panel>
-          </Accordion.Item>
-        </Accordion>
+        {/* 三角形の矢印 */}
+        <div className={styles.arrowContainer}>
+          <div className={styles.triangle}></div>
+          <div className={styles.triangle}></div>
+          <div className={styles.triangle}></div>
+        </div>
+
+        {/* 強みと弱みのカード */}
+        <Grid gutter="xl" justify="center" className={styles.cardsContainer}>
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Card className={styles.featureCard}>
+              <Card.Section>
+                <Text fw={700} size="xl" className={styles.cardTitle}>
+                  強み
+                </Text>
+                <Text size="sm" mt="md">
+                  ・計画的でリスクを回避し、確実に進める傾向
+                  <br />
+                  ・高い目標を設定し、それに向かって努力する傾向
+                  <br />
+                  ・自分の責任を重視し、失敗を自分で受け止める傾向
+                </Text>
+              </Card.Section>
+            </Card>
+          </Grid.Col>
+
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Card className={styles.featureCard}>
+              <Card.Section>
+                <Text fw={700} size="xl" className={styles.cardTitle}>
+                  弱み
+                </Text>
+                <Text size="sm" mt="md">
+                  ・感情の起伏が激しく、状況に応じて変化する傾向
+                  <br />
+                  ・活動的でエネルギッシュに行動する傾向が低い
+                  <br />
+                  ・積極的に新しいことに挑戦する傾向が低い
+                </Text>
+              </Card.Section>
+            </Card>
+          </Grid.Col>
+        </Grid>
       </motion.div>
     </Container>
   );
