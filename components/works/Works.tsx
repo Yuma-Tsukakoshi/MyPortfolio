@@ -1,147 +1,121 @@
+"use client";
+
 import {
   Badge,
-  Button,
-  Card,
   Container,
+  Grid,
   Group,
-  Image,
-  SimpleGrid,
-  Stack,
+  Paper,
   Text,
   Title,
 } from "@mantine/core";
-import {
-  IconBrandGithub,
-  IconExternalLink,
-  IconStar,
-} from "@tabler/icons-react";
+import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
+import { motion } from "framer-motion";
+
+import { SectionTitle } from "@/components/common/SectionTitle";
 
 import styles from "./Works.module.css";
 
-interface Work {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  githubUrl?: string;
-  demoUrl?: string;
-  isPickup?: boolean;
-}
-
-const works: Work[] = [
-  {
-    id: 1,
-    title: "MyPortfolio",
-    description:
-      "Next.jsとTypeScriptを使用したポートフォリオサイト。Framer Motionによるアニメーションと、モダンなUIデザインを実装。",
-    image: "/works/portfolio.png",
-    tags: ["Next.js", "TypeScript", "Framer Motion", "TailwindCSS"],
-    githubUrl: "https://github.com/tsukakoshiyuma/MyPortfolio",
-    demoUrl: "https://tsukakoshiyuma.com",
-    isPickup: true,
-  },
-  {
-    id: 2,
-    title: "matmeru",
-    description:
-      "就活生向けのマッチングアプリケーション。React Nativeを使用したクロスプラットフォーム開発。",
-    image: "/works/matmeru.png",
-    tags: ["React Native", "TypeScript", "Firebase"],
-    githubUrl: "https://github.com/tsukakoshiyuma/matmeru",
-    isPickup: true,
-  },
-  {
-    id: 3,
-    title: "mercury",
-    description:
-      "AWSを使用したサーバーレスアーキテクチャの実装。Lambda、DynamoDB、API Gatewayを活用。",
-    image: "/works/mercury.png",
-    tags: ["AWS", "Serverless", "TypeScript"],
-    githubUrl: "https://github.com/tsukakoshiyuma/mercury",
-    isPickup: true,
-  },
-  // 他の作品も同様に追加
-];
-
 export function Works() {
+  const blogPosts = [
+    {
+      title: "AWS SAA取得までの道のり",
+      description:
+        "AWSソリューションアーキテクトアソシエイトの取得に向けた学習方法と対策を紹介します。",
+      platform: "Qiita",
+      date: "2024-03-15",
+      url: "https://qiita.com/yukkun/items/example1",
+      tags: ["AWS", "資格", "クラウド"],
+      icon: <IconBrandGithub size={24} />,
+    },
+    {
+      title: "Next.jsでポートフォリオサイトを作る",
+      description:
+        "Next.jsとMantineを使用したモダンなポートフォリオサイトの構築方法を解説します。",
+      platform: "Zenn",
+      date: "2024-03-10",
+      url: "https://zenn.dev/yukkun/articles/example1",
+      tags: ["Next.js", "React", "TypeScript"],
+      icon: <IconBrandLinkedin size={24} />,
+    },
+    {
+      title: "Dockerで開発環境を構築する",
+      description:
+        "Dockerを使用した効率的な開発環境の構築方法とベストプラクティスを紹介します。",
+      platform: "Qiita",
+      date: "2024-03-05",
+      url: "https://qiita.com/yukkun/items/example2",
+      tags: ["Docker", "開発環境", "DevOps"],
+      icon: <IconBrandGithub size={24} />,
+    },
+  ];
+
   return (
-    <Container size="lg" className={styles.container}>
-      <Title order={2} className={styles.title}>
-        Works
-      </Title>
+    <Container size="lg" className={styles.container + " py-20"}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <SectionTitle title="Works" subtitle="開発経験" />
 
-      <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="xl" mt="xl">
-        {works.map((work) => (
-          <Card
-            key={work.id}
-            className={`${styles.card} ${work.isPickup ? styles.pickup : ""}`}
-          >
-            {work.isPickup && (
-              <Badge
-                className={styles.pickupBadge}
-                variant="gradient"
-                gradient={{ from: "yellow", to: "orange" }}
+        <Grid gutter="xl">
+          {blogPosts.map((post, index) => (
+            <Grid.Col key={index} span={{ base: 12, sm: 6, md: 4 }}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <IconStar size={14} /> Pick Up
-              </Badge>
-            )}
+                <Paper className={styles.blogCard}>
+                  <div className={styles.blogHeader}>
+                    <Group>
+                      {post.icon}
+                      <Text size="sm" fw={500} c="dimmed">
+                        {post.platform}
+                      </Text>
+                    </Group>
+                    <Text size="sm" c="dimmed">
+                      {post.date}
+                    </Text>
+                  </div>
 
-            <Card.Section>
-              <Image
-                src={work.image}
-                height={200}
-                alt={work.title}
-                className={styles.image}
-              />
-            </Card.Section>
+                  <Title order={3} className={styles.blogTitle}>
+                    {post.title}
+                  </Title>
 
-            <Stack mt="md">
-              <Title order={3} className={styles.workTitle}>
-                {work.title}
-              </Title>
-              <Text size="sm" c="dimmed" className={styles.description}>
-                {work.description}
-              </Text>
+                  <Text className={styles.blogDescription}>
+                    {post.description}
+                  </Text>
 
-              <Group mt="md" className={styles.tags}>
-                {work.tags.map((tag) => (
-                  <Badge key={tag} size="sm" variant="light">
-                    {tag}
-                  </Badge>
-                ))}
-              </Group>
+                  <div className={styles.blogTags}>
+                    {post.tags.map((tag, tagIndex) => (
+                      <Badge
+                        key={tagIndex}
+                        size="sm"
+                        className={styles.blogTag}
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
 
-              <Group mt="md" className={styles.links}>
-                {work.githubUrl && (
-                  <Button
-                    variant="light"
-                    leftSection={<IconBrandGithub size={16} />}
-                    component="a"
-                    href={work.githubUrl}
+                  <a
+                    href={post.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className={styles.blogLink}
                   >
-                    GitHub
-                  </Button>
-                )}
-                {work.demoUrl && (
-                  <Button
-                    variant="light"
-                    leftSection={<IconExternalLink size={16} />}
-                    component="a"
-                    href={work.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Demo
-                  </Button>
-                )}
-              </Group>
-            </Stack>
-          </Card>
-        ))}
-      </SimpleGrid>
+                    記事を読む →
+                  </a>
+                </Paper>
+              </motion.div>
+            </Grid.Col>
+          ))}
+        </Grid>
+      </motion.div>
     </Container>
   );
 }

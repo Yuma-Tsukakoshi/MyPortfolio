@@ -1,10 +1,10 @@
+"use client";
+
 import {
-  Anchor,
   Badge,
-  Card,
   Container,
   Group,
-  SimpleGrid,
+  Paper,
   Stack,
   Text,
   Title,
@@ -12,116 +12,145 @@ import {
 import {
   IconBrandGithub,
   IconBrandLinkedin,
-  IconHeart,
-  IconSchool,
-  IconUser,
+  IconExternalLink,
 } from "@tabler/icons-react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+import { SectionTitle } from "@/components/common/SectionTitle";
 
 import styles from "./AboutMe.module.css";
 
-const socialLinks = [
-  {
-    icon: IconBrandGithub,
-    label: "GitHub",
-    url: "https://github.com/tsukakoshiyuma",
-    color: "gray",
-  },
-  {
-    icon: IconBrandLinkedin,
-    label: "LinkedIn",
-    url: "https://www.linkedin.com/in/tsukakoshiyuma/",
-    color: "blue",
-  },
-  {
-    icon: IconBrandGithub,
-    label: "Qiita",
-    url: "https://qiita.com/yukkun",
-    color: "green",
-  },
-];
-
 export function AboutMe() {
+  const socialLinks = [
+    {
+      name: "GitHub",
+      url: "https://github.com/Yuma-Tsukakoshi",
+      icon: <IconBrandGithub size={24} />,
+    },
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/yuma-tsukakoshi-741646314/",
+      icon: <IconBrandLinkedin size={24} />,
+    },
+    {
+      name: "Qiita",
+      url: "https://qiita.com/yukkun",
+      icon: <IconExternalLink size={24} />,
+    },
+  ];
+
   return (
-    <Container size="lg" className={styles.container}>
-      <Title order={2} className={styles.title}>
-        About Me
-      </Title>
+    <Container size="lg" className={styles.container + " py-20"}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <SectionTitle title="About me" subtitle="私について" />
 
-      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xl" mt="xl">
-        {/* 基本情報 */}
-        <Card className={styles.card}>
-          <Group>
-            <IconUser size={24} className={styles.icon} />
-            <Title order={3}>基本情報</Title>
-          </Group>
-          <Stack mt="md">
-            <Text>👨‍💻 筑波大学 情報学群 情報メディア創成学類</Text>
-            <Text>🎓 2025年卒業予定</Text>
-            <Text>📍 茨城県つくば市</Text>
-          </Stack>
-        </Card>
+        <div className={styles.content}>
+          {/* 左側：写真 */}
+          <motion.div
+            className={styles.imageContainer}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src="/images/profile.jpg"
+              alt="プロフィール画像"
+              width={300}
+              height={300}
+              className={styles.avatar}
+            />
+            <div className={styles.socialLinks}>
+              {socialLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialLink}
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
+          </motion.div>
 
-        {/* 資格 */}
-        <Card className={styles.card}>
-          <Group>
-            <IconSchool size={24} className={styles.icon} />
-            <Title order={3}>資格</Title>
-          </Group>
-          <Stack mt="md">
-            <Badge
-              size="lg"
-              variant="gradient"
-              gradient={{ from: "blue", to: "cyan" }}
-            >
-              基本情報技術者
-            </Badge>
-            <Badge
-              size="lg"
-              variant="gradient"
-              gradient={{ from: "blue", to: "cyan" }}
-            >
-              AWS Certified Cloud Practitioner
-            </Badge>
-          </Stack>
-        </Card>
+          {/* 右側：情報 */}
+          <motion.div
+            className={styles.infoContainer}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <Paper className={styles.infoCard}>
+              <Stack>
+                {/* 基本情報 */}
+                <div>
+                  <Title order={3} className={styles.sectionTitle}>
+                    基本情報
+                  </Title>
+                  <Text size="lg" className={styles.infoText}>
+                    慶應義塾大学 理工学研究科 開放環境科学専攻 修士1年
+                  </Text>
+                  <Text size="lg" className={styles.infoText}>
+                    2027年卒業予定
+                  </Text>
+                  <Group mt="sm">
+                    <Badge
+                      size="lg"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #1e40af 0%, #22d3ee 100%)",
+                        color: "white",
+                      }}
+                    >
+                      基本情報技術者
+                    </Badge>
+                    <Badge
+                      size="lg"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #1e40af 0%, #22d3ee 100%)",
+                        color: "white",
+                      }}
+                    >
+                      応用情報技術者
+                    </Badge>
+                  </Group>
+                </div>
 
-        {/* 趣味 */}
-        <Card className={styles.card}>
-          <Group>
-            <IconHeart size={24} className={styles.icon} />
-            <Title order={3}>趣味</Title>
-          </Group>
-          <Stack mt="md">
-            <Text>🏀 バスケットボール</Text>
-            <Text>🎮 ゲーム開発</Text>
-          </Stack>
-        </Card>
-
-        {/* SNSリンク */}
-        <Card className={styles.card}>
-          <Group>
-            <IconUser size={24} className={styles.icon} />
-            <Title order={3}>SNS</Title>
-          </Group>
-          <Stack mt="md">
-            {socialLinks.map((link) => (
-              <Anchor
-                key={link.label}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialLink}
-              >
-                <link.icon
-                  size={24}
-                  color={`var(--mantine-color-${link.color}-6)`}
-                />
-                <Text ml="md">{link.label}</Text>
-              </Anchor>
-            ))}
-          </Stack>
-        </Card>
-      </SimpleGrid>
+                {/* 趣味 */}
+                <div>
+                  <Title order={3} className={styles.sectionTitle}>
+                    趣味
+                  </Title>
+                  <div className={styles.hobbiesContainer}>
+                    <div className={styles.hobbyItem}>
+                      <span className={styles.hobbyIcon}>🎮</span>
+                      <span>ゲーム</span>
+                    </div>
+                    <div className={styles.hobbyItem}>
+                      <span className={styles.hobbyIcon}>🎵</span>
+                      <span>音楽鑑賞</span>
+                    </div>
+                    <div className={styles.hobbyItem}>
+                      <span className={styles.hobbyIcon}>📚</span>
+                      <span>読書</span>
+                    </div>
+                  </div>
+                </div>
+              </Stack>
+            </Paper>
+          </motion.div>
+        </div>
+      </motion.div>
     </Container>
   );
 }
