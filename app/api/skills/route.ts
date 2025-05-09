@@ -84,7 +84,7 @@ export async function GET() {
         is_acquire: true,
       },
       {
-        label: "pythorch",
+        label: "pytorch",
         image: "https://skillicons.dev/icons?i=pytorch",
         is_acquire: true,
       },

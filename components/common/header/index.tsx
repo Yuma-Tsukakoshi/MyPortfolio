@@ -1,63 +1,129 @@
 "use client";
-import { Box, Center, Stack } from "@mantine/core";
-import { useEffect, useState } from "react";
 
-import { HeaderItems } from "@/components/common/header/headerItems";
+import {
+  ActionIcon,
+  Burger,
+  Container,
+  Group,
+  Menu,
+  Text,
+} from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { IconChevronDown } from "@tabler/icons-react";
+
 import { useScrollContext } from "@/context/ScrollContext";
 
-export const Header = () => {
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const {
-    aboutMeRef,
-    worksRef,
-    researchRef,
-    skillSetRef,
-    profileRef,
-    scrollToSection,
-  } = useScrollContext();
+const links = [
+  { link: "#profile", label: "Profile" },
+  { link: "#skills", label: "Skills" },
+  { link: "#works", label: "Works" },
+  { link: "#research", label: "Research" },
+];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsVisible(window.scrollY <= lastScrollY);
-      setLastScrollY(window.scrollY);
-    };
+export function Header() {
+  const [opened, { toggle }] = useDisclosure(false);
+  const { setActiveSection } = useScrollContext();
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop - 100,
+        behavior: "smooth",
+      });
+      setActiveSection(sectionId);
+    }
+  };
 
-  const HeaderList = [
-    { name: "About Me", onClick: () => scrollToSection(aboutMeRef) },
-    { name: "Works", onClick: () => scrollToSection(worksRef) },
-    { name: "Research", onClick: () => scrollToSection(researchRef) },
-    { name: "Skill Set", onClick: () => scrollToSection(skillSetRef) },
-    { name: "Profile", onClick: () => scrollToSection(profileRef) },
-  ];
+  const items = links.map((link) => (
+    <Menu.Item
+      key={link.label}
+      onClick={() => scrollToSection(link.link.replace("#", ""))}
+      style={{
+        color: "#5f6368",
+        "&:hover": {
+          backgroundColor: "#e8f0fe",
+          color: "#1a73e8",
+        },
+      }}
+    >
+      {link.label}
+    </Menu.Item>
+  ));
 
   return (
-    <Box
+    <header
       style={{
         position: "fixed",
         top: 0,
         left: 0,
-        height: "64px",
-        width: "100%",
-        background: "rgba(255, 255, 255, 0.8)",
-        backdropFilter: "blur(5px)",
-        transition: "transform 0.3s ease-in-out",
-        transform: isVisible ? "translateY(0)" : "translateY(-100%)",
+        right: 0,
         zIndex: 1000,
-        padding: "10px 0",
-        display: "flex",
-        alignItems: "center",
+        backgroundColor: "rgba(255, 255, 255, 0.9)",
+        backdropFilter: "blur(10px)",
+        borderBottom: "1px solid #e8eaed",
       }}
     >
-      <Center style={{ width: "100%" }}>
-        <Stack align="center" justify="center" style={{ height: "100%" }}>
-          <HeaderItems items={HeaderList} />
-        </Stack>
-      </Center>
-    </Box>
+      <Container size="lg">
+        <div className="flex items-center h-16">
+          <Text
+            size="xl"
+            fw={700}
+            className="mr-auto"
+            style={{
+              color: "#1a73e8",
+            }}
+          >
+            Portfolio
+          </Text>
+
+          <Group
+            gap={5}
+            visibleFrom="sm"
+            className="ml-auto"
+            style={{ justifyContent: "flex-end" }}
+          >
+            {links.map((link) => (
+              <Text
+                key={link.label}
+                size="sm"
+                style={{
+                  color: "#5f6368",
+                  cursor: "pointer",
+                  "&:hover": {
+                    color: "#1a73e8",
+                  },
+                }}
+                onClick={() => scrollToSection(link.link.replace("#", ""))}
+              >
+                {link.label}
+              </Text>
+            ))}
+          </Group>
+
+          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+
+          <Menu
+            shadow="md"
+            width={200}
+            opened={opened}
+            onClose={toggle}
+            position="bottom-end"
+          >
+            <Menu.Target>
+              <ActionIcon
+                variant="subtle"
+                color="gray"
+                size="lg"
+                hiddenFrom="sm"
+              >
+                <IconChevronDown size={20} />
+              </ActionIcon>
+            </Menu.Target>
+            <Menu.Dropdown>{items}</Menu.Dropdown>
+          </Menu>
+        </div>
+      </Container>
+    </header>
   );
-};
+}
