@@ -1,120 +1,122 @@
 "use client";
 
-import {
-  IconBook,
-  IconBriefcase,
-  IconCode,
-  IconHome,
-  IconMail,
-  IconMenu2,
-  IconMoon,
-  IconSun,
-  IconUser,
-} from "@tabler/icons-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { Burger, Container, Group, Stack, Text } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 import styles from "./Header.module.css";
 
+const navigationItems = [
+  { href: "#about", label: "About", jpLabel: "自己紹介" },
+  { href: "#career", label: "Career", jpLabel: "経歴" },
+  { href: "#works", label: "Works", jpLabel: "作品" },
+  { href: "#research", label: "Research", jpLabel: "研究" },
+  { href: "#skills", label: "Skills", jpLabel: "スキル" },
+];
+
 export function Header() {
-  const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [opened, { toggle }] = useDisclosure(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+
+      // スクロールが下方向で、かつ100px以上スクロールした場合にヘッダーを表示
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+
+      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
-  const navItems = [
-    { href: "/", label: "Home", icon: <IconHome size={24} /> },
-    { href: "/about", label: "About", icon: <IconUser size={24} /> },
-    { href: "/works", label: "Works", icon: <IconBriefcase size={24} /> },
-    { href: "/research", label: "Research", icon: <IconBook size={24} /> },
-    { href: "/contact", label: "Contact", icon: <IconMail size={24} /> },
-  ];
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      const headerOffset = 80; // ヘッダーの高さ分を考慮
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+    toggle(); // モバイルメニューを閉じる
+  };
 
   return (
     <header
-      className={`${styles.header} ${isScrolled ? styles.headerScrolled : ""}`}
+      className={`${styles.header} ${isVisible ? styles.headerVisible : ""}`}
     >
-      <div className={styles.container}>
+      <Container size="lg" className={styles.container}>
         <Link href="/" className={styles.logo}>
-          <IconCode className={styles.logoIcon} size={32} />
-          <span>Yuma Tsukakoshi</span>
+          <Text size="xl" fw={900}>
+            YK
+          </Text>
         </Link>
 
         <nav className={styles.nav}>
-          {navItems.map((item) => (
-            <Link
+          {navigationItems.map((item) => (
+            <a
               key={item.href}
               href={item.href}
-              className={`${styles.navLink} ${pathname === item.href ? styles.active : ""}`}
+              className={styles.navLink}
+              onClick={(e) => handleNavClick(e, item.href)}
             >
-              <span className={styles.navIcon}>{item.icon}</span>
-              {item.label}
-            </Link>
+              <Text size="sm" fw={500}>
+                {item.label}
+              </Text>
+              <Text size="xs" c="dimmed">
+                {item.jpLabel}
+              </Text>
+            </a>
           ))}
-          <button
-            className={styles.themeToggle}
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <IconSun size={24} /> : <IconMoon size={24} />}
-          </button>
         </nav>
 
-        <button
-          className={styles.mobileMenuButton}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <IconMenu2 size={28} />
-        </button>
-      </div>
+        <Group>
+          <Burger
+            opened={opened}
+            onClick={toggle}
+            className={styles.mobileMenuButton}
+          />
+        </Group>
+      </Container>
 
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            className={styles.mobileNav}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {navItems.map((item) => (
-              <Link
+      {opened && (
+        <div className={styles.mobileMenu}>
+          <Stack>
+            {navigationItems.map((item) => (
+              <a
                 key={item.href}
                 href={item.href}
-                className={`${styles.mobileNavLink} ${pathname === item.href ? styles.active : ""}`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                className={styles.mobileNavLink}
+                onClick={(e) => handleNavClick(e, item.href)}
               >
-                <span className={styles.navIcon}>{item.icon}</span>
-                {item.label}
-              </Link>
+                <Text size="lg" fw={500}>
+                  {item.label}
+                </Text>
+                <Text size="sm" c="dimmed">
+                  {item.jpLabel}
+                </Text>
+              </a>
             ))}
-            <button
-              className={styles.themeToggle}
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <IconSun size={24} />
-              ) : (
-                <IconMoon size={24} />
-              )}
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </Stack>
+        </div>
+      )}
     </header>
   );
 }
