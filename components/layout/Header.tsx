@@ -11,6 +11,7 @@ import styles from "./Header.module.css";
 const navigationItems = [
   { href: "#about", label: "About", jpLabel: "自己紹介" },
   { href: "#career", label: "Career", jpLabel: "経歴" },
+  { href: "#features", label: "Features", jpLabel: "特性分析" },
   { href: "#works", label: "Works", jpLabel: "開発経験" },
   { href: "#research", label: "Research", jpLabel: "研究" },
   { href: "#skills", label: "Skills", jpLabel: "スキル" },
