@@ -46,7 +46,7 @@ export default function Home() {
           <section id="about">
             <AboutMe />
           </section>
-          <section id="profile">
+          <section id="career">
             <Profile />
           </section>
           <section id="strength">

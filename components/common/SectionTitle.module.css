@@ -11,10 +11,32 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 .subtitle {
+  position: relative;
+  display: inline-block;
   font-weight: 600;
   font-size: 1.2rem;
-  color: #1e40af;
+  background: linear-gradient(135deg, #1e40af 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   opacity: 0.8;
+  padding: 0 4rem;
+}
+
+.subtitle::before,
+.subtitle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 3rem;
+  height: 2px;
+  background: linear-gradient(135deg, #1e40af 0%, #22d3ee 100%);
+}
+
+.subtitle::before {
+  left: 0;
+}
+
+.subtitle::after {
+  right: 0;
 }
