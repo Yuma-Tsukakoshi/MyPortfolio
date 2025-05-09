@@ -1,63 +1,58 @@
-import { Loader, Text, Title } from "@mantine/core";
+import { Text, Title } from "@mantine/core";
+import { ReactNode } from "react";
 
+import { AboutMeInfo } from "@/components/features/about/AboutMeInfo";
+import { AboutMeSocial } from "@/components/features/about/AboutMeSocial";
 import { AboutMeData } from "@/types/about";
-
-import { AboutMeInfo } from "./AboutMeInfo";
-import { AboutMeSocial } from "./AboutMeSocial";
 
 interface AboutMeProps {
   aboutMe: AboutMeData | null;
   error: string | null;
   isLoading: boolean;
+  renderLoading: () => ReactNode;
+  renderError: () => ReactNode;
+  renderEmpty: () => ReactNode;
 }
 
-export const AboutMe = ({ aboutMe, error, isLoading }: AboutMeProps) => {
+export const AboutMe = ({
+  aboutMe,
+  error,
+  isLoading,
+  renderLoading,
+  renderError,
+  renderEmpty,
+}: AboutMeProps) => {
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[200px]">
-        <Loader size="lg" />
-      </div>
-    );
+    return renderLoading();
   }
 
   if (error) {
-    return (
-      <div className="flex justify-center items-center min-h-[200px]">
-        <Text c="red" size="lg">
-          Error: {error}
-        </Text>
-      </div>
-    );
+    return renderError();
   }
 
   if (!aboutMe) {
-    return (
-      <div className="flex justify-center items-center min-h-[200px]">
-        <Text c="dimmed" size="lg">
-          No about me data available
-        </Text>
-      </div>
-    );
+    return renderEmpty();
   }
 
   return (
-    <div className="space-y-8">
-      <div className="text-center">
-        <Title order={2} mb="md">
+    <div className="py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        <Title order={2} className="text-center mb-2">
           {aboutMe.title}
         </Title>
-        <Text c="dimmed" size="lg" mb="xl">
+        <Text c="dimmed" className="text-center mb-12">
           {aboutMe.subtitle}
         </Text>
+        <div className="space-y-8">
+          <AboutMeInfo
+            description={aboutMe.description}
+            education={aboutMe.education}
+            certifications={aboutMe.certifications}
+            hobbies={aboutMe.hobbies}
+          />
+          <AboutMeSocial socialLinks={aboutMe.socialLinks} />
+        </div>
       </div>
-      <AboutMeInfo
-        description={aboutMe.description}
-        education={aboutMe.education}
-        graduationYear={aboutMe.graduationYear}
-        certifications={aboutMe.certifications}
-        hobbies={aboutMe.hobbies}
-      />
-      <AboutMeSocial socialLinks={aboutMe.socialLinks} />
     </div>
   );
 };

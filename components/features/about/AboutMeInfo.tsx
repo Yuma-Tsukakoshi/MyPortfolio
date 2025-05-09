@@ -8,7 +8,6 @@ interface AboutMeInfoProps {
     field: string;
     period: string;
   };
-  graduationYear: number;
   certifications: {
     name: string;
     issuer: string;
@@ -20,7 +19,6 @@ interface AboutMeInfoProps {
 export const AboutMeInfo = ({
   description,
   education,
-  graduationYear,
   certifications,
   hobbies,
 }: AboutMeInfoProps) => {
@@ -34,7 +32,6 @@ export const AboutMeInfo = ({
               <Text fw={700} mb="xs">
                 学歴
               </Text>
-              <Text>{graduationYear}年卒業</Text>
               <Text>
                 {education.school} {education.degree}
               </Text>

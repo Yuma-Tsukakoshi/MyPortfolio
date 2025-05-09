@@ -1,37 +1,36 @@
-import { Grid, Loader, Text, Title } from "@mantine/core";
+import { Grid, Text, Title } from "@mantine/core";
+import { ReactNode } from "react";
 
-import { WorkCard } from "@/components/works/WorkCard";
+import { WorkCard } from "@/components/features/works/WorkCard";
 import { WorksData } from "@/types/works";
 
 interface WorksProps {
   works: WorksData | null;
   error: string | null;
   isLoading: boolean;
+  renderLoading: () => ReactNode;
+  renderError: () => ReactNode;
+  renderEmpty: () => ReactNode;
 }
 
-export const Works = ({ works, error, isLoading }: WorksProps) => {
+export const Works = ({
+  works,
+  error,
+  isLoading,
+  renderLoading,
+  renderError,
+  renderEmpty,
+}: WorksProps) => {
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[400px]">
-        <Loader size="xl" />
-      </div>
-    );
+    return renderLoading();
   }
 
   if (error) {
-    return (
-      <div className="text-center text-red-500 min-h-[400px] flex items-center justify-center">
-        <Text>{error}</Text>
-      </div>
-    );
+    return renderError();
   }
 
   if (!works) {
-    return (
-      <div className="text-center text-gray-500 min-h-[400px] flex items-center justify-center">
-        <Text>No works data available</Text>
-      </div>
-    );
+    return renderEmpty();
   }
 
   return (

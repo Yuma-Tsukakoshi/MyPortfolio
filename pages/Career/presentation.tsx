@@ -1,60 +1,56 @@
-import { Loader, Text, Title } from "@mantine/core";
+import { Text, Title } from "@mantine/core";
+import { ReactNode } from "react";
 
+import { CareerInfo } from "@/components/features/career/CareerInfo";
+import { CareerTimeline } from "@/components/features/career/CareerTimeline";
 import { CareerData } from "@/types/career";
-
-import { CareerInfo } from "./CareerInfo";
-import { CareerTimeline } from "./CareerTimeline";
 
 interface CareerProps {
   career: CareerData | null;
   error: string | null;
   isLoading: boolean;
+  renderLoading: () => ReactNode;
+  renderError: () => ReactNode;
+  renderEmpty: () => ReactNode;
 }
 
-export const Career = ({ career, error, isLoading }: CareerProps) => {
+export const Career = ({
+  career,
+  error,
+  isLoading,
+  renderLoading,
+  renderError,
+  renderEmpty,
+}: CareerProps) => {
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[200px]">
-        <Loader size="lg" />
-      </div>
-    );
+    return renderLoading();
   }
 
   if (error) {
-    return (
-      <div className="flex justify-center items-center min-h-[200px]">
-        <Text c="red" size="lg">
-          Error: {error}
-        </Text>
-      </div>
-    );
+    return renderError();
   }
 
   if (!career) {
-    return (
-      <div className="flex justify-center items-center min-h-[200px]">
-        <Text c="dimmed" size="lg">
-          No career data available
-        </Text>
-      </div>
-    );
+    return renderEmpty();
   }
 
   return (
-    <div className="space-y-8">
-      <div className="text-center">
-        <Title order={2} mb="md">
+    <div className="py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        <Title order={2} className="text-center mb-2">
           {career.title}
         </Title>
-        <Text c="dimmed" size="lg" mb="xl">
+        <Text c="dimmed" className="text-center mb-12">
           {career.subtitle}
         </Text>
+        <div className="space-y-8">
+          <CareerInfo
+            education={career.education}
+            certifications={career.certifications}
+          />
+          <CareerTimeline events={career.events} />
+        </div>
       </div>
-      <CareerInfo
-        education={career.education}
-        certifications={career.certifications}
-      />
-      <CareerTimeline events={career.events} />
     </div>
   );
 };
