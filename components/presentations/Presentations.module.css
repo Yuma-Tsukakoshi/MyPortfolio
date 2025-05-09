@@ -1,0 +1,123 @@
+.container {
+  padding: 4rem 0;
+}
+
+.tableContainer {
+  margin-top: 2rem;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(14, 165, 233, 0.08);
+  border: 2px solid rgba(14, 165, 233, 0.1);
+  background: white;
+}
+
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.headerCell {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: white !important;
+  font-weight: 600;
+  padding: 1.25rem 1.5rem;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.headerCell:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tableRow {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.tableRow:hover {
+  background-color: rgba(14, 165, 233, 0.03);
+  transform: translateY(-1px);
+}
+
+.tableRow td {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(14, 165, 233, 0.08);
+  position: relative;
+}
+
+.tableRow td:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: rgba(14, 165, 233, 0.08);
+}
+
+.dateCell {
+  font-weight: 600;
+  color: #0ea5e9;
+  white-space: nowrap;
+  font-size: 1.1rem;
+}
+
+.titleCell {
+  min-width: 300px;
+}
+
+.titleCell span {
+  display: block;
+  line-height: 1.6;
+}
+
+.conferenceCell {
+  min-width: 200px;
+  color: #334155;
+  font-weight: 500;
+}
+
+.typeCell {
+  white-space: nowrap;
+}
+
+.typeBadge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: rgba(14, 165, 233, 0.08);
+  color: #0ea5e9;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  transition: all 0.3s ease;
+}
+
+.typeBadge:hover {
+  background: rgba(14, 165, 233, 0.12);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+}
+
+.locationCell {
+  white-space: nowrap;
+  color: #64748b;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.locationCell::before {
+  content: "📍";
+  font-size: 1rem;
+}
