@@ -68,7 +68,7 @@ const conferences: Conference[] = [
     id: 3,
     title: "INTERACTION 2025",
     date: "2025年3月2〜4日",
-    venue: "一橋大学・東京",
+    venue: "東京",
     paperUrl: "",
     awards: ["優秀論文賞"],
   },
