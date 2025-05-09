@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-import { AboutMe } from "@/components/about/AboutMe";
-import { Features } from "@/components/features/Features";
-import { CatchPhrase } from "@/components/hero/CatchPhrase";
-import { Profile } from "@/components/profile/Profile";
-import { Research } from "@/components/research/Research";
-import SkillSet from "@/components/skills/SkillSet";
-import { Works } from "@/components/works/Works";
+import { AboutMe } from "@/components/pages/about/AboutMe";
+import { Features } from "@/components/pages/features/Features";
+import { CatchPhrase } from "@/components/pages/hero/CatchPhrase";
+import { Profile } from "@/components/pages/profile/Profile";
+import { Research } from "@/components/pages/research/Research";
+import { SkillSet } from "@/components/pages/skills/SkillSet";
+import { Works } from "@/components/pages/works/Works";
 import { useScrollContext } from "@/context/ScrollContext";
 
 export default function Home() {

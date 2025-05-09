@@ -1,7 +1,18 @@
 export interface Skill {
-  label: string;
-  image: string;
-  is_acquire: boolean;
+  name: string;
+  level: number;
+  icon: string;
+}
+
+export interface SkillCategory {
+  name: string;
+  skills: Skill[];
+}
+
+export interface SkillsData {
+  title: string;
+  subtitle: string;
+  categories: SkillCategory[];
 }
 
 export interface SkillsResponse {

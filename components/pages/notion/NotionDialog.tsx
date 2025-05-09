@@ -7,7 +7,7 @@ import {
 } from "@notionhq/client/build/src/api-endpoints";
 import { useEffect, useState } from "react";
 
-import NotionRender from "@/components/notion/NotionRender";
+import NotionRender from "@/components/pages/notion/NotionRender";
 
 type NotionResponse = {
   page: PageObjectResponse;

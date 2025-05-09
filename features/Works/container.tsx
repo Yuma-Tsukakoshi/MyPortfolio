@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { WorksData } from "@/types/works";
 
-import { WorksPresentation } from "./presentation";
+import { Works } from "./presentation";
 
 export const WorksContainer = () => {
   const [works, setWorks] = useState<WorksData | null>(null);
@@ -30,17 +30,5 @@ export const WorksContainer = () => {
     fetchWorks();
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!works) {
-    return <div>No works data available</div>;
-  }
-
-  return <WorksPresentation works={works} />;
+  return <Works works={works} error={error} isLoading={isLoading} />;
 };

@@ -13,7 +13,7 @@ import { IconHeart } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-import NotionDialog from "@/components/notion/NotionDialog";
+import NotionDialog from "@/components/pages/notion/NotionDialog";
 
 export default function NotionCard({
   pageId,
