@@ -6,7 +6,6 @@ import { AboutMe } from "@/components/about/AboutMe";
 import { Features } from "@/components/features/Features";
 import { CatchPhrase } from "@/components/hero/CatchPhrase";
 import { Profile } from "@/components/profile/Profile";
-import { StrengthWeakness } from "@/components/profile/StrengthWeakness";
 import { Research } from "@/components/research/Research";
 import SkillSet from "@/components/skills/SkillSet";
 import { Works } from "@/components/works/Works";
@@ -52,9 +51,6 @@ export default function Home() {
           </section>
           <section id="features">
             <Features />
-          </section>
-          <section id="strength">
-            <StrengthWeakness />
           </section>
           <section id="works">
             <Works />
