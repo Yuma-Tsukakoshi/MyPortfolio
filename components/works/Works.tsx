@@ -5,6 +5,8 @@ import { Container, Paper, Text, Title } from "@mantine/core";
 import { IconBuilding, IconCode, IconSchool } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 
+import { SectionTitle } from "@/components/common/SectionTitle";
+
 const works = [
   {
     title: "フロントエンド・バックエンドエンジニア",
@@ -89,8 +91,7 @@ export default function Works() {
         p="xl"
         radius="md"
         style={{
-          background: "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)",
-          border: "1px solid #e8eaed",
+          background: "linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%)",
           height: "100%",
         }}
       >
@@ -126,20 +127,18 @@ export default function Works() {
   ));
 
   return (
-    <Container size="lg" className="py-16">
+    <Container
+      size="lg"
+      className="my-12 py-4"
+      style={{ maxWidth: 900, margin: "0 auto" }}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <Title
-          order={2}
-          className="text-3xl font-bold mb-8 text-center"
-          style={{ color: "#202124" }}
-        >
-          Works
-        </Title>
+        <SectionTitle>Works</SectionTitle>
 
         <Carousel
           withIndicators

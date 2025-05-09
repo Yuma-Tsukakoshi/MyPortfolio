@@ -3,9 +3,11 @@
 import { Avatar, Container, Group, Paper, Text, Title } from "@mantine/core";
 import { motion } from "framer-motion";
 
+import { SectionTitle } from "@/components/common/SectionTitle";
+
 export function UserInfo() {
   return (
-    <Container size="lg" className="py-16">
+    <Container size="lg" className="py-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -43,6 +45,7 @@ export function UserInfo() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-center sm:text-left"
             >
+              <SectionTitle>User Info</SectionTitle>
               <Title
                 order={2}
                 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent"

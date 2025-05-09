@@ -26,10 +26,15 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: linear-gradient(
+    var(--meta-gradient-angle, 120deg),
+    var(--meta-gradient-from, #e0f2fe),
+    var(--meta-gradient-to, #cffafe)
+  );
   font-family: "Noto Sans JP", "Segoe UI", "Helvetica Neue", Arial, "sans-serif";
   min-height: 100vh;
   background-attachment: fixed;
+  transition: background 0.5s;
 }
 
 @keyframes float {

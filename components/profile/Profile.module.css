@@ -28,16 +28,17 @@
   background: linear-gradient(to bottom, #2563eb, #38bdf8);
   top: 0;
   bottom: 0;
-  left: 50%;
-  margin-left: -3px;
+  left: 0;
+  margin-left: 0;
   border-radius: 3px;
 }
 
 .timelineItem {
   padding: 10px 40px;
   position: relative;
-  width: 50%;
+  width: 100%;
   box-sizing: border-box;
+  margin-left: 60px;
 }
 
 .timelineItem::after {
@@ -48,6 +49,7 @@
   background: #2563eb;
   border-radius: 50%;
   top: 50%;
+  left: -60px;
   transform: translateY(-50%);
   z-index: 1;
 }
@@ -57,15 +59,7 @@
 }
 
 .right {
-  left: 50%;
-}
-
-.left::after {
-  right: -10px;
-}
-
-.right::after {
-  left: -10px;
+  display: none;
 }
 
 .timelineContent {
@@ -75,10 +69,6 @@
 
 .card {
   transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
 }
 
 .year {
@@ -104,17 +94,8 @@
   margin: var(--mantine-spacing-md) 0;
 }
 
-.eventCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 32px rgba(56, 189, 248, 0.2);
-}
-
 .eventImage {
   transition: transform 0.3s ease;
-}
-
-.eventCard:hover .eventImage {
-  transform: scale(1.05);
 }
 
 .tags {
@@ -193,5 +174,132 @@
 
   .summaryCard {
     padding: var(--mantine-spacing-lg);
+  }
+}
+
+.diagonal-0 {
+  margin-top: 0;
+  margin-bottom: -120px;
+  z-index: 4;
+}
+.diagonal-1 {
+  margin-bottom: -120px;
+  z-index: 3;
+}
+.diagonal-2 {
+  margin-bottom: -120px;
+  z-index: 2;
+}
+.diagonal-3 {
+  margin-bottom: -120px;
+  z-index: 1;
+}
+
+/* 新タイムラインデザイン */
+.stylishTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  position: relative;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.stylishTimelineLine {
+  position: absolute;
+  left: 48px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #2563eb, #38bdf8);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.stylishTimelineItem {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.stylishYearBadge {
+  min-width: 96px;
+  height: 96px;
+  background: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(56, 189, 248, 0.1);
+  position: relative;
+  left: 0;
+  z-index: 2;
+}
+
+.stylishEventCard {
+  margin-left: 32px;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border-radius: 1.5rem;
+  padding: 2rem 2.5rem;
+  min-width: 0;
+  box-shadow: none;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.stylishEventCard:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: linear-gradient(135deg, #e0f2fe 0%, #f3f8fd 100%);
+}
+
+.stylishEventImage {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stylishEventTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a365d;
+  margin-bottom: 0.3rem;
+}
+
+.stylishEventDesc {
+  color: #4b5563;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .stylishTimeline {
+    gap: 32px;
+  }
+  .stylishTimelineLine {
+    left: 24px;
+    width: 3px;
+  }
+  .stylishTimelineItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .stylishYearBadge {
+    min-width: 64px;
+    height: 64px;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .stylishEventCard {
+    margin-left: 0;
+    padding: 1.2rem 1rem;
   }
 }

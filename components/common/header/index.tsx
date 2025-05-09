@@ -18,7 +18,6 @@ const links = [
   { link: "#skills", label: "Skills" },
   { link: "#works", label: "Works" },
   { link: "#research", label: "Research" },
-  { link: "#contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -66,10 +65,11 @@ export function Header() {
       }}
     >
       <Container size="lg">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex items-center h-16">
           <Text
             size="xl"
             fw={700}
+            className="mr-auto"
             style={{
               color: "#1a73e8",
             }}
@@ -77,7 +77,12 @@ export function Header() {
             Portfolio
           </Text>
 
-          <Group gap={5} visibleFrom="sm">
+          <Group
+            gap={5}
+            visibleFrom="sm"
+            className="ml-auto"
+            style={{ justifyContent: "flex-end" }}
+          >
             {links.map((link) => (
               <Text
                 key={link.label}

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { AboutMe } from "@/components/about/AboutMe";
 import { CatchPhrase } from "@/components/hero/CatchPhrase";
 import { Profile } from "@/components/profile/Profile";
+import { StrengthWeakness } from "@/components/profile/StrengthWeakness";
 import { Research } from "@/components/research/Research";
 import SkillSet from "@/components/skills/SkillSet";
 import Works from "@/components/works/Works";
@@ -41,12 +42,15 @@ export default function Home() {
     <>
       <CatchPhrase onAnimationComplete={() => setShowMainContent(true)} />
       {showMainContent && (
-        <main>
+        <main className="space-y-40 bg-gradient-to-br from-white via-blue-50 to-blue-100">
           <section id="about">
             <AboutMe />
           </section>
-          <section id="profile">
+          <section id="profile" className="mb-40">
             <Profile />
+          </section>
+          <section id="strength">
+            <StrengthWeakness />
           </section>
           <section id="works">
             <Works />

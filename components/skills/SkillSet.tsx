@@ -1,9 +1,11 @@
 "use client";
 
-import { Card, Container, Grid, Title } from "@mantine/core";
+import { Card, Container, Grid } from "@mantine/core";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
+
+import { SectionTitle } from "@/components/common/SectionTitle";
 
 interface Skill {
   label: string;
@@ -92,30 +94,28 @@ export default function SkillSet() {
   const iconClass = `rounded-xl bg-gradient-to-br from-blue-600 via-blue-400 to-cyan-400 flex items-center justify-center mx-auto shadow-md`;
 
   return (
-    <Container size="lg" className="py-16">
+    <Container
+      size="lg"
+      className="my-12 py-4"
+      style={{ maxWidth: 900, margin: "0 auto" }}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
+        className="relative"
       >
-        <Title
-          order={2}
-          className="text-5xl font-extrabold mb-8 text-center bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400 bg-clip-text text-transparent tracking-tight drop-shadow-lg"
-          style={{ letterSpacing: "0.02em" }}
-        >
-          Skill Set
-        </Title>
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 rounded-3xl -z-10" />
+        <SectionTitle>Skills</SectionTitle>
         <Card
-          shadow="xl"
           radius="xl"
           p="xl"
           style={{
-            background: "#fff",
-            border: "4px solid",
-            borderImage: "linear-gradient(90deg, #2563eb 0%, #38bdf8 100%) 1",
-            boxShadow: "0 8px 32px 0 rgba(31, 72, 180, 0.15)",
+            background: "linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%)",
+            backdropFilter: "blur(10px)",
           }}
+          className="transition-transform duration-300 hover:scale-105 hover:bg-gray-100 rounded-2xl"
         >
           {/* 1段目 */}
           <Grid gutter={0} justify="center" align="center" className="mb-3">
