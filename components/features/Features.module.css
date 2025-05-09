@@ -11,17 +11,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  margin: 3rem 0;
+  gap: 4px;
+  margin: 4rem 0;
   transform: rotate(180deg);
 }
 
 .triangle {
   width: 0;
   height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid #0ea5e9;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 25px solid #0ea5e9;
 }
 
 .triangle:nth-child(2) {
@@ -41,25 +41,45 @@
 }
 
 .featureCard {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(14, 165, 233, 0.1);
-  border-radius: 16px;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(14, 165, 233, 0.15);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.1);
 }
 
-.featureCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 32px rgba(14, 165, 233, 0.15);
+.featureCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #0ea5e9, #7dd3fc, #0ea5e9);
+  background-size: 200% 100%;
+  animation: gradientMove 3s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .cardTitle {
   color: #0ea5e9;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   position: relative;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .cardTitle::after {
@@ -68,7 +88,64 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
-  height: 2px;
-  background: linear-gradient(to right, #0ea5e9, #7dd3fc);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #0ea5e9, #7dd3fc);
+  border-radius: 2px;
+}
+
+.cardContent {
+  padding: 1.5rem 2rem;
+}
+
+.strengthItem,
+.weaknessItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: rgba(14, 165, 233, 0.03);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.05);
+}
+
+.otherTraitsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.otherTraitsButton {
+  width: 100%;
+  max-width: 300px;
+  height: 48px;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: white !important;
+  border: none;
+}
+
+.otherTraitsButton:hover {
+  color: white !important;
+}
+
+.otherTraitsContent {
+  width: 100%;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
