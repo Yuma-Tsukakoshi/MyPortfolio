@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Container, Loader, Modal } from "@mantine/core";
+import { Badge, Button, Container, Loader, Modal } from "@mantine/core";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
@@ -15,6 +15,7 @@ interface ProfileEvent {
   description: string;
   image?: string;
   notionPageId?: string;
+  tags: string[];
 }
 
 export function Profile() {
@@ -25,6 +26,7 @@ export function Profile() {
       description: "情報理工学系研究科 コンピュータ科学専攻",
       image: "https://placehold.jp/400x180.png?text=大学+入学",
       notionPageId: "NOTION_PAGE_ID_1",
+      tags: ["大学", "入学"],
     },
     {
       year: "2022",
@@ -32,6 +34,7 @@ export function Profile() {
       description: "情報理工学系研究科 コンピュータ科学専攻",
       image: "https://placehold.jp/400x180.png?text=研究室配属",
       notionPageId: "NOTION_PAGE_ID_2",
+      tags: ["研究室", "配属"],
     },
     {
       year: "2023",
@@ -39,6 +42,7 @@ export function Profile() {
       description: "情報理工学系研究科 コンピュータ科学専攻",
       image: "https://placehold.jp/400x180.png?text=大学+卒業",
       notionPageId: "NOTION_PAGE_ID_3",
+      tags: ["大学", "卒業"],
     },
     {
       year: "2024",
@@ -46,6 +50,7 @@ export function Profile() {
       description: "情報理工学系研究科 コンピュータ科学専攻",
       image: "https://placehold.jp/400x180.png?text=大学院修士課程+入学",
       notionPageId: "NOTION_PAGE_ID_4",
+      tags: ["大学院", "修士課程", "入学"],
     },
   ];
 
@@ -77,7 +82,7 @@ export function Profile() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <SectionTitle>Profile</SectionTitle>
+        <SectionTitle title="Career" subtitle="キャリア" />
         <div className={styles.stylishTimeline}>
           <div className={styles.stylishTimelineLine} />
           {events.map((event, index) => (
@@ -98,17 +103,22 @@ export function Profile() {
                 {event.image && (
                   <Image
                     src={event.image}
-                    alt={event.title}
                     width={400}
-                    height={160}
+                    height={200}
+                    alt={event.title}
                     className={styles.stylishEventImage}
-                    style={{ objectFit: "cover" }}
-                    unoptimized
                   />
                 )}
-                <div className={styles.stylishEventTitle}>{event.title}</div>
-                <div className={styles.stylishEventDesc}>
-                  {event.description}
+                <div className={styles.stylishEventContent}>
+                  <h3 className={styles.stylishEventTitle}>{event.title}</h3>
+                  <p className={styles.stylishEventDesc}>{event.description}</p>
+                  <div className={styles.tags}>
+                    {event.tags.map((tag) => (
+                      <Badge key={tag} size="sm" variant="light">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
                 <Button
                   mt="md"

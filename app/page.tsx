@@ -8,7 +8,7 @@ import { Profile } from "@/components/profile/Profile";
 import { StrengthWeakness } from "@/components/profile/StrengthWeakness";
 import { Research } from "@/components/research/Research";
 import SkillSet from "@/components/skills/SkillSet";
-import Works from "@/components/works/Works";
+import { Works } from "@/components/works/Works";
 import { useScrollContext } from "@/context/ScrollContext";
 
 export default function Home() {
@@ -46,7 +46,7 @@ export default function Home() {
           <section id="about">
             <AboutMe />
           </section>
-          <section id="profile" className="mb-40">
+          <section id="profile">
             <Profile />
           </section>
           <section id="strength">

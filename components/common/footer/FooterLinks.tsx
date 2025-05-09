@@ -24,7 +24,7 @@ export function FooterLinks() {
   };
 
   return (
-    <footer className="w-full py-20 bg-gradient-to-b from-transparent via-blue-50 to-blue-100">
+    <footer className="w-full my-8 py-20 bg-gradient-to-b from-transparent via-blue-50 to-blue-100">
       <Container size="lg">
         <Stack gap="xl" align="center">
           <Group gap="xl" className="mt-4">
