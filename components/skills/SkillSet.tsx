@@ -86,13 +86,13 @@ export default function SkillSet() {
   );
 
   // アイコンサイズ
-  const topIconSize = 80;
-  const middleIconSize = 64;
-  const otherIconSize = 32;
-  const iconClass = `rounded-xl bg-[#e3f0fb] flex items-center justify-center mx-auto`;
+  const topIconSize = 88;
+  const middleIconSize = 68;
+  const otherIconSize = 36;
+  const iconClass = `rounded-xl bg-gradient-to-br from-blue-600 via-blue-400 to-cyan-400 flex items-center justify-center mx-auto shadow-md`;
 
   return (
-    <Container size="lg" className="py-12">
+    <Container size="lg" className="py-16">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -101,21 +101,24 @@ export default function SkillSet() {
       >
         <Title
           order={2}
-          className="text-4xl font-bold mb-6 text-center bg-gradient-to-r from-blue-800 to-cyan-500 bg-clip-text text-transparent"
+          className="text-5xl font-extrabold mb-8 text-center bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-400 bg-clip-text text-transparent tracking-tight drop-shadow-lg"
+          style={{ letterSpacing: "0.02em" }}
         >
-          スキルセット
+          Skill Set
         </Title>
         <Card
           shadow="xl"
           radius="xl"
-          p="lg"
+          p="xl"
           style={{
-            background: "linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%)",
-            border: "none",
+            background: "#fff",
+            border: "4px solid",
+            borderImage: "linear-gradient(90deg, #2563eb 0%, #38bdf8 100%) 1",
+            boxShadow: "0 8px 32px 0 rgba(31, 72, 180, 0.15)",
           }}
         >
           {/* 1段目 */}
-          <Grid gutter={0} justify="center" align="center" className="mb-2">
+          <Grid gutter={0} justify="center" align="center" className="mb-3">
             {topSkills.map((skill) => (
               <Grid.Col key={skill.label} span={{ base: 3, sm: 2, md: 1 }}>
                 <div
@@ -125,8 +128,8 @@ export default function SkillSet() {
                   <Image
                     src={skill.image}
                     alt={skill.label}
-                    width={topIconSize - 20}
-                    height={topIconSize - 20}
+                    width={topIconSize - 18}
+                    height={topIconSize - 18}
                     className="object-contain"
                     unoptimized
                   />
@@ -135,7 +138,7 @@ export default function SkillSet() {
             ))}
           </Grid>
           {/* 2段目 */}
-          <Grid gutter={0} justify="center" align="center" className="mb-2">
+          <Grid gutter={0} justify="center" align="center" className="mb-3">
             {middleSkills.map((skill) => (
               <Grid.Col key={skill.label} span={{ base: 3, sm: 2, md: 1 }}>
                 <div
