@@ -1,14 +1,7 @@
 "use client";
 
-import {
-  Badge,
-  Carousel,
-  Container,
-  Paper,
-  Stack,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Carousel } from "@mantine/carousel";
+import { Badge, Container, Paper, Stack, Text, Title } from "@mantine/core";
 import { motion } from "framer-motion";
 import Image from "next/image";
 

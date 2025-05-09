@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { AboutMe } from "@/components/about/AboutMe";
+import { Features } from "@/components/features/Features";
 import { CatchPhrase } from "@/components/hero/CatchPhrase";
 import { Profile } from "@/components/profile/Profile";
 import { StrengthWeakness } from "@/components/profile/StrengthWeakness";
@@ -48,6 +49,9 @@ export default function Home() {
           </section>
           <section id="career">
             <Profile />
+          </section>
+          <section id="features">
+            <Features />
           </section>
           <section id="strength">
             <StrengthWeakness />
