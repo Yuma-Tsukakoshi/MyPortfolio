@@ -10,8 +10,8 @@ export async function GET(): Promise<NextResponse<ApiResponse<CareerData>>> {
     subtitle: "経歴",
     events: [
       {
-        title: "フロントエンドエンジニア",
-        company: "株式会社テック",
+        title: "シニアフロントエンドエンジニア",
+        company: "テック株式会社",
         period: "2022年4月 - 現在",
         description:
           "React、TypeScriptを使用したWebアプリケーションの開発。パフォーマンス最適化とUI/UX改善に注力。",
@@ -21,45 +21,40 @@ export async function GET(): Promise<NextResponse<ApiResponse<CareerData>>> {
         },
       },
       {
-        title: "Webデベロッパー",
-        company: "株式会社ウェブ",
+        title: "フロントエンドエンジニア",
+        company: "スタートアップ株式会社",
         period: "2020年4月 - 2022年3月",
         description:
-          "HTML、CSS、JavaScriptを使用したWebサイトの開発。レスポンシブデザインとアクセシビリティの実装。",
+          "Vue.jsを使用したWebアプリケーションの開発。新機能の実装とコードレビューを担当。",
         image: {
-          src: "/images/career/web.jpg",
-          alt: "ウェブ社での業務風景",
+          src: "/images/career/startup.jpg",
+          alt: "スタートアップ社での業務風景",
         },
       },
     ],
     education: {
       school: "〇〇大学",
-      degree: "情報工学部 情報工学科",
-      graduationYear: "2020年",
+      degree: "学士",
+      field: "情報工学部 情報工学科",
+      period: "2016年4月 - 2020年3月",
     },
     certifications: [
       {
         name: "AWS認定ソリューションアーキテクト",
-        image: {
-          src: "/images/career/aws.jpg",
-          alt: "AWS認定バッジ",
-        },
-        year: "2023",
+        issuer: "Amazon Web Services",
+        date: "2023年5月",
       },
       {
-        name: "Google Cloud Professional Developer",
-        image: {
-          src: "/images/career/gcp.jpg",
-          alt: "GCP認定バッジ",
-        },
-        year: "2022",
+        name: "情報処理安全確保支援士",
+        issuer: "IPA",
+        date: "2022年4月",
       },
     ],
   };
 
   return NextResponse.json({
-    data,
     status: 200,
     message: "Success",
+    data,
   });
 }

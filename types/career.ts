@@ -1,19 +1,31 @@
 export interface CareerEvent {
   title: string;
+  company: string;
+  period: string;
   description: string;
-  date: string;
-  image: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+}
+
+export interface Education {
+  school: string;
+  degree: string;
+  field: string;
+  period: string;
 }
 
 export interface Certification {
   name: string;
-  image: string;
-  alt: string;
+  issuer: string;
+  date: string;
 }
 
 export interface CareerData {
+  title: string;
+  subtitle: string;
   events: CareerEvent[];
-  education: string;
-  graduationYear: string;
+  education: Education;
   certifications: Certification[];
 }

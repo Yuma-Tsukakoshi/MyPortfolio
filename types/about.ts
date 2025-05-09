@@ -11,10 +11,37 @@ export interface Hobby {
   label: string;
 }
 
+export interface Skill {
+  category: string;
+  items: string[];
+}
+
 export interface AboutMeData {
-  education: string;
-  graduationYear: string;
-  certifications: string[];
-  hobbies: Hobby[];
-  socialLinks: SocialLink[];
+  title: string;
+  subtitle: string;
+  description: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+  education: {
+    school: string;
+    degree: string;
+    field: string;
+    period: string;
+  };
+  graduationYear: number;
+  certifications: {
+    name: string;
+    issuer: string;
+    date: string;
+  }[];
+  hobbies: string[];
+  skills: Skill[];
+  interests: string[];
+  socialLinks: {
+    github: string;
+    linkedin: string;
+    twitter: string;
+  };
 }

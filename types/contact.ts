@@ -1,4 +1,6 @@
-export interface ContactInfo {
+export interface ContactData {
+  title: string;
+  subtitle: string;
   email: string;
   phone: string;
   location: string;

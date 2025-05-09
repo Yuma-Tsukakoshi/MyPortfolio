@@ -8,41 +8,55 @@ export async function GET(): Promise<NextResponse<ApiResponse<WorksData>>> {
   const data: WorksData = {
     title: "Works",
     subtitle: "制作実績",
-    projects: [
+    items: [
       {
+        id: "1",
         title: "ECサイト",
         description:
-          "React、TypeScript、Next.jsを使用したモダンなECサイト。レスポンシブデザインとパフォーマンス最適化を実装。",
+          "React、Next.js、TypeScriptを使用したECサイト。商品一覧、詳細、カート、決済機能を実装。",
         image: {
           src: "/images/works/ec-site.jpg",
           alt: "ECサイトのスクリーンショット",
         },
-        technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-        links: {
-          demo: "https://example.com/demo",
-          github: "https://github.com/username/ec-site",
-        },
+        technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+        links: [
+          {
+            name: "GitHub",
+            url: "https://github.com/username/ec-site",
+          },
+          {
+            name: "Live Demo",
+            url: "https://ec-site.example.com",
+          },
+        ],
       },
       {
-        title: "タスク管理アプリ",
+        id: "2",
+        title: "ポートフォリオサイト",
         description:
-          "React、Firebaseを使用したリアルタイムタスク管理アプリ。ドラッグ&ドロップ機能とリアルタイム同期を実装。",
+          "Next.js、TypeScript、Mantineを使用した個人ポートフォリオサイト。アトミックデザインとコンテナ/プレゼンテーションパターンを採用。",
         image: {
-          src: "/images/works/task-app.jpg",
-          alt: "タスク管理アプリのスクリーンショット",
+          src: "/images/works/portfolio.jpg",
+          alt: "ポートフォリオサイトのスクリーンショット",
         },
-        technologies: ["React", "Firebase", "Material-UI"],
-        links: {
-          demo: "https://example.com/demo",
-          github: "https://github.com/username/task-app",
-        },
+        technologies: ["Next.js", "TypeScript", "Mantine", "Tailwind CSS"],
+        links: [
+          {
+            name: "GitHub",
+            url: "https://github.com/username/portfolio",
+          },
+          {
+            name: "Live Demo",
+            url: "https://portfolio.example.com",
+          },
+        ],
       },
     ],
   };
 
   return NextResponse.json({
-    data,
     status: 200,
     message: "Success",
+    data,
   });
 }

@@ -14,6 +14,21 @@ export async function GET(): Promise<NextResponse<ApiResponse<AboutMeData>>> {
       src: "/images/about/profile.jpg",
       alt: "プロフィール画像",
     },
+    education: {
+      school: "〇〇大学",
+      degree: "学士",
+      field: "情報工学部",
+      period: "2018-2022",
+    },
+    graduationYear: 2022,
+    certifications: [
+      {
+        name: "AWS Certified Solutions Architect",
+        issuer: "Amazon Web Services",
+        date: "2023",
+      },
+    ],
+    hobbies: ["読書", "旅行", "写真撮影"],
     skills: [
       {
         category: "フロントエンド",
@@ -21,24 +36,20 @@ export async function GET(): Promise<NextResponse<ApiResponse<AboutMeData>>> {
       },
       {
         category: "バックエンド",
-        items: ["Node.js", "Express", "PostgreSQL", "MongoDB"],
-      },
-      {
-        category: "その他",
-        items: ["Git", "Docker", "AWS", "Figma"],
+        items: ["Node.js", "Express", "PostgreSQL"],
       },
     ],
-    interests: [
-      "UI/UXデザイン",
-      "パフォーマンス最適化",
-      "アクセシビリティ",
-      "モダンな開発手法",
-    ],
+    interests: ["UI/UXデザイン", "パフォーマンス最適化", "アクセシビリティ"],
+    socialLinks: {
+      github: "https://github.com/yourusername",
+      linkedin: "https://linkedin.com/in/yourusername",
+      twitter: "https://twitter.com/yourusername",
+    },
   };
 
   return NextResponse.json({
-    data,
     status: 200,
     message: "Success",
+    data,
   });
 }
