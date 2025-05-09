@@ -48,7 +48,7 @@ const RatingCircle = ({ value, index }: RatingCircleProps) => {
   const isFilled = index < Math.floor(value);
   const isPartial = index === Math.floor(value) && value % 1 !== 0;
   const baseSize =
-    index === 0 || index === 4 ? 36 : index === 1 || index === 3 ? 24 : 12;
+    index === 0 || index === 4 ? 64 : index === 1 || index === 3 ? 36 : 24;
 
   return (
     <div style={{ width: baseSize, height: baseSize, marginRight: "4px" }}>
@@ -56,7 +56,7 @@ const RatingCircle = ({ value, index }: RatingCircleProps) => {
         style={{
           width: "100%",
           height: "100%",
-          backgroundColor: isFilled ? "#0ea5e9" : "transparent",
+          backgroundColor: isFilled ? "#0ea5e9" : "#e5e5e5",
           borderColor: "#0ea5e9",
           borderRadius: "50%",
           opacity: isPartial ? (value % 1) * 0.8 + 0.2 : 1,
@@ -74,12 +74,12 @@ interface RatingDisplayProps {
 
 const RatingDisplay = ({ value, title, description }: RatingDisplayProps) => {
   return (
-    <div className="flex flex-col gap-2 p-4">
+    <div className="flex items-center flex-col gap-2 p-4">
       <div className="flex items-center justify-between">
         <Text fw={500} size="lg" style={{ color: "#0ea5e9" }}>
           {title}
         </Text>
-        <div className="flex items-center">
+        <div style={{ display: "flex", alignItems: "center" }}>
           {[0, 1, 2, 3, 4].map((index) => (
             <RatingCircle key={index} value={value} index={index} />
           ))}
@@ -105,7 +105,7 @@ export function Features() {
           title="Personality Features"
           subtitle="適性検査結果に基づく特性分析"
         />
-        <Grid gutter="xl">
+        <Grid gutter="xl" justify="center">
           {personalityTraits.map((trait) => (
             <Grid.Col key={trait.title} span={{ base: 12, md: 4 }}>
               <Paper
