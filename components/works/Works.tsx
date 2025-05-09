@@ -58,7 +58,7 @@ export function Works() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <SectionTitle title="Works" subtitle="技術ブログ" />
+        <SectionTitle title="Works" subtitle="開発経験" />
 
         <Grid gutter="xl">
           {blogPosts.map((post, index) => (

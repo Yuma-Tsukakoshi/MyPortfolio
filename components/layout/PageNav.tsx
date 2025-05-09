@@ -21,7 +21,9 @@ export function PageNav() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100;
-      const sections = document.querySelectorAll("section[id]");
+      const sections = document.querySelectorAll(
+        "section[id]",
+      ) as NodeListOf<HTMLElement>;
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
@@ -47,6 +49,21 @@ export function PageNav() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 100; // ヘッダーの高さ分を考慮
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className={styles.navContainer}>
       <Stack gap="md" align="center">
@@ -59,10 +76,7 @@ export function PageNav() {
             }`}
             onClick={(e) => {
               e.preventDefault();
-              const element = document.getElementById(section.id);
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
+              scrollToSection(section.id);
             }}
           >
             <Text size="sm" fw={500} className={styles.navLabel}>

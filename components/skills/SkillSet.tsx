@@ -120,7 +120,7 @@ export default function SkillSet() {
           {/* 1段目 */}
           <Grid gutter="xl" justify="center" align="center" className="mb-3">
             {topSkills.map((skill) => (
-              <Grid.Col key={skill.label} span={{ base: 3, sm: 2, md: 1 }}>
+              <Grid.Col key={skill.label} span={{ base: 3, sm: 2, md: 1.5 }}>
                 <div
                   className={iconClass}
                   style={{ width: topIconSize, height: topIconSize }}
@@ -140,7 +140,7 @@ export default function SkillSet() {
           {/* 2段目 */}
           <Grid gutter={0} justify="center" align="center" className="mb-3">
             {middleSkills.map((skill) => (
-              <Grid.Col key={skill.label} span={{ base: 3, sm: 2, md: 1 }}>
+              <Grid.Col key={skill.label} span={{ base: 3, sm: 2, md: 1.5 }}>
                 <div
                   className={iconClass}
                   style={{ width: middleIconSize, height: middleIconSize }}
@@ -160,7 +160,7 @@ export default function SkillSet() {
           {/* 3段目 */}
           <Grid gutter={1} justify="center" align="center">
             {otherSkills.map((skill) => (
-              <Grid.Col key={skill.label} span={{ base: 3, sm: 2, md: 1 }}>
+              <Grid.Col key={skill.label} span={{ base: 3, sm: 2, md: 0.75 }}>
                 <div
                   className={iconClass}
                   style={{ width: otherIconSize, height: otherIconSize }}

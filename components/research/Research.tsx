@@ -132,84 +132,6 @@ export function Research() {
   return (
     <Container size="xl" className={styles.container}>
       <SectionTitle title="Research" subtitle="研究活動" />
-
-      {/* 学会情報テーブル */}
-      <Card className={styles.tableCard}>
-        <Title order={3} className={styles.sectionTitle}>
-          学会発表
-        </Title>
-        <Table className={styles.table} withTableBorder withColumnBorders>
-          <Table.Thead>
-            <Table.Tr>
-              <Table.Th>学会名</Table.Th>
-              <Table.Th>日付</Table.Th>
-              <Table.Th>会場</Table.Th>
-              <Table.Th>資料</Table.Th>
-            </Table.Tr>
-          </Table.Thead>
-          <Table.Tbody>
-            {conferences.map((conference) => (
-              <Table.Tr key={conference.id}>
-                <Table.Td>{conference.title}</Table.Td>
-                <Table.Td>{conference.date}</Table.Td>
-                <Table.Td>{conference.venue}</Table.Td>
-                <Table.Td>
-                  <Group gap="xs">
-                    {conference.paperUrl && (
-                      <Button
-                        variant="light"
-                        size="xs"
-                        leftSection={<IconFileText size={14} />}
-                        component="a"
-                        href={conference.paperUrl}
-                        target="_blank"
-                      >
-                        論文
-                      </Button>
-                    )}
-                    {conference.videoUrl && (
-                      <Button
-                        variant="light"
-                        size="xs"
-                        leftSection={<IconVideo size={14} />}
-                        component="a"
-                        href={conference.videoUrl}
-                        target="_blank"
-                      >
-                        動画
-                      </Button>
-                    )}
-                    {conference.slideshareUrl && (
-                      <Button
-                        variant="light"
-                        size="xs"
-                        leftSection={<IconPresentation size={14} />}
-                        component="a"
-                        href={conference.slideshareUrl}
-                        target="_blank"
-                      >
-                        スライド
-                      </Button>
-                    )}
-                    {conference.awards &&
-                      conference.awards.map((award) => (
-                        <Badge
-                          key={award}
-                          variant="gradient"
-                          gradient={{ from: "yellow", to: "orange" }}
-                          leftSection={<IconAward size={14} />}
-                        >
-                          {award}
-                        </Badge>
-                      ))}
-                  </Group>
-                </Table.Td>
-              </Table.Tr>
-            ))}
-          </Table.Tbody>
-        </Table>
-      </Card>
-
       {/* プロジェクト概要 */}
       <Title order={3} className={styles.sectionTitle} mt="xl">
         研究プロジェクト
@@ -296,6 +218,83 @@ export function Research() {
       >
         {loading ? <Loader /> : <div>{notionContent}</div>}
       </Modal>
+
+      {/* 学会情報テーブル */}
+      <Card className={styles.tableCard}>
+        <Title order={3} className={styles.sectionTitle}>
+          学会発表
+        </Title>
+        <Table className={styles.table} withTableBorder withColumnBorders>
+          <Table.Thead>
+            <Table.Tr>
+              <Table.Th>学会名</Table.Th>
+              <Table.Th>日付</Table.Th>
+              <Table.Th>会場</Table.Th>
+              <Table.Th>資料</Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody>
+            {conferences.map((conference) => (
+              <Table.Tr key={conference.id}>
+                <Table.Td>{conference.title}</Table.Td>
+                <Table.Td>{conference.date}</Table.Td>
+                <Table.Td>{conference.venue}</Table.Td>
+                <Table.Td>
+                  <Group gap="xs">
+                    {conference.paperUrl && (
+                      <Button
+                        variant="light"
+                        size="xs"
+                        leftSection={<IconFileText size={14} />}
+                        component="a"
+                        href={conference.paperUrl}
+                        target="_blank"
+                      >
+                        論文
+                      </Button>
+                    )}
+                    {conference.videoUrl && (
+                      <Button
+                        variant="light"
+                        size="xs"
+                        leftSection={<IconVideo size={14} />}
+                        component="a"
+                        href={conference.videoUrl}
+                        target="_blank"
+                      >
+                        動画
+                      </Button>
+                    )}
+                    {conference.slideshareUrl && (
+                      <Button
+                        variant="light"
+                        size="xs"
+                        leftSection={<IconPresentation size={14} />}
+                        component="a"
+                        href={conference.slideshareUrl}
+                        target="_blank"
+                      >
+                        スライド
+                      </Button>
+                    )}
+                    {conference.awards &&
+                      conference.awards.map((award) => (
+                        <Badge
+                          key={award}
+                          variant="gradient"
+                          gradient={{ from: "yellow", to: "orange" }}
+                          leftSection={<IconAward size={14} />}
+                        >
+                          {award}
+                        </Badge>
+                      ))}
+                  </Group>
+                </Table.Td>
+              </Table.Tr>
+            ))}
+          </Table.Tbody>
+        </Table>
+      </Card>
     </Container>
   );
 }

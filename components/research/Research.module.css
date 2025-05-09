@@ -26,6 +26,7 @@
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border-radius: 1rem;
   padding: 1.5rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   backdrop-filter: blur(10px);
   overflow: hidden;
