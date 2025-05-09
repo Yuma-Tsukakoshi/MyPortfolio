@@ -7,10 +7,16 @@ import {
   mantineHtmlProps,
   MantineProvider,
 } from "@mantine/core";
+import { Noto_Sans_JP } from "next/font/google";
+import React from "react";
 
-import { FooterLinks } from "@/components/common/footer/FooterLinks";
-import { Header } from "@/components/common/header";
+import { MetaBgEffect } from "@/components/common/MetaBgEffect";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { PageNav } from "@/components/layout/PageNav";
 import { ScrollProvider } from "@/context/ScrollContext";
+
+const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
 const theme = createTheme({
   primaryColor: "blue",
@@ -49,8 +55,8 @@ const theme = createTheme({
 });
 
 export const metadata = {
-  title: "My Portfolio",
-  description: "My Portfolio",
+  title: "Yuma-Tsukakoshi | Portfolio",
+  description: "My Portfolio Site",
 };
 
 export default function RootLayout({
@@ -63,12 +69,14 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body>
+      <body className={notoSansJP.className}>
+        <MetaBgEffect />
         <MantineProvider theme={theme} defaultColorScheme="light">
           <ScrollProvider>
             <Header />
-            {children}
-            <FooterLinks />
+            <PageNav />
+            <main>{children}</main>
+            <Footer />
           </ScrollProvider>
         </MantineProvider>
       </body>

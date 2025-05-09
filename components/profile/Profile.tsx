@@ -1,175 +1,149 @@
-import {
-  Badge,
-  Card,
-  Container,
-  Group,
-  Image,
-  Stack,
-  Text,
-  Timeline,
-  Title,
-} from "@mantine/core";
-import {
-  IconBriefcase,
-  IconMicroscope,
-  IconSchool,
-  IconTarget,
-  IconUsers,
-} from "@tabler/icons-react";
+"use client";
+
+import { Badge, Button, Container, Loader, Modal } from "@mantine/core";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import React from "react";
+
+import { SectionTitle } from "@/components/common/SectionTitle";
 
 import styles from "./Profile.module.css";
 
-interface TimelineEvent {
-  id: number;
-  icon: React.ReactNode;
+interface ProfileEvent {
+  year: string;
   title: string;
-  period: string;
   description: string;
-  tags?: string[];
   image?: string;
+  notionPageId?: string;
+  tags: string[];
 }
 
-const timelineEvents: TimelineEvent[] = [
-  {
-    id: 1,
-    icon: <IconSchool size={24} />,
-    title: "バスケットボール",
-    period: "小学生〜現在",
-    description:
-      "小学生から続けているバスケットボール。チームプレーを通じて、コミュニケーション能力とリーダーシップを培いました。",
-    tags: ["スポーツ", "チームワーク", "リーダーシップ"],
-    image: "/profile/basketball.jpg",
-  },
-  {
-    id: 2,
-    icon: <IconSchool size={24} />,
-    title: "中学校時代",
-    period: "2015-2018",
-    description:
-      "バスケットボール部と駅伝部を兼部。3年間続けた経験から、時間管理と自己管理の重要性を学びました。",
-    tags: ["部活動", "時間管理", "自己管理"],
-    image: "/profile/school.jpg",
-  },
-  {
-    id: 3,
-    icon: <IconUsers size={24} />,
-    title: "POSSE",
-    period: "2020-2022",
-    description:
-      "テック局の運営とハッカソン運営を担当。インターン試験の失敗を機に、個人開発に取り組み、技術力を向上させました。",
-    tags: ["コミュニティ", "イベント運営", "個人開発"],
-    image: "/profile/posse.jpg",
-  },
-  {
-    id: 4,
-    icon: <IconBriefcase size={24} />,
-    title: "インターンシップ",
-    period: "2022-2023",
-    description:
-      "JOBer、PlusZero、ハイクリでのインターン経験。実務を通じて、チーム開発の進め方と技術スタックを学びました。",
-    tags: ["実務経験", "チーム開発", "技術スタック"],
-    image: "/profile/intern.jpg",
-  },
-  {
-    id: 5,
-    icon: <IconMicroscope size={24} />,
-    title: "研究活動",
-    period: "2022-現在",
-    description:
-      "土の研究と先輩方との出会いを通じて、研究の楽しさと重要性を学びました。",
-    tags: ["研究", "学術", "イノベーション"],
-    image: "/profile/research.jpg",
-  },
-];
-
 export function Profile() {
-  return (
-    <Container size="lg" className={styles.container}>
-      <Title order={2} className={styles.title}>
-        Profile
-      </Title>
+  const events: ProfileEvent[] = [
+    {
+      year: "2021",
+      title: "大学 入学",
+      description: "情報理工学系研究科 コンピュータ科学専攻",
+      image: "https://placehold.jp/400x180.png?text=大学+入学",
+      notionPageId: "NOTION_PAGE_ID_1",
+      tags: ["大学", "入学"],
+    },
+    {
+      year: "2022",
+      title: "研究室配属",
+      description: "情報理工学系研究科 コンピュータ科学専攻",
+      image: "https://placehold.jp/400x180.png?text=研究室配属",
+      notionPageId: "NOTION_PAGE_ID_2",
+      tags: ["研究室", "配属"],
+    },
+    {
+      year: "2023",
+      title: "大学 卒業",
+      description: "情報理工学系研究科 コンピュータ科学専攻",
+      image: "https://placehold.jp/400x180.png?text=大学+卒業",
+      notionPageId: "NOTION_PAGE_ID_3",
+      tags: ["大学", "卒業"],
+    },
+    {
+      year: "2024",
+      title: "大学院修士課程 入学",
+      description: "情報理工学系研究科 コンピュータ科学専攻",
+      image: "https://placehold.jp/400x180.png?text=大学院修士課程+入学",
+      notionPageId: "NOTION_PAGE_ID_4",
+      tags: ["大学院", "修士課程", "入学"],
+    },
+  ];
 
-      {/* タイムライン */}
-      <Timeline
-        active={timelineEvents.length - 1}
-        lineWidth={2}
-        className={styles.timeline}
+  const [opened, setOpened] = React.useState(false);
+  const [notionContent, setNotionContent] = React.useState<string>("");
+  const [loading, setLoading] = React.useState(false);
+
+  const handleOpenModal = async (pageId: string) => {
+    setOpened(true);
+    setLoading(true);
+    // Notion APIからデータ取得（仮実装）
+    // 実際はfetch(`/api/notion?pageId=${pageId}`)などで取得
+    setTimeout(() => {
+      setNotionContent(`Notionページの内容（ID: ${pageId}）`);
+      setLoading(false);
+    }, 1000);
+  };
+
+  const handleCloseModal = () => {
+    setOpened(false);
+    setNotionContent("");
+  };
+
+  return (
+    <Container size="lg" className={styles.container + " py-20"}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
       >
-        {timelineEvents.map((event) => (
-          <Timeline.Item
-            key={event.id}
-            bullet={event.icon}
-            title={
-              <Group>
-                <Text fw={700}>{event.title}</Text>
-                <Badge variant="light" color="blue">
-                  {event.period}
-                </Badge>
-              </Group>
-            }
-          >
-            <Card className={styles.eventCard}>
-              {event.image && (
-                <Card.Section>
+        <SectionTitle title="Career" subtitle="キャリア" />
+        <div className={styles.stylishTimeline}>
+          <div className={styles.stylishTimelineLine} />
+          {events.map((event, index) => (
+            <motion.div
+              key={event.year}
+              className={styles.stylishTimelineItem}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.7,
+                delay: index * 0.1,
+                ease: "easeOut",
+              }}
+              viewport={{ once: true }}
+            >
+              <div className={styles.stylishYearBadge}>{event.year}</div>
+              <div className={styles.stylishEventCard}>
+                {event.image && (
                   <Image
                     src={event.image}
+                    width={400}
                     height={200}
                     alt={event.title}
-                    className={styles.eventImage}
+                    className={styles.stylishEventImage}
                   />
-                </Card.Section>
-              )}
-              <Stack mt="md">
-                <Text>{event.description}</Text>
-                {event.tags && (
-                  <Group className={styles.tags}>
+                )}
+                <div className={styles.stylishEventContent}>
+                  <h3 className={styles.stylishEventTitle}>{event.title}</h3>
+                  <p className={styles.stylishEventDesc}>{event.description}</p>
+                  <div className={styles.tags}>
                     {event.tags.map((tag) => (
                       <Badge key={tag} size="sm" variant="light">
                         {tag}
                       </Badge>
                     ))}
-                  </Group>
-                )}
-              </Stack>
-            </Card>
-          </Timeline.Item>
-        ))}
-      </Timeline>
-
-      {/* 強み・弱み・展望 */}
-      <Card className={styles.summaryCard}>
-        <Stack>
-          <div>
-            <Title order={3} className={styles.summaryTitle}>
-              <IconTarget size={24} className={styles.summaryIcon} />
-              強み
-            </Title>
-            <Text>• フロントエンドとバックエンドの両方の開発経験</Text>
-            <Text>• チーム開発でのコミュニケーション能力</Text>
-            <Text>• 研究と実務の両面からの問題解決アプローチ</Text>
-          </div>
-
-          <div>
-            <Title order={3} className={styles.summaryTitle}>
-              <IconTarget size={24} className={styles.summaryIcon} />
-              弱み
-            </Title>
-            <Text>• 大規模システムの設計経験が不足</Text>
-            <Text>• クラウドインフラの知識をさらに深める必要</Text>
-            <Text>• 英語でのコミュニケーション能力の向上</Text>
-          </div>
-
-          <div>
-            <Title order={3} className={styles.summaryTitle}>
-              <IconTarget size={24} className={styles.summaryIcon} />
-              今後の展望
-            </Title>
-            <Text>• フルスタックエンジニアとしての成長</Text>
-            <Text>• 研究と実務を融合させた新しい価値の創造</Text>
-            <Text>• 技術を通じた社会課題の解決</Text>
-          </div>
-        </Stack>
-      </Card>
+                  </div>
+                </div>
+                <Button
+                  mt="md"
+                  variant="outline"
+                  color="blue"
+                  radius="xl"
+                  onClick={() => handleOpenModal(event.notionPageId || "")}
+                  style={{ marginTop: 16, alignSelf: "flex-end" }}
+                >
+                  詳細を見る
+                </Button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        <Modal
+          opened={opened}
+          onClose={handleCloseModal}
+          title="詳細"
+          size="lg"
+          centered
+        >
+          {loading ? <Loader /> : <div>{notionContent}</div>}
+        </Modal>
+      </motion.div>
     </Container>
   );
 }

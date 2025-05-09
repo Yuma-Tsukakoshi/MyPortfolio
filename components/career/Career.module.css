@@ -10,56 +10,54 @@
   align-items: flex-start;
 }
 
-.imageContainer {
-  flex: 0 0 300px;
+.carouselContainer {
+  flex: 1;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.avatar {
-  width: 100%;
-  height: auto;
+.carousel {
   border-radius: 16px;
+  overflow: hidden;
   box-shadow: 0 8px 32px rgba(30, 64, 175, 0.15);
-  transition: transform 0.3s ease;
-  aspect-ratio: 1;
+}
+
+.carouselSlide {
+  position: relative;
+  height: 100%;
+}
+
+.carouselImage {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.avatar:hover {
-  transform: scale(1.02);
+.carouselContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: white;
 }
 
-.socialLinks {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1.5rem;
-  width: 100%;
+.carouselTitle {
+  margin-bottom: 0.5rem;
 }
 
-.socialLink {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(30, 64, 175, 0.1);
-  color: #1e40af;
-  text-decoration: none;
-  transition: all 0.3s ease;
+.carouselDescription {
+  margin-bottom: 1rem;
+  opacity: 0.9;
 }
 
-.socialLink:hover {
-  background: rgba(30, 64, 175, 0.2);
-  transform: translateY(-3px);
+.carouselDate {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
 }
 
 .infoContainer {
-  flex: 1;
+  flex: 0 0 300px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -106,35 +104,6 @@
   line-height: 1.6;
 }
 
-.hobbiesContainer {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 0.75rem;
-}
-
-.hobbyItem {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: 12px;
-  background: rgba(30, 64, 175, 0.1);
-  color: #1e40af;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.hobbyItem:hover {
-  background: rgba(30, 64, 175, 0.2);
-  transform: translateY(-2px);
-}
-
-.hobbyIcon {
-  font-size: 1.4rem;
-}
-
 .certifications {
   display: flex;
   gap: 1.5rem;
@@ -170,15 +139,13 @@
     gap: 2rem;
   }
 
-  .imageContainer {
-    flex: 0 0 auto;
+  .carouselContainer {
     width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
   }
 
-  .hobbiesContainer {
-    justify-content: flex-start;
+  .infoContainer {
+    flex: 0 0 auto;
+    width: 100%;
   }
 
   .certifications {
