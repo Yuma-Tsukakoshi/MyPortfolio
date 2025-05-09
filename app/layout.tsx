@@ -55,7 +55,7 @@ const theme = createTheme({
 });
 
 export const metadata = {
-  title: "My Portfolio",
+  title: "Yuma-Tsukakoshi | Portfolio",
   description: "My Portfolio Site",
 };
 

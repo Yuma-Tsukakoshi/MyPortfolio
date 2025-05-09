@@ -109,12 +109,12 @@ export default function SkillSet() {
           {renderSkillCategory("frontend", skills.frontend)}
           {renderSkillCategory("backend", skills.backend)}
 
-          {/* データベース、インフラストラクチャ、ツールを横並びに */}
-          <div className="grid grid-cols-3 gap-4">
-            {renderSkillCategory("database", skills.database)}
-            {renderSkillCategory("infrastructure", skills.infrastructure)}
-            {renderSkillCategory("tools", skills.tools)}
-          </div>
+          {/* データベースとインフラストラクチャ */}
+          {renderSkillCategory("database", skills.database)}
+          {renderSkillCategory("infrastructure", skills.infrastructure)}
+
+          {/* ツール */}
+          {renderSkillCategory("tools", skills.tools)}
         </Card>
       </motion.div>
     </Container>
