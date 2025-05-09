@@ -49,7 +49,7 @@ export function StrengthWeakness() {
                 className={`text-white`}
                 style={{
                   background:
-                    "linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%)",
+                    "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
                   color: "#1e293b",
                   backdropFilter: "blur(10px)",
                 }}

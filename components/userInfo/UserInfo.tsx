@@ -18,8 +18,7 @@ export function UserInfo() {
           p="xl"
           radius="xl"
           style={{
-            background:
-              "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,249,255,0.9) 100%)",
+            background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
             border: "1px solid rgba(232,234,237,0.5)",
             backdropFilter: "blur(10px)",
           }}

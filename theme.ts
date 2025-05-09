@@ -13,7 +13,7 @@ export const theme: MantineThemeOverride = {
       styles: (theme: MantineTheme) => ({
         root: {
           backgroundColor: theme.white,
-          backgroundImage: "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)",
+          backgroundImage: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
         },
       }),
     },
