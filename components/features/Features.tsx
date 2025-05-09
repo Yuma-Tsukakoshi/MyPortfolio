@@ -1,368 +1,97 @@
 "use client";
 
 import { Container, Grid, Paper, Stack, Text, Title } from "@mantine/core";
-import {
-  CategoryScale,
-  Chart as ChartJS,
-  Legend,
-  LinearScale,
-  LineElement,
-  PointElement,
-  Title as ChartTitle,
-  Tooltip,
-} from "chart.js";
 import { motion } from "framer-motion";
-import { Scatter } from "react-chartjs-2";
 
 import { SectionTitle } from "@/components/common/SectionTitle";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  ChartTitle,
-  Tooltip,
-  Legend,
-);
-
 const personalityTraits = [
   {
-    title: "リーダーシップ vs サポート",
-    xLabel: "サポート志向",
-    yLabel: "リーダーシップ",
-    data: {
-      datasets: [
-        {
-          label: "あなたの特性",
-          data: [{ x: 30, y: 90 }],
-          backgroundColor: "rgba(34, 211, 238, 1)",
-          pointRadius: 8,
-          borderColor: "rgba(30, 64, 175, 1)",
-          borderWidth: 2,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        x: {
-          min: 0,
-          max: 100,
-          title: {
-            display: true,
-            text: "サポート志向",
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-          grid: {
-            color: "rgba(30, 64, 175, 0.1)",
-          },
-          ticks: {
-            color: "#1e40af",
-          },
-        },
-        y: {
-          min: 0,
-          max: 100,
-          title: {
-            display: true,
-            text: "リーダーシップ",
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-          grid: {
-            color: "rgba(30, 64, 175, 0.1)",
-          },
-          ticks: {
-            color: "#1e40af",
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          labels: {
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-        },
-      },
-    },
+    title: "リーダーシップ",
+    value: 4.5,
+    description: "チームを率いて目標達成に向けて導く力",
   },
   {
-    title: "計画的 vs 即興的",
-    xLabel: "即興的",
-    yLabel: "計画的",
-    data: {
-      datasets: [
-        {
-          label: "あなたの特性",
-          data: [{ x: 25, y: 85 }],
-          backgroundColor: "rgba(34, 211, 238, 1)",
-          pointRadius: 8,
-          borderColor: "rgba(30, 64, 175, 1)",
-          borderWidth: 2,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        x: {
-          min: 0,
-          max: 100,
-          title: {
-            display: true,
-            text: "即興的",
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-          grid: {
-            color: "rgba(30, 64, 175, 0.1)",
-          },
-          ticks: {
-            color: "#1e40af",
-          },
-        },
-        y: {
-          min: 0,
-          max: 100,
-          title: {
-            display: true,
-            text: "計画的",
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-          grid: {
-            color: "rgba(30, 64, 175, 0.1)",
-          },
-          ticks: {
-            color: "#1e40af",
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          labels: {
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-        },
-      },
-    },
+    title: "計画性",
+    value: 4.2,
+    description: "物事を計画的に進め、リスクを考慮する力",
   },
   {
-    title: "論理的 vs 感覚的",
-    xLabel: "感覚的",
-    yLabel: "論理的",
-    data: {
-      datasets: [
-        {
-          label: "あなたの特性",
-          data: [{ x: 20, y: 88 }],
-          backgroundColor: "rgba(34, 211, 238, 1)",
-          pointRadius: 8,
-          borderColor: "rgba(30, 64, 175, 1)",
-          borderWidth: 2,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        x: {
-          min: 0,
-          max: 100,
-          title: {
-            display: true,
-            text: "感覚的",
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-          grid: {
-            color: "rgba(30, 64, 175, 0.1)",
-          },
-          ticks: {
-            color: "#1e40af",
-          },
-        },
-        y: {
-          min: 0,
-          max: 100,
-          title: {
-            display: true,
-            text: "論理的",
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-          grid: {
-            color: "rgba(30, 64, 175, 0.1)",
-          },
-          ticks: {
-            color: "#1e40af",
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          labels: {
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-        },
-      },
-    },
+    title: "論理的思考",
+    value: 4.4,
+    description: "物事の本質を深く理解し、論理的に解決する力",
   },
   {
-    title: "本質重視 vs 表面解決",
-    xLabel: "表面解決",
-    yLabel: "本質重視",
-    data: {
-      datasets: [
-        {
-          label: "あなたの特性",
-          data: [{ x: 15, y: 92 }],
-          backgroundColor: "rgba(34, 211, 238, 1)",
-          pointRadius: 8,
-          borderColor: "rgba(30, 64, 175, 1)",
-          borderWidth: 2,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        x: {
-          min: 0,
-          max: 100,
-          title: {
-            display: true,
-            text: "表面解決",
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-          grid: {
-            color: "rgba(30, 64, 175, 0.1)",
-          },
-          ticks: {
-            color: "#1e40af",
-          },
-        },
-        y: {
-          min: 0,
-          max: 100,
-          title: {
-            display: true,
-            text: "本質重視",
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-          grid: {
-            color: "rgba(30, 64, 175, 0.1)",
-          },
-          ticks: {
-            color: "#1e40af",
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          labels: {
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-        },
-      },
-    },
+    title: "本質重視",
+    value: 4.6,
+    description: "問題の本質を見極め、根本的な解決を図る力",
   },
   {
-    title: "チームプレイ vs 個人完結",
-    xLabel: "個人完結",
-    yLabel: "チームプレイ",
-    data: {
-      datasets: [
-        {
-          label: "あなたの特性",
-          data: [{ x: 22, y: 87 }],
-          backgroundColor: "rgba(34, 211, 238, 1)",
-          pointRadius: 8,
-          borderColor: "rgba(30, 64, 175, 1)",
-          borderWidth: 2,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        x: {
-          min: 0,
-          max: 100,
-          title: {
-            display: true,
-            text: "個人完結",
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-          grid: {
-            color: "rgba(30, 64, 175, 0.1)",
-          },
-          ticks: {
-            color: "#1e40af",
-          },
-        },
-        y: {
-          min: 0,
-          max: 100,
-          title: {
-            display: true,
-            text: "チームプレイ",
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-          grid: {
-            color: "rgba(30, 64, 175, 0.1)",
-          },
-          ticks: {
-            color: "#1e40af",
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          labels: {
-            color: "#1e40af",
-            font: {
-              weight: "bold" as const,
-            },
-          },
-        },
-      },
-    },
+    title: "チームプレイ",
+    value: 4.3,
+    description: "チームの一員として協調的に活動する力",
   },
 ];
+
+const RatingCircle = ({ value, index }: { value: number; index: number }) => {
+  const isFilled = index < Math.floor(value);
+  const isPartial = index === Math.floor(value) && value % 1 !== 0;
+  const size = 16 + index * 4;
+
+  return (
+    <div
+      className="relative flex items-center justify-center"
+      style={{
+        width: size,
+        height: size,
+      }}
+    >
+      <div
+        className="absolute inset-0 rounded-full border-2"
+        style={{
+          background: isFilled
+            ? "linear-gradient(135deg, #0ea5e9 0%, #22d3ee 100%)"
+            : isPartial
+              ? "linear-gradient(135deg, #0ea5e9 0%, #22d3ee 100%)"
+              : "transparent",
+          borderColor:
+            isFilled || isPartial
+              ? "rgba(14, 165, 233, 0.3)"
+              : "rgba(14, 165, 233, 0.1)",
+          opacity: isPartial ? (value % 1) * 0.8 + 0.2 : 1,
+        }}
+      />
+    </div>
+  );
+};
+
+const RatingDisplay = ({
+  value,
+  title,
+  description,
+}: {
+  value: number;
+  title: string;
+  description: string;
+}) => {
+  return (
+    <div className="flex items-center justify-between gap-4 p-4">
+      <div className="flex-1">
+        <Text fw={500} size="lg" style={{ color: "#1e40af" }}>
+          {title}
+        </Text>
+        <Text size="sm" c="dimmed">
+          {description}
+        </Text>
+      </div>
+      <div className="flex items-center gap-3">
+        {[0, 1, 2, 3, 4].map((index) => (
+          <RatingCircle key={index} value={value} index={index} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const strengths = [
   {
@@ -427,60 +156,76 @@ export function Features() {
           subtitle="適性検査結果に基づく特性分析"
         />
 
-        <Grid gutter="xl">
-          <Grid.Col span={{ base: 12 }}>
+        <div className="relative">
+          <div className="relative bg-blue-50 rounded-t-3xl pb-16">
             <Paper
               radius="xl"
               p="xl"
               style={{
-                background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+                background: "rgba(255, 255, 255, 0.9)",
               }}
             >
-              <Title order={3} className="mb-6 text-center">
-                特性マトリクス
-              </Title>
-              <Grid gutter="xl">
-                {personalityTraits.map((trait) => (
-                  <Grid.Col key={trait.title} span={{ base: 12, md: 6, lg: 4 }}>
-                    <Paper
-                      radius="lg"
-                      p="md"
-                      style={{
-                        background: "rgba(255, 255, 255, 0.9)",
-                        border: "1px solid rgba(30, 64, 175, 0.1)",
-                      }}
-                    >
-                      <Text
-                        fw={500}
-                        size="lg"
-                        className="mb-4 text-center"
+              <div className="max-w-4xl mx-auto">
+                <Grid gutter="xl">
+                  {personalityTraits.slice(0, 3).map((trait) => (
+                    <Grid.Col key={trait.title} span={{ base: 12, md: 4 }}>
+                      <Paper
+                        radius="lg"
                         style={{
-                          background:
-                            "linear-gradient(135deg, #1e40af 0%, #22d3ee 100%)",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
+                          background: "rgba(255, 255, 255, 0.9)",
+                          border: "1px solid rgba(14, 165, 233, 0.1)",
                         }}
                       >
-                        {trait.title}
-                      </Text>
-                      <div className="aspect-square">
-                        <Scatter data={trait.data} options={trait.options} />
-                      </div>
-                    </Paper>
-                  </Grid.Col>
-                ))}
-              </Grid>
+                        <RatingDisplay
+                          value={trait.value}
+                          title={trait.title}
+                          description={trait.description}
+                        />
+                      </Paper>
+                    </Grid.Col>
+                  ))}
+                  {personalityTraits.slice(3).map((trait) => (
+                    <Grid.Col key={trait.title} span={{ base: 12, md: 6 }}>
+                      <Paper
+                        radius="lg"
+                        style={{
+                          background: "rgba(255, 255, 255, 0.9)",
+                          border: "1px solid rgba(14, 165, 233, 0.1)",
+                        }}
+                      >
+                        <RatingDisplay
+                          value={trait.value}
+                          title={trait.title}
+                          description={trait.description}
+                        />
+                      </Paper>
+                    </Grid.Col>
+                  ))}
+                </Grid>
+              </div>
             </Paper>
-          </Grid.Col>
+          </div>
 
-          <Grid.Col span={{ base: 12, md: 6 }}>
-            <Stack gap="xl">
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+            <div
+              className="w-0 h-0 border-l-[30px] border-r-[30px] border-t-[30px] border-transparent border-t-blue-50"
+              style={{
+                filter: "drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))",
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="mt-8">
+          <Grid gutter="xl">
+            <Grid.Col span={{ base: 12, md: 4 }}>
               <Paper
                 radius="xl"
                 p="xl"
+                className="h-full"
                 style={{
-                  background:
-                    "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+                  background: "rgba(255, 255, 255, 0.9)",
+                  border: "1px solid rgba(30, 64, 175, 0.1)",
                 }}
               >
                 <Title
@@ -514,13 +259,16 @@ export function Features() {
                   ))}
                 </Stack>
               </Paper>
+            </Grid.Col>
 
+            <Grid.Col span={{ base: 12, md: 4 }}>
               <Paper
                 radius="xl"
                 p="xl"
+                className="h-full"
                 style={{
-                  background:
-                    "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+                  background: "rgba(255, 255, 255, 0.9)",
+                  border: "1px solid rgba(30, 64, 175, 0.1)",
                 }}
               >
                 <Title
@@ -554,13 +302,16 @@ export function Features() {
                   ))}
                 </Stack>
               </Paper>
+            </Grid.Col>
 
+            <Grid.Col span={{ base: 12, md: 4 }}>
               <Paper
                 radius="xl"
                 p="xl"
+                className="h-full"
                 style={{
-                  background:
-                    "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+                  background: "rgba(255, 255, 255, 0.9)",
+                  border: "1px solid rgba(30, 64, 175, 0.1)",
                 }}
               >
                 <Title
@@ -594,9 +345,9 @@ export function Features() {
                   ))}
                 </Stack>
               </Paper>
-            </Stack>
-          </Grid.Col>
-        </Grid>
+            </Grid.Col>
+          </Grid>
+        </div>
       </motion.div>
     </Container>
   );
