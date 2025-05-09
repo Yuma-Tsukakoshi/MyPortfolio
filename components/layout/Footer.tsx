@@ -1,17 +1,13 @@
 "use client";
 
 import {
-  IconBook,
   IconBrandGithub,
   IconBrandLinkedin,
-  IconBriefcase,
   IconCode,
   IconExternalLink,
-  IconHome,
   IconMail,
   IconMapPin,
   IconPhone,
-  IconUser,
 } from "@tabler/icons-react";
 import Link from "next/link";
 
@@ -36,13 +32,6 @@ export function Footer() {
       url: "https://qiita.com/yukkun",
       icon: <IconExternalLink size={28} />,
     },
-  ];
-
-  const quickLinks = [
-    { href: "/", label: "Home", icon: <IconHome size={24} /> },
-    { href: "/about", label: "About", icon: <IconUser size={24} /> },
-    { href: "/works", label: "Works", icon: <IconBriefcase size={24} /> },
-    { href: "/research", label: "Research", icon: <IconBook size={24} /> },
   ];
 
   return (
@@ -73,16 +62,6 @@ export function Footer() {
                 </a>
               ))}
             </div>
-          </div>
-
-          <div className={styles.links}>
-            <h3 className={styles.linksTitle}>Quick Links</h3>
-            {quickLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={styles.link}>
-                <span className={styles.linkIcon}>{link.icon}</span>
-                {link.label}
-              </Link>
-            ))}
           </div>
 
           <div className={styles.contact}>
