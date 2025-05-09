@@ -1,0 +1,18 @@
+body {
+  --meta-gradient-angle: 120deg;
+  --meta-gradient-from: #e0f2fe;
+  --meta-gradient-to: #cffafe;
+  background: linear-gradient(
+    var(--meta-gradient-angle),
+    var(--meta-gradient-from) 0%,
+    var(--meta-gradient-to) 100%
+  );
+  min-height: 100vh;
+  transition: background 0.5s;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+}

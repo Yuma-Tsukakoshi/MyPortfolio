@@ -4,6 +4,8 @@ import {
   Card,
   Container,
   Group,
+  Loader,
+  Modal,
   SimpleGrid,
   Stack,
   Table,
@@ -17,6 +19,7 @@ import {
   IconVideo,
 } from "@tabler/icons-react";
 import Image from "next/image";
+import React from "react";
 
 import styles from "./Research.module.css";
 
@@ -40,6 +43,7 @@ interface Project {
   image: string;
   paperUrl?: string;
   slideshareUrl?: string;
+  notionPageId?: string;
 }
 
 const conferences: Conference[] = [
@@ -67,11 +71,31 @@ const projects: Project[] = [
     image: "/research/iot-agri.png",
     paperUrl: "/papers/iot-agri.pdf",
     slideshareUrl: "https://www.slideshare.net/example2",
+    notionPageId: "NOTION_PAGE_ID_1",
   },
   // 他のプロジェクトも同様に追加
 ];
 
 export function Research() {
+  const [opened, setOpened] = React.useState(false);
+  const [notionContent, setNotionContent] = React.useState<string>("");
+  const [loading, setLoading] = React.useState(false);
+
+  const handleOpenModal = async (pageId: string) => {
+    setOpened(true);
+    setLoading(true);
+    // Notion APIからデータ取得（仮実装）
+    setTimeout(() => {
+      setNotionContent(`Notionページの内容（ID: ${pageId}）`);
+      setLoading(false);
+    }, 1000);
+  };
+
+  const handleCloseModal = () => {
+    setOpened(false);
+    setNotionContent("");
+  };
+
   return (
     <Container size="lg" className={styles.container}>
       <Title order={2} className={styles.title}>
@@ -161,7 +185,13 @@ export function Research() {
       </Title>
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xl" mt="md">
         {projects.map((project) => (
-          <Card key={project.id} className={styles.projectCard}>
+          <Card
+            key={project.id}
+            className={styles.projectCard}
+            style={{ minHeight: 220, borderRadius: 24 }}
+            radius="xl"
+            p="xl"
+          >
             <Card.Section>
               <Image
                 src={project.image}
@@ -171,7 +201,6 @@ export function Research() {
                 className={styles.image}
               />
             </Card.Section>
-
             <Stack mt="md" gap="xs">
               <Title order={3} className={styles.projectTitle}>
                 {project.title}
@@ -179,16 +208,14 @@ export function Research() {
               <Text size="sm" c="dimmed" className={styles.description}>
                 {project.description}
               </Text>
-
-              <Group mt="md" className={styles.tags}>
+              <div className={styles.tags}>
                 {project.tags.map((tag) => (
                   <Badge key={tag} size="sm" variant="light">
                     {tag}
                   </Badge>
                 ))}
-              </Group>
-
-              <Group mt="md" className={styles.links}>
+              </div>
+              <div className={styles.links} style={{ marginTop: 16 }}>
                 {project.paperUrl && (
                   <Button
                     variant="light"
@@ -196,6 +223,8 @@ export function Research() {
                     component="a"
                     href={project.paperUrl}
                     target="_blank"
+                    size="xs"
+                    style={{ marginRight: 8 }}
                   >
                     論文
                   </Button>
@@ -207,15 +236,35 @@ export function Research() {
                     component="a"
                     href={project.slideshareUrl}
                     target="_blank"
+                    size="xs"
+                    style={{ marginRight: 8 }}
                   >
                     スライド
                   </Button>
                 )}
-              </Group>
+                <Button
+                  variant="outline"
+                  color="blue"
+                  radius="xl"
+                  size="xs"
+                  onClick={() => handleOpenModal(project.notionPageId || "")}
+                >
+                  詳細を見る
+                </Button>
+              </div>
             </Stack>
           </Card>
         ))}
       </SimpleGrid>
+      <Modal
+        opened={opened}
+        onClose={handleCloseModal}
+        title="詳細"
+        size="lg"
+        centered
+      >
+        {loading ? <Loader /> : <div>{notionContent}</div>}
+      </Modal>
     </Container>
   );
 }

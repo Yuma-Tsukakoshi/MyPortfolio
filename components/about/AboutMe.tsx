@@ -16,6 +16,8 @@ import {
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 
+import { SectionTitle } from "@/components/common/SectionTitle";
+
 import styles from "./AboutMe.module.css";
 
 export function AboutMe() {
@@ -38,19 +40,14 @@ export function AboutMe() {
   ];
 
   return (
-    <Container size="lg" className={styles.container}>
+    <Container size="lg" className={styles.container + " py-20"}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <Title
-          order={2}
-          className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-800 to-cyan-500 bg-clip-text text-transparent"
-        >
-          About Me
-        </Title>
+        <SectionTitle>About Me</SectionTitle>
 
         <div className={styles.content}>
           {/* 左側：写真 */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { ActionIcon, Group, Text } from "@mantine/core";
+import { ActionIcon, Container, Group, Stack } from "@mantine/core";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -24,57 +24,55 @@ export function FooterLinks() {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4">
-      <Group>
-        <ActionIcon
-          variant="light"
-          radius="md"
-          size={36}
-          style={{
-            backgroundColor: "#e8f0fe",
-            color: "#1a73e8",
-            "&:hover": {
-              backgroundColor: "#d2e3fc",
-            },
-          }}
-          onClick={() => scrollToSection("profile")}
-        >
-          <IconMail stroke={1.5} />
-        </ActionIcon>
-        <ActionIcon
-          variant="light"
-          radius="md"
-          size={36}
-          style={{
-            backgroundColor: "#e8f0fe",
-            color: "#1a73e8",
-            "&:hover": {
-              backgroundColor: "#d2e3fc",
-            },
-          }}
-          onClick={() => scrollToSection("skills")}
-        >
-          <IconBrandGithub stroke={1.5} />
-        </ActionIcon>
-        <ActionIcon
-          variant="light"
-          radius="md"
-          size={36}
-          style={{
-            backgroundColor: "#e8f0fe",
-            color: "#1a73e8",
-            "&:hover": {
-              backgroundColor: "#d2e3fc",
-            },
-          }}
-          onClick={() => scrollToSection("works")}
-        >
-          <IconBrandLinkedin stroke={1.5} />
-        </ActionIcon>
-      </Group>
-      <Text size="sm" c="#5f6368">
-        © 2024 Your Name. All rights reserved.
-      </Text>
-    </div>
+    <footer className="w-full py-20 bg-gradient-to-b from-transparent via-blue-50 to-blue-100">
+      <Container size="lg">
+        <Stack gap="xl" align="center">
+          <Group gap="xl" className="mt-4">
+            <ActionIcon
+              variant="light"
+              radius="xl"
+              size={56}
+              className="transition-all duration-300 hover:scale-110 hover:rotate-12"
+              style={{
+                background: "linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%)",
+                color: "#1a73e8",
+                boxShadow: "0 4px 12px rgba(31, 72, 180, 0.1)",
+              }}
+              onClick={() => scrollToSection("profile")}
+            >
+              <IconMail stroke={1.5} size={28} />
+            </ActionIcon>
+            <ActionIcon
+              variant="light"
+              radius="xl"
+              size={56}
+              className="transition-all duration-300 hover:scale-110 hover:rotate-12"
+              style={{
+                background: "linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%)",
+                color: "#1a73e8",
+                boxShadow: "0 4px 12px rgba(31, 72, 180, 0.1)",
+              }}
+              onClick={() => scrollToSection("skills")}
+            >
+              <IconBrandGithub stroke={1.5} size={28} />
+            </ActionIcon>
+            <ActionIcon
+              variant="light"
+              radius="xl"
+              size={56}
+              className="transition-all duration-300 hover:scale-110 hover:rotate-12"
+              style={{
+                background: "linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%)",
+                color: "#1a73e8",
+                boxShadow: "0 4px 12px rgba(31, 72, 180, 0.1)",
+              }}
+              onClick={() => scrollToSection("works")}
+            >
+              <IconBrandLinkedin stroke={1.5} size={28} />
+            </ActionIcon>
+          </Group>
+        </Stack>
+      </Container>
+    </footer>
   );
 }

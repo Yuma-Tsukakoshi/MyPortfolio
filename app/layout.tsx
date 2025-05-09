@@ -7,9 +7,11 @@ import {
   mantineHtmlProps,
   MantineProvider,
 } from "@mantine/core";
+import React from "react";
 
 import { FooterLinks } from "@/components/common/footer/FooterLinks";
 import { Header } from "@/components/common/header";
+import { MetaBgEffect } from "@/components/common/MetaBgEffect";
 import { ScrollProvider } from "@/context/ScrollContext";
 
 const theme = createTheme({
@@ -64,6 +66,7 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
+        <MetaBgEffect />
         <MantineProvider theme={theme} defaultColorScheme="light">
           <ScrollProvider>
             <Header />

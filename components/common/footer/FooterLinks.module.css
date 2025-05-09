@@ -1,5 +1,4 @@
 .footer {
-  margin-top: 120px;
   padding-top: calc(var(--mantine-spacing-xl) * 2);
   padding-bottom: calc(var(--mantine-spacing-xl) * 2);
   background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
