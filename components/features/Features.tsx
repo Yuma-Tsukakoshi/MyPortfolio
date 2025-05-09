@@ -42,21 +42,17 @@ const personalityTraits: PersonalityTrait[] = [
 interface RatingCircleProps {
   value: number;
   index: number;
-  maxIndex: number;
 }
 
-const RatingCircle = ({ value, index, maxIndex }: RatingCircleProps) => {
+const RatingCircle = ({ value, index }: RatingCircleProps) => {
   const isFilled = index < Math.floor(value);
   const isPartial = index === Math.floor(value) && value % 1 !== 0;
-  const baseSize = 24 - Math.abs(index - maxIndex / 2) * 3;
+  const baseSize =
+    index === 0 || index === 4 ? 36 : index === 1 || index === 3 ? 24 : 12;
 
   return (
-    <div
-      style={{ width: baseSize, height: baseSize, marginRight: "4px" }}
-      className="inline-block"
-    >
+    <div style={{ width: baseSize, height: baseSize, marginRight: "4px" }}>
       <div
-        className="rounded-full border-2"
         style={{
           width: "100%",
           height: "100%",
@@ -64,9 +60,8 @@ const RatingCircle = ({ value, index, maxIndex }: RatingCircleProps) => {
           borderColor: "#0ea5e9",
           borderRadius: "50%",
           opacity: isPartial ? (value % 1) * 0.8 + 0.2 : 1,
-          display: "inline-block",
         }}
-      />
+      ></div>
     </div>
   );
 };
@@ -80,13 +75,15 @@ interface RatingDisplayProps {
 const RatingDisplay = ({ value, title, description }: RatingDisplayProps) => {
   return (
     <div className="flex flex-col gap-2 p-4">
-      <Text fw={500} size="lg" style={{ color: "#0ea5e9" }}>
-        {title}
-      </Text>
-      <div className="flex items-center space-x-2">
-        {[0, 1, 2, 3, 4].map((index) => (
-          <RatingCircle key={index} value={value} index={index} maxIndex={4} />
-        ))}
+      <div className="flex items-center justify-between">
+        <Text fw={500} size="lg" style={{ color: "#0ea5e9" }}>
+          {title}
+        </Text>
+        <div className="flex items-center">
+          {[0, 1, 2, 3, 4].map((index) => (
+            <RatingCircle key={index} value={value} index={index} />
+          ))}
+        </div>
       </div>
       <Text size="sm" c="dimmed">
         {description}
