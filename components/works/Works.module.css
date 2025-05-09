@@ -1,5 +1,7 @@
 .container {
-  padding: 2rem 0;
+  padding: 1.5rem 0;
+  position: relative;
+  margin: 8rem auto;
 }
 
 .title {
@@ -20,6 +22,86 @@
   color: var(--mantine-color-blue-6);
 }
 
+.blogCard {
+  height: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(34, 211, 238, 0.05) 100%
+  );
+  border-radius: 16px;
+  border: 1px solid rgba(30, 64, 175, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.blogCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.1);
+}
+
+.blogHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.blogTitle {
+  color: #1e40af;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.blogDescription {
+  color: #1e40af;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.blogTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.blogTag {
+  background: rgba(30, 64, 175, 0.1);
+  color: #1e40af;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.blogTag:hover {
+  background: rgba(30, 64, 175, 0.2);
+  transform: translateY(-2px);
+}
+
+.blogLink {
+  color: #1e40af;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.blogLink:hover {
+  color: #22d3ee;
+  transform: translateX(5px);
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 1rem;
@@ -27,5 +109,17 @@
 
   .workCard {
     margin-bottom: 1rem;
+  }
+
+  .blogCard {
+    padding: 1.25rem;
+  }
+
+  .blogTitle {
+    font-size: 1.1rem;
+  }
+
+  .blogDescription {
+    font-size: 0.95rem;
   }
 }

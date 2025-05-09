@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  Avatar,
+  Badge,
   Container,
   Group,
   Paper,
@@ -15,6 +15,7 @@ import {
   IconExternalLink,
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 import { SectionTitle } from "@/components/common/SectionTitle";
 
@@ -47,7 +48,7 @@ export function AboutMe() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <SectionTitle>About Me</SectionTitle>
+        <SectionTitle title="About me" subtitle="私について" />
 
         <div className={styles.content}>
           {/* 左側：写真 */}
@@ -58,13 +59,26 @@ export function AboutMe() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <Avatar
-              size={300}
-              radius="md"
-              src="/profile.jpg"
-              alt="Profile"
+            <Image
+              src="/images/profile.jpg"
+              alt="プロフィール画像"
+              width={300}
+              height={300}
               className={styles.avatar}
             />
+            <div className={styles.socialLinks}>
+              {socialLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialLink}
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
           </motion.div>
 
           {/* 右側：情報 */}
@@ -75,16 +89,7 @@ export function AboutMe() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <Paper
-              p="xl"
-              radius="lg"
-              className={styles.infoCard}
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(240,249,255,0.98) 100%)",
-                border: "1px solid rgba(232,234,237,0.5)",
-              }}
-            >
+            <Paper className={styles.infoCard}>
               <Stack>
                 {/* 基本情報 */}
                 <div>
@@ -97,19 +102,28 @@ export function AboutMe() {
                   <Text size="lg" className={styles.infoText}>
                     2027年卒業予定
                   </Text>
-                </div>
-
-                {/* 資格 */}
-                <div>
-                  <Title order={3} className={styles.sectionTitle}>
-                    資格
-                  </Title>
-                  <Text size="lg" className={styles.infoText}>
-                    • 基本情報技術者
-                  </Text>
-                  <Text size="lg" className={styles.infoText}>
-                    • 応用情報技術者
-                  </Text>
+                  <Group mt="sm">
+                    <Badge
+                      size="lg"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #1e40af 0%, #22d3ee 100%)",
+                        color: "white",
+                      }}
+                    >
+                      基本情報技術者
+                    </Badge>
+                    <Badge
+                      size="lg"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #1e40af 0%, #22d3ee 100%)",
+                        color: "white",
+                      }}
+                    >
+                      応用情報技術者
+                    </Badge>
+                  </Group>
                 </div>
 
                 {/* 趣味 */}
@@ -117,30 +131,20 @@ export function AboutMe() {
                   <Title order={3} className={styles.sectionTitle}>
                     趣味
                   </Title>
-                  <Text size="lg" className={styles.infoText}>
-                    バスケットボール、スノボ、旅行
-                  </Text>
-                </div>
-
-                {/* SNSリンク */}
-                <div>
-                  <Title order={3} className={styles.sectionTitle}>
-                    Social Links
-                  </Title>
-                  <Group className={styles.socialLinks}>
-                    {socialLinks.map((link) => (
-                      <a
-                        key={link.name}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.socialLink}
-                      >
-                        {link.icon}
-                        <Text size="sm">{link.name}</Text>
-                      </a>
-                    ))}
-                  </Group>
+                  <div className={styles.hobbiesContainer}>
+                    <div className={styles.hobbyItem}>
+                      <span className={styles.hobbyIcon}>🎮</span>
+                      <span>ゲーム</span>
+                    </div>
+                    <div className={styles.hobbyItem}>
+                      <span className={styles.hobbyIcon}>🎵</span>
+                      <span>音楽鑑賞</span>
+                    </div>
+                    <div className={styles.hobbyItem}>
+                      <span className={styles.hobbyIcon}>📚</span>
+                      <span>読書</span>
+                    </div>
+                  </div>
                 </div>
               </Stack>
             </Paper>

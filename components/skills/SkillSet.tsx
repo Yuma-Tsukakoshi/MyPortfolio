@@ -97,7 +97,7 @@ export default function SkillSet() {
     <Container
       size="lg"
       className="my-12 py-4"
-      style={{ maxWidth: 900, margin: "0 auto" }}
+      style={{ maxWidth: 900, margin: "8rem auto" }}
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -107,7 +107,7 @@ export default function SkillSet() {
         className="relative"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 rounded-3xl -z-10" />
-        <SectionTitle>Skills</SectionTitle>
+        <SectionTitle title="Skills" subtitle="スキル" />
         <Card
           radius="xl"
           p="xl"
@@ -118,7 +118,7 @@ export default function SkillSet() {
           className="transition-transform duration-300 hover:scale-105 hover:bg-gray-100 rounded-2xl"
         >
           {/* 1段目 */}
-          <Grid gutter={0} justify="center" align="center" className="mb-3">
+          <Grid gutter="xl" justify="center" align="center" className="mb-3">
             {topSkills.map((skill) => (
               <Grid.Col key={skill.label} span={{ base: 3, sm: 2, md: 1 }}>
                 <div
