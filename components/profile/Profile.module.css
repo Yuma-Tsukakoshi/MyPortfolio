@@ -202,7 +202,7 @@
 .stylishTimeline {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 32px;
   position: relative;
   margin: 0 auto;
   max-width: 900px;
@@ -210,7 +210,7 @@
 
 .stylishTimelineLine {
   position: absolute;
-  left: 48px;
+  left: 24px;
   top: 0;
   bottom: 0;
   width: 4px;
@@ -221,40 +221,56 @@
 
 .stylishTimelineItem {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
   position: relative;
   z-index: 1;
+  padding-left: 24px;
 }
 
 .stylishYearBadge {
-  min-width: 96px;
-  height: 96px;
-  background: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);
-  color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 12px rgba(56, 189, 248, 0.1);
-  position: relative;
-  left: 0;
-  z-index: 2;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(to bottom, #2563eb, #38bdf8);
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+  color: white;
+  position: absolute;
+  left: 2.5%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.stylishYearIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.stylishYearPeriod {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-left: 68px;
+  white-space: nowrap;
+  margin-bottom: 8px;
 }
 
 .stylishEventCard {
-  margin-left: 32px;
+  margin-left: 64px;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: 1.25rem;
   min-width: 0;
   box-shadow: none;
   position: relative;
   z-index: 2;
   display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 1.25rem;
   transition: transform 0.2s;
 }
 
@@ -264,18 +280,19 @@
 }
 
 .stylishEventImage {
-  width: 200px;
-  height: 140px;
+  width: 180px;
+  height: 120px;
   object-fit: cover;
   border-radius: 0.75rem;
   flex-shrink: 0;
+  align-self: center;
 }
 
 .stylishEventContent {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .stylishEventTitle {
@@ -293,29 +310,94 @@
 
 @media (max-width: 768px) {
   .stylishTimeline {
-    gap: 32px;
+    gap: 24px;
   }
+
   .stylishTimelineLine {
     left: 24px;
     width: 3px;
   }
+
   .stylishTimelineItem {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .stylishYearBadge {
-    min-width: 64px;
-    height: 64px;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    width: 40px;
+    height: 40px;
   }
+
+  .stylishYearIcon {
+    width: 20px;
+    height: 20px;
+  }
+
   .stylishEventCard {
     flex-direction: column;
-    padding: 1.2rem;
+    padding: 1rem;
     gap: 1rem;
   }
+
   .stylishEventImage {
     width: 100%;
-    height: 160px;
+    height: 140px;
+  }
+}
+
+.descriptionContainer {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.descriptionSection {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.descriptionTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a365d;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.descriptionList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.descriptionItem {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: #4b5563;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.descriptionItem::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .descriptionContainer {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .descriptionSection {
+    width: 100%;
   }
 }
