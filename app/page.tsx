@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 import { AboutMe } from "@/components/about/AboutMe";
 import { useScrollContext } from "@/components/common/ScrollContext";
-import { Features } from "@/components/features/Features";
 import { Profile } from "@/components/profile/Profile";
 import { Research } from "@/components/research/Research";
 import SkillSet from "@/components/skills/SkillSet";
@@ -44,9 +43,6 @@ export default function Home() {
         </section>
         <section id="career">
           <Profile />
-        </section>
-        <section id="features">
-          <Features />
         </section>
         <section id="works">
           <Works />
