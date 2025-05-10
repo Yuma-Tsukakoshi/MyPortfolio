@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react";
 
 import { AboutMe } from "@/components/about/AboutMe";
+import { useScrollContext } from "@/components/common/ScrollContext";
 import { Features } from "@/components/features/Features";
 import { CatchPhrase } from "@/components/hero/CatchPhrase";
 import { Profile } from "@/components/profile/Profile";
 import { Research } from "@/components/research/Research";
 import SkillSet from "@/components/skills/SkillSet";
 import { Works } from "@/components/works/Works";
-import { useScrollContext } from "@/context/ScrollContext";
 
 export default function Home() {
   const { setActiveSection } = useScrollContext();

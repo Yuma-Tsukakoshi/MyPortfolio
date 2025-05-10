@@ -40,11 +40,6 @@ export function Footer() {
               <IconCode className={styles.logoIcon} size={32} />
               <span>Yuma Tsukakoshi</span>
             </Link>
-            <p className={styles.description}>
-              慶應義塾大学 理工学研究科 開放環境科学専攻 修士1年。
-              ソフトウェアエンジニアとして、Webアプリケーション開発に取り組んでいます。
-              最新技術の習得と実践的なプロジェクトの遂行に情熱を持っています。
-            </p>
             <div className={styles.socialLinks}>
               {socialLinks.map((link) => (
                 <a
@@ -60,10 +55,9 @@ export function Footer() {
               ))}
             </div>
           </div>
-        </div>
-
-        <div className={styles.copyright}>
-          © {currentYear} Yuma Tsukakoshi. All rights reserved.
+          <div className={styles.copyright}>
+            © {currentYear} Yuma Tsukakoshi. All rights reserved.
+          </div>
         </div>
       </div>
     </footer>

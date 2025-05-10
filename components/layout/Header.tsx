@@ -19,18 +19,18 @@ const navigationItems = [
 
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // スクロールが下方向で、かつ100px以上スクロールした場合にヘッダーを表示
+      // スクロールが下方向の場合はヘッダーを非表示
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(true);
-      } else {
         setIsVisible(false);
+      } else {
+        setIsVisible(true);
       }
 
       setLastScrollY(currentScrollY);

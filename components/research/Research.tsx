@@ -1,11 +1,10 @@
 import {
+  Anchor,
   Badge,
   Button,
   Card,
   Container,
   Group,
-  Loader,
-  Modal,
   SimpleGrid,
   Stack,
   Table,
@@ -15,6 +14,7 @@ import {
 import {
   IconAward,
   IconFileText,
+  IconLink,
   IconPresentation,
   IconVideo,
 } from "@tabler/icons-react";
@@ -28,11 +28,15 @@ import styles from "./Research.module.css";
 interface Conference {
   id: number;
   title: string;
+  conferenceUrl?: string;
   date: string;
   venue: string;
   paperUrl?: string;
   videoUrl?: string;
-  awards?: string[]; // 複数の賞に対応するため配列に変更
+  awards?: {
+    name: string;
+    url?: string;
+  }[];
   slideshareUrl?: string;
 }
 
@@ -50,36 +54,58 @@ interface Project {
 const conferences: Conference[] = [
   {
     id: 1,
-    title: "ヒューマンインタフェースシンポジウム2024",
-    date: "2024年10月20日",
+    title: "HIS 2024",
+    conferenceUrl: "https://jp.his.gr.jp/events/symposium2024/",
+    date: "2024年9月18~20日",
     venue: "京都",
     paperUrl: "",
-    awards: ["優秀プレゼンテーション賞", "学術奨励賞"], // 複数の賞を配列で指定
+    awards: [
+      {
+        name: "優秀プレゼンテーション賞",
+        url: "https://jp.his.gr.jp/guide/awards/",
+      },
+      {
+        name: "学術奨励賞",
+        url: "https://jp.his.gr.jp/guide/awards/",
+      },
+    ],
   },
   {
     id: 2,
     title: "WISS 2024",
-    date: "2024年12月13日",
+    conferenceUrl: "https://www.wiss.org/WISS2024/",
+    date: "2024年12月11~13日",
     venue: "新潟",
     paperUrl: "",
-    awards: ["対話発表賞"],
+    awards: [
+      {
+        name: "対話発表賞",
+        url: "https://www.wiss.org/WISS2024/award.html",
+      },
+    ],
   },
   {
     id: 3,
     title: "INTERACTION 2025",
+    conferenceUrl:
+      "https://www.interaction-ipsj.org/proceedings/2025/index.html",
     date: "2025年3月2〜4日",
     venue: "東京",
     paperUrl: "",
-    awards: ["優秀論文賞"],
+    awards: [
+      {
+        name: "優秀論文賞",
+        url: "https://www.interaction-ipsj.org/2025/award",
+      },
+    ],
   },
   // {
   //   id: 4,
-  //   title: "UIST 2025 (ACM Symposium on User Interface Software and Technology)",
+  //   title: "UIST 2025",
   //   date: "2025年9月28日〜10月1日",
-  //   venue: "韓国・釜山",
-  //   paperTitle: "",
+  //   venue: "韓国",
   //   paperUrl: "",
-  //   awards: ["Best Paper Award", "Honorable Mention"]
+  //   awards: []
   // }
 ];
 
@@ -88,47 +114,27 @@ const projects: Project[] = [
     id: 1,
     title: "SoilSense",
     description:
-      "土壌水分センサとLoRa通信を活用した農業IoTシステムの開発。省力化と収量向上を実現。",
-    tags: ["IoT", "LoRa", "農業", "Python"],
-    image: "/research/iot-agri.png",
-    paperUrl: "/papers/iot-agri.pdf",
-    slideshareUrl: "https://www.slideshare.net/example2",
-    notionPageId: "NOTION_PAGE_ID_1",
+      "土壌を利用した柔らかいセンサ開発に関するものだ。センサーは、MFCと呼ばれる技術を利用し、土壌内の微生物が化学反応を通じて電気を生成することで動作する。土壌を柔らかいセンサーとして利用し、土壌の変化から電圧の変化を検知することで異なる容器の形状にも適応できる柔軟なセンサーシステムの開発を目的としている。",
+    tags: ["SMFC", "Tangible Interface", "Sutainability"],
+    image: "/images/research/SoilSense.png",
+    paperUrl:
+      "https://www.interaction-ipsj.org/proceedings/2025/data/bib/INT25010.html",
+    slideshareUrl:
+      "https://www.slideshare.net/slideshow/soilsense-a2e1/276261739",
   },
   {
     id: 2,
     title: "SoilTile",
     description:
-      "土壌水分センサとLoRa通信を活用した農業IoTシステムの開発。省力化と収量向上を実現。",
-    tags: ["IoT", "LoRa", "農業", "Python"],
-    image: "/research/iot-agri.png",
-    paperUrl: "/papers/iot-agri.pdf",
-    slideshareUrl: "https://www.slideshare.net/example2",
-    notionPageId: "NOTION_PAGE_ID_1",
+      "SoilTileは、土壌微生物燃料電池（Soil-based Microbial Fuel Cell, SMFC）を用いた自己発電型力覚センサを応用し、圧力入力を検知するインタラクティブな床型インタフェースである。人がタイルを踏むことで、カソードと土壌の接触が変化し、電圧が変動する。この電圧変化を検知し、圧力や位置情報を取得可能である。土壌という持続可能な素材を活用し、環境に優れたインタフェース設計を目指している。応用例としては、教育用途やインタラクティブ展示、屋外での人流検知などが挙げられる。",
+    tags: ["SMFC", "Floor Sensing"],
+    image: "/images/research/SoilTile.png",
+    paperUrl: "",
+    slideshareUrl: "",
   },
-  // 他のプロジェクトも同様に追加
 ];
 
 export function Research() {
-  const [opened, setOpened] = React.useState(false);
-  const [notionContent, setNotionContent] = React.useState<string>("");
-  const [loading, setLoading] = React.useState(false);
-
-  const handleOpenModal = async (pageId: string) => {
-    setOpened(true);
-    setLoading(true);
-    // Notion APIからデータ取得（仮実装）
-    setTimeout(() => {
-      setNotionContent(`Notionページの内容（ID: ${pageId}）`);
-      setLoading(false);
-    }, 1000);
-  };
-
-  const handleCloseModal = () => {
-    setOpened(false);
-    setNotionContent("");
-  };
-
   return (
     <Container size="xl" className={styles.container}>
       <SectionTitle title="Research" subtitle="研究活動" />
@@ -136,6 +142,32 @@ export function Research() {
       <Title order={3} className={styles.sectionTitle} mt="xl">
         研究プロジェクト
       </Title>
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "400px",
+          overflow: "hidden",
+          borderRadius: "16px",
+          marginBottom: "32px",
+        }}
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        >
+          <source src="/video/SoilSense.mp4" type="video/mp4" />
+          お使いのブラウザは動画の再生に対応していません。
+        </video>
+      </div>
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xl" mt="md">
         {projects.map((project) => (
           <Card
@@ -195,29 +227,11 @@ export function Research() {
                     スライド
                   </Button>
                 )}
-                <Button
-                  variant="outline"
-                  color="blue"
-                  radius="xl"
-                  size="xs"
-                  onClick={() => handleOpenModal(project.notionPageId || "")}
-                >
-                  詳細を見る
-                </Button>
               </div>
             </Stack>
           </Card>
         ))}
       </SimpleGrid>
-      <Modal
-        opened={opened}
-        onClose={handleCloseModal}
-        title="詳細"
-        size="lg"
-        centered
-      >
-        {loading ? <Loader /> : <div>{notionContent}</div>}
-      </Modal>
 
       {/* 学会情報テーブル */}
       <Card className={styles.tableCard}>
@@ -228,15 +242,22 @@ export function Research() {
           <Table.Thead>
             <Table.Tr>
               <Table.Th>学会名</Table.Th>
-              <Table.Th>日付</Table.Th>
-              <Table.Th>会場</Table.Th>
-              <Table.Th>資料</Table.Th>
+              <Table.Th>開催日</Table.Th>
+              <Table.Th>開催地</Table.Th>
+              <Table.Th>表彰</Table.Th>
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>
             {conferences.map((conference) => (
               <Table.Tr key={conference.id}>
-                <Table.Td>{conference.title}</Table.Td>
+                <Table.Td>
+                  <Group gap="xs">
+                    <IconLink size={14} />
+                    <Anchor href={conference.conferenceUrl} target="_blank">
+                      {conference.title}
+                    </Anchor>
+                  </Group>
+                </Table.Td>
                 <Table.Td>{conference.date}</Table.Td>
                 <Table.Td>{conference.venue}</Table.Td>
                 <Table.Td>
@@ -280,12 +301,17 @@ export function Research() {
                     {conference.awards &&
                       conference.awards.map((award) => (
                         <Badge
-                          key={award}
+                          key={award.name}
                           variant="gradient"
                           gradient={{ from: "yellow", to: "orange" }}
                           leftSection={<IconAward size={14} />}
+                          rightSection={<IconLink size={14} />}
+                          component="a"
+                          href={award.url}
+                          target="_blank"
+                          style={{ cursor: "pointer" }}
                         >
-                          {award}
+                          {award.name}
                         </Badge>
                       ))}
                   </Group>

@@ -268,15 +268,10 @@ export function Features() {
         {/* 特性セクション（背景色付き） */}
         <div className={styles.featuresContainer}>
           {/* PICK UP Personality */}
-          <div className="mb-8">
-            <div className="flex items-center gap-4 mb-6">
-              <Badge size="lg" variant="filled" color="blue">
-                PICK UP Personality
-              </Badge>
-              <Text size="sm" c="dimmed">
-                ー 特に強く表れる特性 ー
-              </Text>
-            </div>
+          <Container>
+            <Text fw={700} size="md" className={styles.cardTitle}>
+              特筆すべき特性
+            </Text>
             <Grid gutter="xl" justify="center">
               {pickUpTraits.map((trait) => (
                 <Grid.Col key={trait.title} span={{ base: 12, md: 3 }}>
@@ -300,7 +295,7 @@ export function Features() {
                 </Grid.Col>
               ))}
             </Grid>
-          </div>
+          </Container>
 
           {/* その他の特性（ボタン） */}
           <div className={styles.otherTraitsContainer}>
