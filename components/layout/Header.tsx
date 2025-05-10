@@ -2,8 +2,6 @@
 
 import { Burger, Container, Group, Stack, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconCode } from "@tabler/icons-react";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import styles from "./Header.module.css";
@@ -11,7 +9,6 @@ import styles from "./Header.module.css";
 const navigationItems = [
   { href: "#about", label: "About", jpLabel: "自己紹介" },
   { href: "#career", label: "Career", jpLabel: "経歴" },
-  { href: "#features", label: "Features", jpLabel: "特性分析" },
   { href: "#works", label: "Works", jpLabel: "開発経験" },
   { href: "#research", label: "Research", jpLabel: "研究" },
   { href: "#skills", label: "Skills", jpLabel: "スキル" },
@@ -65,11 +62,6 @@ export function Header() {
       className={`${styles.header} ${isVisible ? styles.headerVisible : ""}`}
     >
       <Container size="lg" className={styles.container}>
-        <Link href="/" className={styles.logo}>
-          <IconCode className={styles.logoIcon} size={32} />
-          <span>Yuma Tsukakoshi</span>
-        </Link>
-
         <nav className={styles.nav}>
           {navigationItems.map((item) => (
             <a
@@ -78,7 +70,7 @@ export function Header() {
               className={styles.navLink}
               onClick={(e) => handleNavClick(e, item.href)}
             >
-              <Text size="sm" fw={500}>
+              <Text size="md" fw={900}>
                 {item.label}
               </Text>
               <Text size="xs" c="dimmed">
