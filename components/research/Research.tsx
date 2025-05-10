@@ -128,7 +128,7 @@ const projects: Project[] = [
     description:
       "SoilTileは、土壌微生物燃料電池（Soil-based Microbial Fuel Cell, SMFC）を用いた自己発電型力覚センサを応用し、圧力入力を検知するインタラクティブな床型インタフェースである。人がタイルを踏むことで、カソードと土壌の接触が変化し、電圧が変動する。この電圧変化を検知し、圧力や位置情報を取得可能である。土壌という持続可能な素材を活用し、環境に優れたインタフェース設計を目指している。応用例としては、教育用途やインタラクティブ展示、屋外での人流検知などが挙げられる。",
     tags: ["SMFC", "Floor Sensing"],
-    image: "/images/research/SoilTile.png",
+    image: "/images/research/SoilTiles.png",
     paperUrl: "",
     slideshareUrl: "",
   },
