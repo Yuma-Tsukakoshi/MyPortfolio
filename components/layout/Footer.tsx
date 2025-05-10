@@ -5,9 +5,6 @@ import {
   IconBrandLinkedin,
   IconCode,
   IconExternalLink,
-  IconMail,
-  IconMapPin,
-  IconPhone,
 } from "@tabler/icons-react";
 import Link from "next/link";
 
@@ -61,22 +58,6 @@ export function Footer() {
                   {link.icon}
                 </a>
               ))}
-            </div>
-          </div>
-
-          <div className={styles.contact}>
-            <h3 className={styles.contactTitle}>Contact</h3>
-            <div className={styles.contactItem}>
-              <IconMail className={styles.contactIcon} />
-              <span>yuma.tsukakoshi@keio.jp</span>
-            </div>
-            <div className={styles.contactItem}>
-              <IconPhone className={styles.contactIcon} />
-              <span>+81 90-1234-5678</span>
-            </div>
-            <div className={styles.contactItem}>
-              <IconMapPin className={styles.contactIcon} />
-              <span>神奈川県横浜市</span>
             </div>
           </div>
         </div>
