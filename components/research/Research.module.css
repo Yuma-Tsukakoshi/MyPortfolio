@@ -67,14 +67,6 @@
   transform: translateY(-5px);
 }
 
-.image {
-  transition: transform 0.3s ease;
-}
-
-.projectCard:hover .image {
-  transform: scale(1.05);
-}
-
 .projectTitle {
   font-size: rem(20);
   font-weight: 700;

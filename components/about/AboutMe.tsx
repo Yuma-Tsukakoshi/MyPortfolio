@@ -102,28 +102,6 @@ export function AboutMe() {
                   <Text size="lg" className={styles.infoText}>
                     2027年卒業予定
                   </Text>
-                  <Group mt="sm">
-                    <Badge
-                      size="lg"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, #1e40af 0%, #22d3ee 100%)",
-                        color: "white",
-                      }}
-                    >
-                      基本情報技術者
-                    </Badge>
-                    <Badge
-                      size="lg"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, #1e40af 0%, #22d3ee 100%)",
-                        color: "white",
-                      }}
-                    >
-                      応用情報技術者
-                    </Badge>
-                  </Group>
                 </div>
 
                 {/* 趣味 */}
@@ -133,18 +111,45 @@ export function AboutMe() {
                   </Title>
                   <div className={styles.hobbiesContainer}>
                     <div className={styles.hobbyItem}>
-                      <span className={styles.hobbyIcon}>🎮</span>
-                      <span>ゲーム</span>
+                      <span className={styles.hobbyIcon}>🏀</span>
+                      <span>バスケ</span>
                     </div>
                     <div className={styles.hobbyItem}>
-                      <span className={styles.hobbyIcon}>🎵</span>
-                      <span>音楽鑑賞</span>
+                      <span className={styles.hobbyIcon}>🏃</span>
+                      <span>ランニング</span>
                     </div>
                     <div className={styles.hobbyItem}>
-                      <span className={styles.hobbyIcon}>📚</span>
-                      <span>読書</span>
+                      <span className={styles.hobbyIcon}>✈️</span>
+                      <span>旅行</span>
                     </div>
                   </div>
+                </div>
+                <div>
+                  <Title order={3} className={styles.sectionTitle}>
+                    資格
+                  </Title>
+                  <Group mt="sm">
+                    <Badge
+                      size="lg"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #1e40af 0%, #22d3ee 100%)",
+                        color: "white",
+                      }}
+                    >
+                      基本情報技術者(2022年11月 取得)
+                    </Badge>
+                    <Badge
+                      size="lg"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #1e40af 0%, #22d3ee 100%)",
+                        color: "white",
+                      }}
+                    >
+                      応用情報技術者(2023年10月 取得)
+                    </Badge>
+                  </Group>
                 </div>
               </Stack>
             </Paper>

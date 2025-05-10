@@ -16,15 +16,13 @@
 }
 
 .content {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
   gap: 4rem;
   margin-bottom: 3rem;
 }
 
 .brand {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   gap: 1.5rem;
 }
 
@@ -98,6 +96,11 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+}
+
+.copyright{
+  margin: 2rem auto;
+  text-align: center;
 }
 
 .links {

@@ -11,10 +11,10 @@ import { Noto_Sans_JP } from "next/font/google";
 import React from "react";
 
 import { MetaBgEffect } from "@/components/common/MetaBgEffect";
+import { ScrollProvider } from "@/components/common/ScrollContext";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { PageNav } from "@/components/layout/PageNav";
-import { ScrollProvider } from "@/context/ScrollContext";
 
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
