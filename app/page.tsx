@@ -1,12 +1,12 @@
 "use client";
 
-import { AboutMeContainer } from "@/components/features/about-me/container";
 import { CareerContainer } from "@/components/features/career/container";
-import { FooterContainer } from "@/components/features/footer/container";
-import { HeroContainer } from "@/components/features/hero/container";
-import { ScrollToTopContainer } from "@/components/features/scroll-to-top/container";
-import { SkillSetContainer } from "@/components/features/skill-set/container";
-import { WorksContainer } from "@/components/features/works/container";
+import { AboutMeContainer } from "@/components/pages/about/container";
+import { FooterContainer } from "@/components/pages/footer/container";
+import { HeroContainer } from "@/components/pages/hero/container";
+import { ScrollToTopContainer } from "@/components/pages/scrollToTop/container";
+import { SkillSetContainer } from "@/components/pages/skills/container";
+import { WorksContainer } from "@/components/pages/works/container";
 
 export default function Home() {
   return (
