@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-import { ScrollToTop as ScrollToTopPresentation } from "./presentation";
+import { ScrollToTop } from "./presentation";
 
-export const ScrollToTop = () => {
+export const ScrollToTopContainer = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -30,7 +30,5 @@ export const ScrollToTop = () => {
     });
   };
 
-  return (
-    <ScrollToTopPresentation isVisible={isVisible} onClick={scrollToTop} />
-  );
+  return <ScrollToTop isVisible={isVisible} onClick={scrollToTop} />;
 };

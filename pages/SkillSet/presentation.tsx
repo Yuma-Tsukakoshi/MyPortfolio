@@ -9,7 +9,7 @@ interface SkillSetPresentationProps {
   skills: SkillsResponse;
 }
 
-export const SkillSetPresentation = ({ skills }: SkillSetPresentationProps) => {
+export const SkillSet = ({ skills }: SkillSetPresentationProps) => {
   return (
     <Container size="lg" style={{ maxWidth: 850 }}>
       <motion.div

@@ -1,1 +1,1 @@
-export { SkillSet } from "./container";
+export { SkillSetContainer as SkillSet } from "./container";

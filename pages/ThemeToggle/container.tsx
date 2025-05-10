@@ -1,16 +1,15 @@
 "use client";
 
-import { useColorScheme } from "@mantine/hooks";
+import { useTheme } from "next-themes";
 
-import { ThemeToggle as ThemeTogglePresentation } from "./presentation";
+import { ThemeToggle } from "./presentation";
 
-export const ThemeToggle = () => {
-  const { colorScheme, toggleColorScheme } = useColorScheme();
+export const ThemeToggleContainer = () => {
+  const { theme, setTheme } = useTheme();
 
-  return (
-    <ThemeTogglePresentation
-      colorScheme={colorScheme}
-      onToggle={toggleColorScheme}
-    />
-  );
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  return <ThemeToggle isDarkMode={theme === "dark"} onToggle={toggleTheme} />;
 };

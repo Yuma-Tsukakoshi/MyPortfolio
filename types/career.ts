@@ -3,6 +3,7 @@ export interface CareerEvent {
   company: string;
   period: string;
   description: string;
+  date: string;
   image: {
     src: string;
     alt: string;

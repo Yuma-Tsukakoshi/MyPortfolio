@@ -1,1 +1,1 @@
-export { ThemeToggle } from "./container";
+export { ThemeToggleContainer as ThemeToggle } from "./container";

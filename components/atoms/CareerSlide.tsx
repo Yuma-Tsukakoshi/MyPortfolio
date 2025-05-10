@@ -11,8 +11,8 @@ export const CareerSlide = ({ event }: CareerSlideProps) => {
   return (
     <div className="relative h-full">
       <Image
-        src={event.image}
-        alt={event.title}
+        src={event.image.src}
+        alt={event.image.alt}
         width={600}
         height={400}
         className="w-full h-full object-cover rounded-lg"
