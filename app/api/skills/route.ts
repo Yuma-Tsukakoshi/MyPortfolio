@@ -10,7 +10,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
     subtitle: "スキルセット",
     categories: [
       {
-        name: "フロントエンド",
+        name: "frontend",
         skills: [
           {
             name: "React",
@@ -55,7 +55,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
         ],
       },
       {
-        name: "バックエンド",
+        name: "backend",
         skills: [
           {
             name: "Node.js",
@@ -100,7 +100,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
         ],
       },
       {
-        name: "その他",
+        name: "database",
         skills: [
           {
             name: "Git",

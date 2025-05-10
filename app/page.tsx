@@ -1,35 +1,33 @@
 "use client";
 
-import { CareerContainer } from "@/components/features/career/container";
-import { AboutMeContainer } from "@/components/pages/about/container";
-import { FooterContainer } from "@/components/pages/footer/container";
-import { HeroContainer } from "@/components/pages/hero/container";
-import { ScrollToTopContainer } from "@/components/pages/scrollToTop/container";
-import { SkillSetContainer } from "@/components/pages/skills/container";
-import { WorksContainer } from "@/components/pages/works/container";
+import { AboutMe } from "@/components/pages/about";
+import { Footer } from "@/components/pages/footer";
+import { Hero } from "@/components/pages/hero";
+import { ScrollToTop } from "@/components/pages/scrollToTop";
+import { Works } from "@/components/pages/works";
 
 export default function Home() {
   return (
     <div>
       <main className="min-h-screen bg-gray-50">
         <section id="hero">
-          <HeroContainer />
+          <Hero />
         </section>
         <section id="about">
-          <AboutMeContainer />
+          <AboutMe />
         </section>
-        <section id="career">
-          <CareerContainer />
-        </section>
-        <section id="skills">
-          <SkillSetContainer />
-        </section>
+        {/* <section id="career">
+          <Career />
+        </section> */}
+        {/* <section id="skills">
+          <SkillSet />
+        </section> */}
         <section id="works">
-          <WorksContainer />
+          <Works />
         </section>
       </main>
-      <FooterContainer />
-      <ScrollToTopContainer />
+      <Footer />
+      <ScrollToTop />
     </div>
   );
 }
