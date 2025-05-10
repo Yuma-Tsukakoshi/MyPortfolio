@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { AboutMe } from "@/components/about/AboutMe";
 import { useScrollContext } from "@/components/common/ScrollContext";
 import { Features } from "@/components/features/Features";
-import { CatchPhrase } from "@/components/hero/CatchPhrase";
 import { Profile } from "@/components/profile/Profile";
 import { Research } from "@/components/research/Research";
 import SkillSet from "@/components/skills/SkillSet";
@@ -13,7 +12,6 @@ import { Works } from "@/components/works/Works";
 
 export default function Home() {
   const { setActiveSection } = useScrollContext();
-  const [showMainContent, setShowMainContent] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,29 +38,26 @@ export default function Home() {
 
   return (
     <>
-      <CatchPhrase onAnimationComplete={() => setShowMainContent(true)} />
-      {showMainContent && (
-        <main className="space-y-40 bg-gradient-to-br from-white via-blue-50 to-blue-100">
-          <section id="about">
-            <AboutMe />
-          </section>
-          <section id="career">
-            <Profile />
-          </section>
-          <section id="features">
-            <Features />
-          </section>
-          <section id="works">
-            <Works />
-          </section>
-          <section id="research">
-            <Research />
-          </section>
-          <section id="skills">
-            <SkillSet />
-          </section>
-        </main>
-      )}
+      <main className="space-y-40 bg-gradient-to-br from-white via-blue-50 to-blue-100">
+        <section id="about">
+          <AboutMe />
+        </section>
+        <section id="career">
+          <Profile />
+        </section>
+        <section id="features">
+          <Features />
+        </section>
+        <section id="works">
+          <Works />
+        </section>
+        <section id="research">
+          <Research />
+        </section>
+        <section id="skills">
+          <SkillSet />
+        </section>
+      </main>
     </>
   );
 }

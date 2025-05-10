@@ -22,8 +22,7 @@ export function Works() {
       techStack: ["Laravel", "Next.js", "PostgreSQL", "Docker", "AWS"],
       company: "株式会社アンチパターン",
       imageUrl: "/images/projects/matomeru.png",
-      githubUrl: "https://github.com/example/matomeru",
-      externalUrl: "https://matomeru.example.com",
+      externalUrl: "https://green-road.co.jp/business/matomeru",
     },
     {
       title: "コミュニティサイトリニューアル",
@@ -36,8 +35,7 @@ export function Works() {
       techStack: ["HTML", "CSS", "JavaScript", "TailwindCSS"],
       company: "株式会社アンチパターン",
       imageUrl: "/images/projects/community.png",
-      githubUrl: "https://github.com/example/community-site",
-      externalUrl: "https://community.example.com",
+      externalUrl: "https://posse.community/",
     },
     {
       title: "AWSインフラ構築",
@@ -50,7 +48,6 @@ export function Works() {
       techStack: ["AWS CDK", "EC2", "S3", "RDS", "TypeScript"],
       company: "株式会社アンチパターン",
       imageUrl: "/images/projects/aws.png",
-      githubUrl: "https://github.com/example/aws-infra",
     },
     {
       title: "開発フローの最適化",
@@ -63,7 +60,6 @@ export function Works() {
       techStack: ["GitHub Actions", "Google Apps Script"],
       company: "株式会社アンチパターン",
       imageUrl: "/images/projects/workflow.png",
-      githubUrl: "https://github.com/example/workflow-optimization",
     },
     {
       title: "AI在庫予測システム",
@@ -76,7 +72,6 @@ export function Works() {
       techStack: ["Flask", "Next.js", "MongoDB", "Machine Learning"],
       company: "株式会社ハイクリ",
       imageUrl: "/images/projects/ai-inventory.png",
-      githubUrl: "https://github.com/example/ai-inventory",
     },
     {
       title: "OCRアプリケーション",
@@ -89,7 +84,6 @@ export function Works() {
       techStack: ["Python", "OpenCV", "Google Vision API"],
       company: "株式会社Pluszero",
       imageUrl: "/images/projects/ocr.png",
-      githubUrl: "https://github.com/example/ocr-app",
     },
     {
       title: "Pulse Map",
@@ -100,9 +94,8 @@ export function Works() {
       achievement:
         "少人数での効率的な開発手法を学び、勉強会を通じたチームの成長を促進。エンドポイント設計とフロント接続の初挑戦をクリア。",
       techStack: ["TypeScript", "Laravel", "MySQL", "Docker"],
-      company: "株式会社アンチパターン",
+      company: "チーム開発",
       imageUrl: "/images/projects/pulse-map.png",
-      githubUrl: "https://github.com/example/pulse-map",
     },
 
     {
@@ -116,7 +109,6 @@ export function Works() {
       techStack: ["TypeScript", "Mantine", "TailwindCSS", "Prisma", "GAS"],
       company: "個人開発",
       imageUrl: "/images/projects/welcome-app.png",
-      githubUrl: "https://github.com/example/welcome-app",
     },
   ];
 
