@@ -1,7 +1,7 @@
 "use client";
 
 import { Carousel } from "@mantine/carousel";
-import { Container, Text, Title } from "@mantine/core";
+import { Container } from "@mantine/core";
 import { motion } from "framer-motion";
 
 import { SectionTitle } from "@/components/common/SectionTitle";
@@ -131,15 +131,8 @@ export function Works() {
         <SectionTitle title="Works" subtitle="開発経験" />
 
         <div className={styles.projectsSection}>
-          <Title order={3} className={styles.projectsTitle}>
-            プロジェクト一覧
-            <Text span size="sm" c="dimmed" ml="sm">
-              （全{projects.length}件）
-            </Text>
-          </Title>
           <Carousel
             withIndicators
-            height={400}
             slideSize="33.333%"
             slideGap="md"
             loop
