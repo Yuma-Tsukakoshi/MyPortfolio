@@ -1,5 +1,7 @@
 import { Grid, Paper, Stack, Text } from "@mantine/core";
 
+import { Hobby } from "@/types/about";
+
 interface AboutMeInfoProps {
   description: string;
   education: {
@@ -13,7 +15,7 @@ interface AboutMeInfoProps {
     issuer: string;
     date: string;
   }[];
-  hobbies: string[];
+  hobbies: Hobby[];
 }
 
 export const AboutMeInfo = ({
@@ -61,14 +63,17 @@ export const AboutMeInfo = ({
               <Text fw={700} mb="xs">
                 趣味
               </Text>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-4">
                 {hobbies.map((hobby, index) => (
-                  <Text
+                  <div
                     key={index}
-                    className="px-3 py-1 bg-gray-100 rounded-full"
+                    className="flex items-center gap-2 bg-gray-100 rounded-lg p-2"
                   >
-                    {hobby}
-                  </Text>
+                    <div className="w-6 h-6 flex items-center justify-center">
+                      {hobby.icon}
+                    </div>
+                    <Text size="sm">{hobby.label}</Text>
+                  </div>
                 ))}
               </div>
             </div>
