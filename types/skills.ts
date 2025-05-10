@@ -2,6 +2,7 @@ export interface Skill {
   name: string;
   level: number;
   icon: string;
+  is_acquire: boolean;
   image: {
     src: string;
     alt: string;

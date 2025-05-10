@@ -16,6 +16,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
             name: "React",
             level: 90,
             icon: "react",
+            is_acquire: true,
             image: {
               src: "/images/skills/react.svg",
               alt: "React Logo",
@@ -25,6 +26,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
             name: "TypeScript",
             level: 85,
             icon: "typescript",
+            is_acquire: true,
             image: {
               src: "/images/skills/typescript.svg",
               alt: "TypeScript Logo",
@@ -34,6 +36,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
             name: "Next.js",
             level: 80,
             icon: "nextjs",
+            is_acquire: true,
             image: {
               src: "/images/skills/nextjs.svg",
               alt: "Next.js Logo",
@@ -43,6 +46,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
             name: "Tailwind CSS",
             level: 85,
             icon: "tailwind",
+            is_acquire: true,
             image: {
               src: "/images/skills/tailwind.svg",
               alt: "Tailwind CSS Logo",
@@ -57,6 +61,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
             name: "Node.js",
             level: 75,
             icon: "nodejs",
+            is_acquire: false,
             image: {
               src: "/images/skills/nodejs.svg",
               alt: "Node.js Logo",
@@ -66,6 +71,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
             name: "Express",
             level: 70,
             icon: "express",
+            is_acquire: false,
             image: {
               src: "/images/skills/express.svg",
               alt: "Express Logo",
@@ -75,6 +81,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
             name: "PostgreSQL",
             level: 65,
             icon: "postgresql",
+            is_acquire: true,
             image: {
               src: "/images/skills/postgresql.svg",
               alt: "PostgreSQL Logo",
@@ -84,6 +91,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
             name: "MongoDB",
             level: 60,
             icon: "mongodb",
+            is_acquire: true,
             image: {
               src: "/images/skills/mongodb.svg",
               alt: "MongoDB Logo",
@@ -98,6 +106,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
             name: "Git",
             level: 85,
             icon: "git",
+            is_acquire: true,
             image: {
               src: "/images/skills/git.svg",
               alt: "Git Logo",
@@ -107,6 +116,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
             name: "Docker",
             level: 70,
             icon: "docker",
+            is_acquire: true,
             image: {
               src: "/images/skills/docker.svg",
               alt: "Docker Logo",
@@ -116,6 +126,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
             name: "AWS",
             level: 65,
             icon: "aws",
+            is_acquire: true,
             image: {
               src: "/images/skills/aws.svg",
               alt: "AWS Logo",
@@ -125,6 +136,7 @@ export async function GET(): Promise<NextResponse<ApiResponse<SkillsData>>> {
             name: "Figma",
             level: 75,
             icon: "figma",
+            is_acquire: true,
             image: {
               src: "/images/skills/figma.svg",
               alt: "Figma Logo",
