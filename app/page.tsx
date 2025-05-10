@@ -2,7 +2,6 @@
 
 import { AboutMe } from "@/pages/AboutMe";
 import { Career } from "@/pages/Career";
-import { Contact } from "@/pages/Contact";
 import { Footer } from "@/pages/Footer";
 import { Header } from "@/pages/Header";
 import { Hero } from "@/pages/Hero";
@@ -29,9 +28,6 @@ export default function Home() {
         </section>
         <section id="works">
           <Works />
-        </section>
-        <section id="contact">
-          <Contact />
         </section>
       </main>
       <Footer />
