@@ -9,7 +9,6 @@ import styles from "./PageNav.module.css";
 const sections = [
   { id: "about", label: "About", jpLabel: "自己紹介" },
   { id: "career", label: "Career", jpLabel: "経歴" },
-  { id: "features", label: "Features", jpLabel: "特性分析" },
   { id: "works", label: "Works", jpLabel: "開発経験" },
   { id: "research", label: "Research", jpLabel: "研究" },
   { id: "skills", label: "Skills", jpLabel: "スキル" },

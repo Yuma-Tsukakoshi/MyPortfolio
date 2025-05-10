@@ -77,7 +77,7 @@ const personalityTraits: PersonalityTrait[] = [
   {
     title: "達成意欲",
     value: 2,
-    description: "高い目標を設定し、それに向かって努力する傾向",
+    description: "高い目標に向かって努力する傾向",
     category: "意欲",
     highLabel: "挑戦的",
     lowLabel: "現状維持",
@@ -105,7 +105,7 @@ const personalityTraits: PersonalityTrait[] = [
   {
     title: "自責性",
     value: 2,
-    description: "自分の責任を重視し、失敗を自分で受け止める傾向",
+    description: "自分の責任を重視し、失敗を受け止める傾向",
     category: "情緒",
     highLabel: "自責的",
     lowLabel: "他責的",

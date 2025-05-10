@@ -96,12 +96,24 @@ export function AboutMe() {
                   <Title order={3} className={styles.sectionTitle}>
                     基本情報
                   </Title>
-                  <Text size="lg" className={styles.infoText}>
-                    慶應義塾大学 理工学研究科 開放環境科学専攻 修士1年
-                  </Text>
-                  <Text size="lg" className={styles.infoText}>
-                    2027年卒業予定
-                  </Text>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className={styles.introduction}
+                  >
+                    <Text size="lg" className={styles.introText}>
+                      慶應義塾大学 理工学研究科
+                      開放環境科学専攻の塚越雄真である。エンジニアとして、技術だけでなくビジネス視点も重視し、クライアントと連携しながら価値を提供することを目指している。
+                    </Text>
+                    <Text size="lg" className={styles.introText}>
+                      大学時代はプログラミングコミュニティPOSSEでPM・PdMを経験し、チームをリードしながらプロダクトを完成させた。その後はインターンで法人向けSaaSや業務自動化システムの開発に携わり、要件定義から設計、開発まで幅広く経験を積んだ。技術力だけでなく、顧客の課題を理解し、最適なソリューションを提案する力を磨いた。
+                    </Text>
+                    <Text size="lg" className={styles.introText}>
+                      現在は、チームが最大限のパフォーマンスを発揮できる環境を整えることにやりがいを感じている。技術とビジネスの両方を活かし、価値あるプロダクトを作り続けていきたい。
+                    </Text>
+                  </motion.div>
                 </div>
 
                 {/* 趣味 */}

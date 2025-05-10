@@ -1,0 +1,141 @@
+.cardWrapper {
+  height: 100%;
+  min-height: 600px;
+}
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover .imageOverlay {
+  opacity: 1;
+}
+
+.iconButton {
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.iconButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: var(--mantine-color-gray-9);
+  line-height: 1.4;
+}
+
+.section {
+  margin-top: 0.5rem;
+}
+
+.sectionTitle {
+  color: var(--mantine-color-gray-7);
+  margin-bottom: 0.25rem;
+}
+
+.sectionContent {
+  color: var(--mantine-color-gray-8);
+  line-height: 1.6;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.techBadge {
+  background: var(--mantine-color-blue-0);
+  color: var(--mantine-color-blue-7);
+  transition: all 0.2s ease-in-out;
+}
+
+.techBadge:hover {
+  background: var(--mantine-color-blue-1);
+  transform: translateY(-2px);
+}
+
+.icon {
+  color: var(--mantine-color-gray-6);
+}
+
+.companyBadge {
+  background: var(--mantine-color-blue-0);
+  color: var(--mantine-color-blue-7);
+}
+
+.link {
+  color: var(--mantine-color-gray-6);
+  transition: color 0.2s ease-in-out;
+}
+
+.link:hover {
+  color: var(--mantine-color-blue-6);
+}
+
+@media (max-width: 768px) {
+  .cardWrapper {
+    min-height: 500px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+}
