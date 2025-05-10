@@ -32,7 +32,7 @@ interface Conference {
   venue: string;
   paperUrl?: string;
   videoUrl?: string;
-  awards?: string[]; // 複数の賞に対応するため配列に変更
+  awards?: string[];
   slideshareUrl?: string;
 }
 
@@ -54,7 +54,7 @@ const conferences: Conference[] = [
     date: "2024年10月20日",
     venue: "京都",
     paperUrl: "",
-    awards: ["優秀プレゼンテーション賞", "学術奨励賞"], // 複数の賞を配列で指定
+    awards: ["優秀プレゼンテーション賞", "学術奨励賞"],
   },
   {
     id: 2,
@@ -106,7 +106,6 @@ const projects: Project[] = [
     slideshareUrl: "https://www.slideshare.net/example2",
     notionPageId: "NOTION_PAGE_ID_1",
   },
-  // 他のプロジェクトも同様に追加
 ];
 
 export function Research() {
@@ -228,9 +227,9 @@ export function Research() {
           <Table.Thead>
             <Table.Tr>
               <Table.Th>学会名</Table.Th>
-              <Table.Th>日付</Table.Th>
-              <Table.Th>会場</Table.Th>
-              <Table.Th>資料</Table.Th>
+              <Table.Th>開催日</Table.Th>
+              <Table.Th>開催地</Table.Th>
+              <Table.Th>表彰</Table.Th>
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>
