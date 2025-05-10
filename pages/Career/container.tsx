@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 import { CareerData } from "@/types/career";
 
-import { Career as CareerPresentation } from "./presentation";
+import { CareerPresentation } from "./presentation";
 
-export const Career = () => {
+export const CareerContainer = () => {
   const [career, setCareer] = useState<CareerData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);

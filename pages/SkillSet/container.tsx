@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { SkillsResponse } from "@/types/skills";
 
-import { SkillSet } from "./presentation";
+import { SkillSetPresentation } from "./presentation";
 
 export const SkillSetContainer = () => {
   const [skills, setSkills] = useState<SkillsResponse | null>(null);
@@ -35,5 +35,5 @@ export const SkillSetContainer = () => {
     return <div>Loading...</div>;
   }
 
-  return <SkillSet skills={skills} />;
+  return <SkillSetPresentation skills={skills} />;
 };

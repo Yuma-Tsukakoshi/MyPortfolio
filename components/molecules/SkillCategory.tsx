@@ -24,7 +24,7 @@ export const SkillCategory = ({ category, skills }: SkillCategoryProps) => {
       </div>
       <Grid gutter="md" justify="flex-start">
         {acquiredSkills.map((skill) => (
-          <Grid.Col key={skill.label} span={{ base: 4, sm: 3, md: 1 }}>
+          <Grid.Col key={skill.name} span={{ base: 4, sm: 3, md: 1 }}>
             <SkillIcon skill={skill} />
           </Grid.Col>
         ))}

@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 
-import { ThemeToggle } from "./presentation";
+import { ThemeTogglePresentation } from "./presentation";
 
 export const ThemeToggleContainer = () => {
   const { theme, setTheme } = useTheme();
@@ -11,5 +11,10 @@ export const ThemeToggleContainer = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  return <ThemeToggle isDarkMode={theme === "dark"} onToggle={toggleTheme} />;
+  return (
+    <ThemeTogglePresentation
+      isDarkMode={theme === "dark"}
+      onToggle={toggleTheme}
+    />
+  );
 };

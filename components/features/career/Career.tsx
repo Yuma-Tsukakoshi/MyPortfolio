@@ -9,7 +9,7 @@ import { SectionTitle } from "@/components/common/SectionTitle";
 
 import styles from "./Career.module.css";
 
-export function Career() {
+export function CareerHero() {
   const events = [
     {
       title: "慶應義塾大学 理工学研究科 入学",

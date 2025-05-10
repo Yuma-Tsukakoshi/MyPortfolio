@@ -5,6 +5,8 @@ import { AboutMeInfo } from "@/components/features/about/AboutMeInfo";
 import { AboutMeSocial } from "@/components/features/about/AboutMeSocial";
 import { AboutMeData } from "@/types/about";
 
+import { AboutMePresentation } from "../../components/organisms/AboutMe/presentation";
+
 interface AboutMeProps {
   aboutMe: AboutMeData | null;
   error: string | null;
@@ -14,7 +16,7 @@ interface AboutMeProps {
   renderEmpty: () => ReactNode;
 }
 
-export const AboutMe = ({
+export const AboutMePresentation = ({
   aboutMe,
   error,
   isLoading,

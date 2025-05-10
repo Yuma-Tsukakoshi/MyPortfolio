@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 import { AboutMeData } from "@/types/about";
 
-import { AboutMe as AboutMePresentation } from "./presentation";
+import { AboutMePresentation } from "./presentation";
 
-export const AboutMe = () => {
+export const AboutMeContainer = () => {
   const [aboutMe, setAboutMe] = useState<AboutMeData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);

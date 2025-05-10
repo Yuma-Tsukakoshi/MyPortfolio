@@ -9,18 +9,18 @@ interface CareerProps {
   career: CareerData | null;
   error: string | null;
   isLoading: boolean;
-  renderLoading: () => ReactNode;
-  renderError: () => ReactNode;
-  renderEmpty: () => ReactNode;
+  renderLoading?: () => ReactNode;
+  renderError?: () => ReactNode;
+  renderEmpty?: () => ReactNode;
 }
 
-export const Career = ({
+export const CareerPresentation = ({
   career,
   error,
   isLoading,
-  renderLoading,
-  renderError,
-  renderEmpty,
+  renderLoading = () => <div>Loading...</div>,
+  renderError = () => <div>Error: {error}</div>,
+  renderEmpty = () => <div>No career data available</div>,
 }: CareerProps) => {
   if (isLoading) {
     return renderLoading();

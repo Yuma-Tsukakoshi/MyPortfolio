@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 import { HeroData } from "@/types/hero";
 
-import { Hero as HeroPresentation } from "./presentation";
+import { HeroPresentation } from "./presentation";
 
-export const Hero = () => {
+export const HeroContainer = () => {
   const [hero, setHero] = useState<HeroData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);

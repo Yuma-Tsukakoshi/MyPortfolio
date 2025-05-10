@@ -4,7 +4,7 @@ import { FooterData } from "@/types/footer";
 
 import { FooterPresentation } from "./presentation";
 
-export const Footer = () => {
+export const FooterContainer = () => {
   // TODO: APIからデータを取得する処理を実装
   const data: FooterData = {
     sections: [

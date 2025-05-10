@@ -1,1 +1,1 @@
-export { Contact } from "./container";
+export { ContactContainer as Contact } from "./container";

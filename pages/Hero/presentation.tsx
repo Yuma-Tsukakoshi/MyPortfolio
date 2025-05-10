@@ -14,7 +14,7 @@ interface HeroProps {
   renderEmpty: () => ReactNode;
 }
 
-export const Hero = ({
+export const HeroPresentation = ({
   hero,
   error,
   isLoading,

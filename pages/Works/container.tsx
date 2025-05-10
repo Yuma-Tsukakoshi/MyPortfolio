@@ -4,9 +4,8 @@ import { useEffect, useState } from "react";
 
 import { WorksData } from "@/types/works";
 
-import { Works as WorksPresentation } from "./presentation";
-
-export const Works = () => {
+import { WorksPresentation } from "./presentation";
+export const WorksContainer = () => {
   const [works, setWorks] = useState<WorksData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);

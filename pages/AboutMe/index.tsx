@@ -1,1 +1,1 @@
-export { AboutMe } from "./container";
+export { AboutMeContainer as AboutMe } from "./container";

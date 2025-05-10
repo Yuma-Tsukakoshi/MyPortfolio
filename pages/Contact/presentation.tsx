@@ -31,7 +31,11 @@ interface ContactProps {
   isLoading: boolean;
 }
 
-export const Contact = ({ contact, error, isLoading }: ContactProps) => {
+export const ContactPresentation = ({
+  contact,
+  error,
+  isLoading,
+}: ContactProps) => {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",

@@ -13,7 +13,7 @@ interface WorksProps {
   renderEmpty: () => ReactNode;
 }
 
-export const Works = ({
+export const WorksPresentation = ({
   works,
   error,
   isLoading,

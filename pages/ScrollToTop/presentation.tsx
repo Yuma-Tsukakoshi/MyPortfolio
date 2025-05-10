@@ -10,7 +10,7 @@ interface ScrollToTopPresentationProps {
   onClick: () => void;
 }
 
-export const ScrollToTop = ({
+export const ScrollToTopPresentation = ({
   data,
   isVisible,
   onClick,

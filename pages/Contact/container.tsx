@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 import { ContactData, ContactFormData } from "@/types/contact";
 
-import { Contact as ContactPresentation } from "./presentation";
+import { ContactPresentation } from "./presentation";
 
-export const Contact = () => {
+export const ContactContainer = () => {
   const [contact, setContact] = useState<ContactData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);

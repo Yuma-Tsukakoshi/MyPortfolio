@@ -9,7 +9,7 @@ interface ThemeTogglePresentationProps {
   onToggle: () => void;
 }
 
-export const ThemeToggle = ({
+export const ThemeTogglePresentation = ({
   data,
   isDarkMode,
   onToggle,

@@ -1,1 +1,1 @@
-export { Works } from "./container";
+export { WorksContainer as Works } from "./container";

@@ -1,1 +1,1 @@
-export { Hero } from "./container";
+export { HeroContainer as Hero } from "./container";
