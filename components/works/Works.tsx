@@ -90,6 +90,33 @@ export function Works() {
       imageUrl: "/images/projects/ocr.png",
       githubUrl: "https://github.com/example/ocr-app",
     },
+    {
+      title: "Pulse Map",
+      period: "2025年3月〜2025年5月",
+      description:
+        "従業員のモチベーション管理・向上を目的とした人事向けAI施策提案サービス。少人数のチームで効率的な開発を実現。",
+      role: "プロジェクトマネージャー/フロント・バックエンド",
+      achievement:
+        "少人数での効率的な開発手法を学び、勉強会を通じたチームの成長を促進。エンドポイント設計とフロント接続の初挑戦をクリア。",
+      techStack: ["TypeScript", "Laravel", "MySQL", "Docker"],
+      company: "チーム開発",
+      imageUrl: "/images/projects/pulse-map.png",
+      githubUrl: "https://github.com/example/pulse-map",
+    },
+
+    {
+      title: "新歓アプリ",
+      period: "2025年2月〜2025年2月",
+      description:
+        "所属団体の透明性向上を目的とし、新入生が気軽に馴染める環境を提供。0からの個人開発を経験。",
+      role: "フルスタック開発（フロントエンド・バックエンド）",
+      achievement:
+        "TypeScriptの初学習から実践導入、PrismaとGASの連携を通じたアンケート収集を実現。ユーザー視点の重要性を学んだ。",
+      techStack: ["TypeScript", "Mantine", "TailwindCSS", "Prisma", "GAS"],
+      company: "個人開発",
+      imageUrl: "/images/projects/welcome-app.png",
+      githubUrl: "https://github.com/example/welcome-app",
+    },
   ];
 
   return (
