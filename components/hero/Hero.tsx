@@ -38,7 +38,9 @@ export function Hero() {
           clearInterval(typingInterval);
           setTimeout(() => {
             const aboutSection = document.getElementById("about");
-            aboutSection?.scrollIntoView({ behavior: "smooth" });
+            if (aboutSection) {
+              aboutSection.scrollIntoView({ behavior: "smooth" });
+            }
           }, 1000);
         }
       }
@@ -69,15 +71,6 @@ export function Hero() {
             {subtitle}
             {isTypingSubtitle && <span className={styles.cursor}>|</span>}
           </Text>
-        </motion.div>
-        <motion.div
-          className={styles.scrollButton}
-          onClick={() => {
-            const aboutSection = document.getElementById("about");
-            aboutSection?.scrollIntoView({ behavior: "smooth" });
-          }}
-        >
-          <div className={styles.scrollArrow} />
         </motion.div>
       </Container>
     </div>
