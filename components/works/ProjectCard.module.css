@@ -1,0 +1,41 @@
+.card {
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.description {
+  min-height: 3em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.link {
+  color: var(--mantine-color-gray-6);
+  transition: color 0.2s ease-in-out;
+}
+
+.link:hover {
+  color: var(--mantine-color-blue-6);
+}
