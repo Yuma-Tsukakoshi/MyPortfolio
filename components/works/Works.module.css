@@ -14,9 +14,6 @@
   transition: transform 0.3s ease;
 }
 
-.workCard:hover {
-  transform: translateY(-5px);
-}
 
 .icon {
   color: var(--mantine-color-blue-6);
@@ -37,10 +34,6 @@
   flex-direction: column;
 }
 
-.blogCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.1);
-}
 
 .blogHeader {
   display: flex;
@@ -81,11 +74,6 @@
   transition: all 0.3s ease;
 }
 
-.blogTag:hover {
-  background: rgba(30, 64, 175, 0.2);
-  transform: translateY(-2px);
-}
-
 .blogLink {
   color: #1e40af;
   text-decoration: none;
@@ -95,11 +83,6 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.blogLink:hover {
-  color: #22d3ee;
-  transform: translateX(5px);
 }
 
 @media (max-width: 768px) {
@@ -121,5 +104,72 @@
 
   .blogDescription {
     font-size: 0.95rem;
+  }
+}
+
+.featuredSection {
+  margin-bottom: 3rem;
+}
+
+.featuredTitle {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.remainingSection {
+  margin-top: 3rem;
+}
+
+.remainingTitle {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.projectsSection {
+  margin: 2rem 0;
+}
+
+.projectsTitle {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+/* Carouselのカスタマイズ */
+:global(.mantine-Carousel-indicators) {
+  bottom: -2rem;
+}
+
+:global(.mantine-Carousel-indicator) {
+  width: 8px;
+  height: 8px;
+  transition: width 0.2s ease;
+  background-color: var(--mantine-color-gray-4);
+}
+
+:global(.mantine-Carousel-indicator[data-active]) {
+  width: 24px;
+  background-color: var(--mantine-color-blue-6);
+}
+
+:global(.mantine-Carousel-control) {
+  background-color: var(--mantine-color-white);
+  border: 1px solid var(--mantine-color-gray-3);
+  color: var(--mantine-color-gray-7);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .projectsTitle {
+    font-size: 1.2rem;
   }
 }

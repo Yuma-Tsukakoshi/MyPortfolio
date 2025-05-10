@@ -1,6 +1,7 @@
 "use client";
 
-import { Container, Grid } from "@mantine/core";
+import { Carousel } from "@mantine/carousel";
+import { Container, Text, Title } from "@mantine/core";
 import { motion } from "framer-motion";
 
 import { SectionTitle } from "@/components/common/SectionTitle";
@@ -99,14 +100,14 @@ export function Works() {
       achievement:
         "少人数での効率的な開発手法を学び、勉強会を通じたチームの成長を促進。エンドポイント設計とフロント接続の初挑戦をクリア。",
       techStack: ["TypeScript", "Laravel", "MySQL", "Docker"],
-      company: "チーム開発",
+      company: "株式会社アンチパターン",
       imageUrl: "/images/projects/pulse-map.png",
       githubUrl: "https://github.com/example/pulse-map",
     },
 
     {
       title: "新歓アプリ",
-      period: "2025年2月〜2025年2月",
+      period: "2025年2月",
       description:
         "所属団体の透明性向上を目的とし、新入生が気軽に馴染める環境を提供。0からの個人開発を経験。",
       role: "フルスタック開発（フロントエンド・バックエンド）",
@@ -129,13 +130,29 @@ export function Works() {
       >
         <SectionTitle title="Works" subtitle="開発経験" />
 
-        <Grid gutter="xl">
-          {projects.map((project, index) => (
-            <Grid.Col key={index} span={{ base: 12, sm: 6, md: 4 }}>
-              <ProjectCard {...project} />
-            </Grid.Col>
-          ))}
-        </Grid>
+        <div className={styles.projectsSection}>
+          <Title order={3} className={styles.projectsTitle}>
+            プロジェクト一覧
+            <Text span size="sm" c="dimmed" ml="sm">
+              （全{projects.length}件）
+            </Text>
+          </Title>
+          <Carousel
+            withIndicators
+            height={400}
+            slideSize="33.333%"
+            slideGap="md"
+            loop
+            align="start"
+            slidesToScroll={1}
+          >
+            {projects.map((project, index) => (
+              <Carousel.Slide key={index}>
+                <ProjectCard {...project} />
+              </Carousel.Slide>
+            ))}
+          </Carousel>
+        </div>
       </motion.div>
     </Container>
   );
