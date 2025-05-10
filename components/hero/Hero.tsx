@@ -36,15 +36,24 @@ export function Hero() {
         } else {
           setIsTypingSubtitle(false);
           clearInterval(typingInterval);
+          setTimeout(() => {
+            const aboutSection = document.getElementById("about");
+            aboutSection?.scrollIntoView({ behavior: "smooth" });
+          }, 1000);
         }
       }
-    }, 100);
+    }, 150);
 
     return () => clearInterval(typingInterval);
   }, []);
 
   return (
     <div className={styles.container}>
+      <div className={styles.shootingStars}>
+        {[...Array(20)].map((_, i) => (
+          <div key={i} className={styles.shootingStar} />
+        ))}
+      </div>
       <Container size="lg" className={styles.content}>
         <motion.div
           initial={{ opacity: 0 }}
