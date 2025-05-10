@@ -17,10 +17,13 @@ export const ProfileInfo = ({ data }: ProfileInfoProps) => {
             基本情報
           </Title>
           <Text size="lg" className="text-gray-700 mb-2">
-            {data.education}
+            {data.education.school} {data.education.degree}
+          </Text>
+          <Text size="lg" className="text-gray-700 mb-2">
+            {data.education.field}
           </Text>
           <Text size="lg" className="text-gray-700 mb-4">
-            {data.graduationYear}
+            {data.education.period}
           </Text>
           <Group>
             {data.certifications.map((cert, index) => (
@@ -29,7 +32,7 @@ export const ProfileInfo = ({ data }: ProfileInfoProps) => {
                 size="lg"
                 className="bg-gradient-to-r from-blue-800 to-cyan-400 text-white"
               >
-                {cert}
+                {cert.name}
               </Badge>
             ))}
           </Group>

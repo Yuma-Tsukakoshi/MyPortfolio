@@ -36,7 +36,7 @@ export interface AboutMeData {
     issuer: string;
     date: string;
   }[];
-  hobbies: string[];
+  hobbies: Hobby[];
   skills: Skill[];
   interests: string[];
   socialLinks: {

@@ -28,7 +28,20 @@ export async function GET(): Promise<NextResponse<ApiResponse<AboutMeData>>> {
         date: "2023",
       },
     ],
-    hobbies: ["読書", "旅行", "写真撮影"],
+    hobbies: [
+      {
+        icon: "📚",
+        label: "読書",
+      },
+      {
+        icon: "✈️",
+        label: "旅行",
+      },
+      {
+        icon: "📷",
+        label: "写真撮影",
+      },
+    ],
     skills: [
       {
         category: "フロントエンド",

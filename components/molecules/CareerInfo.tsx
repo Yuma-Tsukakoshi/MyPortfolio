@@ -17,10 +17,13 @@ export const CareerInfo = ({ data }: CareerInfoProps) => {
             基本情報
           </Title>
           <Text size="lg" className="text-gray-700 mb-2">
-            {data.education}
+            {data.education.school} {data.education.degree}
+          </Text>
+          <Text size="lg" className="text-gray-700 mb-2">
+            {data.education.field}
           </Text>
           <Text size="lg" className="text-gray-700">
-            {data.graduationYear}
+            {data.education.period}
           </Text>
         </div>
 

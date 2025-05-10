@@ -21,6 +21,10 @@ export interface Certification {
   name: string;
   issuer: string;
   date: string;
+  image: {
+    src: string;
+    alt: string;
+  };
 }
 
 export interface CareerData {

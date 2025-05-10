@@ -2,6 +2,10 @@ export interface Skill {
   name: string;
   level: number;
   icon: string;
+  image: {
+    src: string;
+    alt: string;
+  };
 }
 
 export interface SkillCategory {

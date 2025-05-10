@@ -13,8 +13,8 @@ export const SkillIcon = ({ skill, size = 80 }: SkillIconProps) => {
   return (
     <div className={iconClass} style={{ width: size, height: size }}>
       <Image
-        src={skill.image}
-        alt={skill.label}
+        src={skill.image.src}
+        alt={skill.image.alt}
         width={size - 20}
         height={size - 20}
         className="object-contain"
