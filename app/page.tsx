@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 import { AboutMe } from "@/components/about/AboutMe";
 import { useScrollContext } from "@/components/common/ScrollContext";
+import { Hero } from "@/components/hero/Hero";
 import { Profile } from "@/components/profile/Profile";
 import { Research } from "@/components/research/Research";
 import SkillSet from "@/components/skills/SkillSet";
@@ -38,6 +39,7 @@ export default function Home() {
   return (
     <>
       <main className="space-y-40 bg-gradient-to-br from-white via-blue-50 to-blue-100">
+        <Hero />
         <section id="about">
           <AboutMe />
         </section>
