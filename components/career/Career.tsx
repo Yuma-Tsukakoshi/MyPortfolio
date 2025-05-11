@@ -37,7 +37,7 @@ export function Profile() {
       year: "2016-2019",
       title: "中学時代：バスケットボール部",
       description:
-        "【活動内容】\n・チームスポーツの基礎を学ぶ\n・基礎技術の習得に取り組む\n\n【学び】\n・勝利に向かって努力する姿勢を体得\n・チームワークの重要性を実感",
+        "【活動内容】\n・部長として県大会出場に向けて練習に励む\n・基礎技術の習得に取り組む\n\n【学び】\n・勝利に向かって努力する姿勢を体得\n・チームワークの重要性を実感",
       image: "/images/career/junior_basket.png",
       tags: ["部活動", "バスケットボール", "チームワーク"],
       icon: <IconRun size={24} />,
@@ -47,7 +47,7 @@ export function Profile() {
       year: "2016-2019",
       title: "中学時代：駅伝部",
       description:
-        "【活動内容】\n・長距離走の技術を習得\n・基礎体力の向上に取り組む\n\n【学び】\n・精神力と体力の向上\n・個人の努力の重要性を学ぶ",
+        "【活動内容】\n・県大会出場に向けてトレーニング\n・体幹や筋トレの体つくりに励む\n\n【学び】\n・精神力と体力の向上\n・切磋琢磨する楽しさ",
       image: "/images/career/ekiden.png",
       tags: ["部活動", "駅伝", "精神力"],
       icon: <IconRun size={24} />,
@@ -57,7 +57,7 @@ export function Profile() {
       year: "2019-2021",
       title: "高校時代：バスケットボール部",
       description:
-        "【活動内容】\n・チームの中心メンバーとして活動\n・後輩の指導にも携わる\n\n【学び】\n・リーダーシップの重要性\n・後輩育成の難しさと喜び",
+        "【活動内容】\n・チームの中心メンバーとして活動\n・後輩の指導にも携わる\n\n【学び】\n・リーダーシップの重要性\n・泥臭い努力の大切さ",
       image: "/images/career/high_basket.png",
       tags: ["部活動", "バスケットボール", "リーダーシップ"],
       icon: <IconRun size={24} />,
@@ -67,7 +67,7 @@ export function Profile() {
       year: "2021",
       title: "大学1年：学習活動",
       description:
-        "【活動内容】\n・コンピュータサイエンスの基礎を学習\n・Pythonの基礎を習得\n\n【学び】\n・プログラミングの基礎知識\n・論理的思考力の向上",
+        "【活動内容】\n・コンピュータサイエンスの基礎学習\n・Pythonの基礎を習得\n\n【学び】\n・プログラミングの基礎知識\n・論理的思考力の向上",
       image: "/images/career/yagami.png",
       tags: ["大学", "学習", "プログラミング"],
       icon: <IconSchool size={24} />,
@@ -87,7 +87,7 @@ export function Profile() {
       year: "2022",
       title: "大学2年：プログラミング学習コミュニティPOSSEに入会",
       description:
-        "【活動内容】\n・Web開発の学習を開始\n・HTML、CSS、JavaScript、PHP、Docker、MySQLを習得\n\n【学び】\n・最新技術の習得方法\n・実践的な開発スキル",
+        "【活動内容】\n・Web開発の学習を開始\n・HTML、CSS、JavaScript、PHP、Docker、MySQLを習得\n\n【学び】\n・Webサービスの設計手法\n・実践的な開発スキル",
       image: "/images/career/posse_all.png",
       tags: ["Web開発", "技術学習", "プログラミング"],
       icon: <IconCode size={24} />,
@@ -107,7 +107,7 @@ export function Profile() {
       year: "2023-",
       title: "大学3年：株式会社アンチパターン",
       description:
-        "【活動内容】\n・Web開発インターンとして活動\n・エンジニアの組織作りを担当\n\n【学び】\n・実務での開発プロセス\n・組織運営の重要性",
+        "【活動内容】\n・Web開発インターンとして活動\n・エンジニアの組織作りを担当\n\n【学び】\n・実務での開発プロセス\n・エンジニア組織運営の重要性",
       image: "/images/career/antipattern.png",
       tags: ["Web開発", "インターン", "組織運営"],
       icon: <IconBriefcase size={24} />,
