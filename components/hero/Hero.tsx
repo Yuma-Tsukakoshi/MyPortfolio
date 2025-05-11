@@ -36,12 +36,62 @@ export function Hero() {
         } else {
           setIsTypingSubtitle(false);
           clearInterval(typingInterval);
+          console.log("タイプライター完了");
           setTimeout(() => {
-            const aboutSection = document.getElementById("about");
-            if (aboutSection) {
-              aboutSection.scrollIntoView({ behavior: "smooth" });
+            const currentScrollY = window.scrollY;
+            const heroSection = document.querySelector(`.${styles.container}`);
+            const heroBottom = heroSection
+              ? heroSection.getBoundingClientRect().bottom + window.scrollY
+              : 0;
+
+            console.log("現在のスクロール位置:", currentScrollY);
+            console.log("Heroセクションの下端:", heroBottom);
+
+            if (currentScrollY < heroBottom) {
+              const aboutSection = document.getElementById("about");
+              console.log("Aboutセクション:", aboutSection);
+              if (aboutSection) {
+                const headerOffset = 80;
+                const elementPosition =
+                  aboutSection.getBoundingClientRect().top;
+                const offsetPosition =
+                  elementPosition + window.pageYOffset - headerOffset;
+
+                console.log("スクロール位置:", offsetPosition);
+
+                const scrollToAbout = () => {
+                  const currentPosition = window.pageYOffset;
+                  const targetPosition = offsetPosition;
+                  const distance = targetPosition - currentPosition;
+                  const duration = 1000;
+                  const startTime = performance.now();
+
+                  const easeInOutQuad = (t: number) => {
+                    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                  };
+
+                  const animateScroll = (currentTime: number) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easedProgress = easeInOutQuad(progress);
+
+                    window.scrollTo(
+                      0,
+                      currentPosition + distance * easedProgress,
+                    );
+
+                    if (progress < 1) {
+                      requestAnimationFrame(animateScroll);
+                    }
+                  };
+
+                  requestAnimationFrame(animateScroll);
+                };
+
+                scrollToAbout();
+              }
             }
-          }, 1000);
+          }, 2000);
         }
       }
     }, 150);
