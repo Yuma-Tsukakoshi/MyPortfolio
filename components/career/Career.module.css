@@ -98,7 +98,7 @@
 }
 
 .eventImage {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ezase;
 }
 
 .tags {
@@ -272,11 +272,6 @@
   align-items: center;
   gap: 1.25rem;
   transition: transform 0.2s;
-}
-
-.stylishEventCard:hover {
-  transform: translateY(-4px) scale(1.02);
-  background: linear-gradient(135deg, #e0f2fe 0%, #f3f8fd 100%);
 }
 
 .stylishEventImage {
