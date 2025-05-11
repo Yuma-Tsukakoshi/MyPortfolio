@@ -34,7 +34,7 @@ interface ProfileEvent {
 export function Profile() {
   const events: ProfileEvent[] = [
     {
-      year: "2016-2019",
+      year: "2016年4月-2019年3月",
       title: "中学時代：バスケットボール部",
       description:
         "【活動内容】\n・チームスポーツの基礎を学ぶ\n・基礎技術の習得に取り組む\n\n【学び】\n・勝利に向かって努力する姿勢を体得\n・チームワークの重要性を実感",
@@ -44,7 +44,7 @@ export function Profile() {
       period: "2016年4月 - 2019年3月",
     },
     {
-      year: "2016-2019",
+      year: "2016年4月-2019年3月",
       title: "中学時代：駅伝部",
       description:
         "【活動内容】\n・長距離走の技術を習得\n・基礎体力の向上に取り組む\n\n【学び】\n・精神力と体力の向上\n・個人の努力の重要性を学ぶ",
@@ -54,7 +54,7 @@ export function Profile() {
       period: "2016年4月 - 2019年3月",
     },
     {
-      year: "2019-2021",
+      year: "2019年4月-2021年3月",
       title: "高校時代：バスケットボール部",
       description:
         "【活動内容】\n・チームの中心メンバーとして活動\n・後輩の指導にも携わる\n\n【学び】\n・リーダーシップの重要性\n・後輩育成の難しさと喜び",
@@ -64,7 +64,7 @@ export function Profile() {
       period: "2019年4月 - 2021年3月",
     },
     {
-      year: "2021-2022",
+      year: "2021年",
       title: "大学1年：学習活動",
       description:
         "【活動内容】\n・コンピュータサイエンスの基礎を学習\n・Pythonの基礎を習得\n\n【学び】\n・プログラミングの基礎知識\n・論理的思考力の向上",
@@ -74,8 +74,8 @@ export function Profile() {
       period: "2021年4月 - 2022年3月",
     },
     {
-      year: "2021-2022",
-      title: "大学1年：塾講師",
+      year: "2021年4月-2023年9月",
+      title: "大学1年：塾講師のアルバイト",
       description:
         "【活動内容】\n・中学生・高校生への指導\n・授業計画の立案と実施\n\n【学び】\n・説明力・指導力の向上\n・人に教えることの楽しさ",
       image: "https://placehold.jp/400x180.png?text=大学1年塾講師",
@@ -84,7 +84,7 @@ export function Profile() {
       period: "2021年4月 - 2022年3月",
     },
     {
-      year: "2022-2023",
+      year: "2022年",
       title: "大学2年：技術学習",
       description:
         "【活動内容】\n・Web開発の学習を開始\n・HTML、CSS、JavaScript、PHP、Docker、MySQLを習得\n\n【学び】\n・最新技術の習得方法\n・実践的な開発スキル",
@@ -94,8 +94,8 @@ export function Profile() {
       period: "2022年4月 - 2023年3月",
     },
     {
-      year: "2022-2023",
-      title: "大学2年：コミュニティ活動",
+      year: "2022年4月-現在",
+      title: "大学2年：プログラミング学習コミュニティPOSSEに入会",
       description:
         "【活動内容】\n・技術的な立場からコミュニティを支える役職に就任\n・ハッカソンの運営を担当\n\n【学び】\n・チーム開発の楽しさと重要性\n・コミュニティ運営の難しさ",
       image: "https://placehold.jp/400x180.png?text=大学2年コミュニティ",
@@ -104,8 +104,8 @@ export function Profile() {
       period: "2022年4月 - 2023年3月",
     },
     {
-      year: "2023-2024",
-      title: "大学3年：アンチパターン",
+      year: "2023年11月-現在",
+      title: "大学3年：株式会社アンチパターン",
       description:
         "【活動内容】\n・Web開発インターンとして活動\n・エンジニアの組織作りを担当\n\n【学び】\n・実務での開発プロセス\n・組織運営の重要性",
       image: "https://placehold.jp/400x180.png?text=大学3年アンチパターン",
@@ -114,8 +114,8 @@ export function Profile() {
       period: "2023年4月 - 2024年3月",
     },
     {
-      year: "2023-2024",
-      title: "大学3年：Pluszero",
+      year: "2024年4月-2025年4月",
+      title: "大学3年：株式会社Pluszero",
       description:
         "【活動内容】\n・機械学習エンジニアとしてOCRサービス開発に従事\n・OpenCV、Google Vision APIを使用\n\n【学び】\n・実務でのコード品質の重要性\n・機械学習の実践的な知識",
       image: "https://placehold.jp/400x180.png?text=大学3年Pluszero",
@@ -124,8 +124,8 @@ export function Profile() {
       period: "2023年4月 - 2024年3月",
     },
     {
-      year: "2024-",
-      title: "大学4年：ハイクリ",
+      year: "2024年6月-2025年4月",
+      title: "大学4年：株式会社ハイクリ",
       description:
         "【活動内容】\n・AIスタートアップに参画\n・迅速な開発と意思決定\n\n【学び】\n・スタートアップでの柔軟な思考\n・迅速な意思決定の重要性",
       image: "https://placehold.jp/400x180.png?text=大学4年ハイクリ",
@@ -134,7 +134,7 @@ export function Profile() {
       period: "2024年4月 - 現在",
     },
     {
-      year: "2024-",
+      year: "2024年度",
       title: "大学4年：研究活動",
       description:
         "【活動内容】\n・土壌をテーマにした研究に取り組み\n・データ分析と実験の実施\n\n【学び】\n・研究方法とデータ分析力\n・問題解決アプローチ",
