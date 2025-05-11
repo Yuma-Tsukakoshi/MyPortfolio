@@ -130,6 +130,9 @@ export function Works() {
             loop
             align="start"
             slidesToScroll={1}
+            classNames={{
+              root: styles.carouselWrapper,
+            }}
           >
             {projects.map((project, index) => (
               <Carousel.Slide key={index}>
