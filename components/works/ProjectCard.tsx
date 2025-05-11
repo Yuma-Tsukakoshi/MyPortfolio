@@ -64,31 +64,39 @@ export function ProjectCard({
               />
               <div className={styles.imageOverlay}>
                 <Group gap="xs">
-                  {githubUrl && (
-                    <Tooltip label="GitHubリポジトリ">
-                      <UnstyledButton
-                        component="a"
-                        href={githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.iconButton}
-                      >
-                        <IconBrandGithub size={24} />
-                      </UnstyledButton>
-                    </Tooltip>
-                  )}
-                  {externalUrl && (
-                    <Tooltip label="プロジェクトページ">
-                      <UnstyledButton
-                        component="a"
-                        href={externalUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.iconButton}
-                      >
-                        <IconExternalLink size={24} />
-                      </UnstyledButton>
-                    </Tooltip>
+                  {githubUrl || externalUrl ? (
+                    <>
+                      {githubUrl && (
+                        <Tooltip label="GitHubリポジトリ">
+                          <UnstyledButton
+                            component="a"
+                            href={githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.iconButton}
+                          >
+                            <IconBrandGithub size={24} />
+                          </UnstyledButton>
+                        </Tooltip>
+                      )}
+                      {externalUrl && (
+                        <Tooltip label="プロジェクトページ">
+                          <UnstyledButton
+                            component="a"
+                            href={externalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.iconButton}
+                          >
+                            <IconExternalLink />
+                          </UnstyledButton>
+                        </Tooltip>
+                      )}
+                    </>
+                  ) : (
+                    <Text size="lg" c="white">
+                      No Link
+                    </Text>
                   )}
                 </Group>
               </div>
