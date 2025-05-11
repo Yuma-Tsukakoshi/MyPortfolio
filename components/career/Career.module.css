@@ -1,154 +1,403 @@
 .container {
   padding: 1.5rem 0;
   position: relative;
+  max-width: 1200px;
   margin: 8rem auto;
 }
 
-.content {
-  display: flex;
-  gap: 3rem;
-  align-items: flex-start;
+.title {
+  text-align: center;
+  font-weight: 900;
+  font-size: rem(34);
+  margin-bottom: var(--mantine-spacing-xl);
+  background: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.carouselContainer {
-  flex: 1;
+/* タイムライン */
+.timeline {
   position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
 }
 
-.carousel {
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.15);
-}
-
-.carouselSlide {
-  position: relative;
-  height: 100%;
-}
-
-.carouselImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.carouselContent {
+.timeline::after {
+  content: "";
   position: absolute;
+  width: 6px;
+  background: linear-gradient(to bottom, #2563eb, #38bdf8);
+  top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  padding: 2rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  color: white;
+  margin-left: 0;
+  border-radius: 3px;
 }
 
-.carouselTitle {
+.timelineItem {
+  padding: 10px 40px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  margin-left: 60px;
+}
+
+.timelineItem::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #2563eb;
+  border-radius: 50%;
+  top: 50%;
+  left: -60px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  display: none;
+}
+
+.timelineContent {
+  padding: 20px;
+  position: relative;
+}
+
+.card {
+  transition: transform 0.3s ease;
+}
+
+.year {
   margin-bottom: 0.5rem;
 }
 
-.carouselDescription {
-  margin-bottom: 1rem;
-  opacity: 0.9;
+.title {
+  margin-bottom: 0.5rem;
+  color: #1a365d;
 }
 
-.carouselDate {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(4px);
+.description {
+  color: #4b5563;
 }
 
-.infoContainer {
-  flex: 0 0 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.eventCard {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(224, 242, 254, 0.5);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  margin: var(--mantine-spacing-xs) 0;
+  padding: var(--mantine-spacing-sm);
 }
 
-.infoCard {
+.eventImage {
   transition: transform 0.3s ease;
-  padding: 1.5rem;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.98) 0%,
-    rgba(34, 211, 238, 0.05) 100%
-  );
-  border-radius: 16px;
-  border: 1px solid rgba(30, 64, 175, 0.1);
 }
 
-.infoCard:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.1);
+.tags {
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--mantine-spacing-xs);
 }
 
-.sectionTitle {
-  color: #1e40af;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-  font-weight: 600;
+/* 強み・弱み・展望 */
+.summaryCard {
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(224, 242, 254, 0.5);
+  backdrop-filter: blur(10px);
+  margin-top: var(--mantine-spacing-xl);
+  padding: var(--mantine-spacing-xl);
+}
+
+.summaryTitle {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--mantine-spacing-sm);
+  color: var(--mantine-color-blue-7);
+  margin-bottom: var(--mantine-spacing-md);
 }
 
-.sectionTitle::after {
-  content: "";
-  flex: 1;
-  height: 2px;
-  background: linear-gradient(to right, #1e40af, #22d3ee);
+.summaryIcon {
+  color: var(--mantine-color-blue-6);
 }
 
-.infoText {
-  color: #1e40af;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-  line-height: 1.6;
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.certifications {
+.container {
+  animation: fadeIn 1s ease-out;
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 768px) {
+  .timeline::after {
+    left: 31px;
+  }
+
+  .timelineItem {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  .timelineItem::after {
+    left: 21px;
+  }
+
+  .left::after,
+  .right::after {
+    left: 21px;
+  }
+
+  .right {
+    left: 0;
+  }
+
+  .eventCard {
+    margin-left: 0;
+  }
+
+  .summaryCard {
+    padding: var(--mantine-spacing-lg);
+  }
+}
+
+.diagonal-0 {
+  margin-top: 0;
+  margin-bottom: -120px;
+  z-index: 4;
+}
+.diagonal-1 {
+  margin-bottom: -120px;
+  z-index: 3;
+}
+.diagonal-2 {
+  margin-bottom: -120px;
+  z-index: 2;
+}
+.diagonal-3 {
+  margin-bottom: -120px;
+  z-index: 1;
+}
+
+/* 新タイムラインデザイン */
+.stylishTimeline {
   display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-top: 0.75rem;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+  margin: 0 auto;
+  max-width: 900px;
 }
 
-.certificationBadge {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(34, 211, 238, 0.1) 100%
-  );
+.stylishTimelineLine {
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #2563eb, #38bdf8);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.stylishTimelineItem {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  padding-left: 24px;
+}
+
+.stylishYearBadge {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.1);
-  transition: transform 0.3s ease;
-  padding: 0.5rem;
-  border: 1px solid rgba(30, 64, 175, 0.1);
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(to bottom, #2563eb, #38bdf8);
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+  color: white;
+  position: absolute;
+  left: 2.5%;
+  top: 0;
+  transform: translateX(-50%);
 }
 
-.certificationBadge:hover {
-  transform: scale(1.1);
+.stylishYearIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
 }
 
-@media screen and (max-width: 768px) {
-  .content {
+.stylishYearPeriod {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-left: 68px;
+  white-space: nowrap;
+  margin-bottom: 8px;
+}
+
+.stylishEventCard {
+  margin-left: 64px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  min-width: 0;
+  box-shadow: none;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: transform 0.2s;
+}
+
+.stylishEventCard:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: linear-gradient(135deg, #e0f2fe 0%, #f3f8fd 100%);
+}
+
+.stylishEventImage {
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.stylishEventContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stylishEventTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a365d;
+  margin: 0;
+}
+
+.stylishEventDesc {
+  color: #4b5563;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .stylishTimeline {
+    gap: 24px;
+  }
+
+  .stylishTimelineLine {
+    left: 24px;
+    width: 3px;
+  }
+
+  .stylishTimelineItem {
     flex-direction: column;
-    gap: 2rem;
+    align-items: flex-start;
   }
 
-  .carouselContainer {
+  .stylishYearBadge {
+    width: 40px;
+    height: 40px;
+  }
+
+  .stylishYearIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .stylishEventCard {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .stylishEventImage {
     width: 100%;
+    height: 140px;
+  }
+}
+
+.descriptionContainer {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.descriptionSection {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.descriptionTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a365d;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.descriptionList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.descriptionItem {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: #4b5563;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.descriptionItem::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .descriptionContainer {
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
-  .infoContainer {
-    flex: 0 0 auto;
+  .descriptionSection {
     width: 100%;
-  }
-
-  .certifications {
-    justify-content: flex-start;
   }
 }

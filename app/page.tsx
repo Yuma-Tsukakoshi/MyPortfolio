@@ -3,9 +3,9 @@
 import { useEffect } from "react";
 
 import { AboutMe } from "@/components/about/AboutMe";
+import { Profile } from "@/components/career/Career";
 import { useScrollContext } from "@/components/common/ScrollContext";
 import { Hero } from "@/components/hero/Hero";
-import { Profile } from "@/components/profile/Profile";
 import { Research } from "@/components/research/Research";
 import SkillSet from "@/components/skills/SkillSet";
 import { Works } from "@/components/works/Works";
